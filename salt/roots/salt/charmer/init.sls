@@ -88,6 +88,10 @@ numpy_setup:
             - pkg: gfortran
             - pkg: atlas
 
+bottleneck_setup:
+    cmd.run:
+        - name: {{ pip }} install Bottleneck
+
 scipy_setup:
     cmd.run:
         - name: {{ pip }} install scipy
@@ -129,9 +133,9 @@ toolkit_setup:
             - pkg: libpq-dev
             - pkg: xml_libs
 
-# These seem to misbehave when you install it in the middle of a bunch of other stuff
+# These need to be installed separately, after the rest, for one reason or another
 
-{% set extra_pkgs = ['pymc', 'theano'] %}
+{% set extra_pkgs = ['statsmodels', 'pymc', 'theano'] %}
 {% for pkg in extra_pkgs %}
 {{ pkg }}_setup:
     cmd.run:
@@ -139,4 +143,7 @@ toolkit_setup:
         - require:
             - cmd: toolkit_setup
 {% endfor %}
+
+# TODO
+# Install R
 
