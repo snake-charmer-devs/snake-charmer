@@ -15,14 +15,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder "salt/roots", "/srv"
 
-  # TODO loop through set of python versions and configure
-  # a VM for each one, something like this:
-  # http://maci0.wordpress.com/2013/11/09/dynamic-multi-machine-vagrantfile/
-
   config.vm.define "charmed34" do |charmed34|
     
     # charmed34.vm.network "forwarded_port", guest: 8888, host: 8834
-    # TODO start notebook server on port 8834 via salt
 
     charmed34.vm.provision :salt do |salt|
       salt.pillar({
@@ -34,7 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     charmed34.vm.provider "virtualbox" do |v|
       v.name = "charmed34"
-      # TODO take these out
       v.memory = 1024
       v.cpus = 3
     end
@@ -44,3 +38,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
 end
+
+# TODO
+# Start notebook server on port 8834 via salt
+# Make this persist between sessions?
+# Take out v.memory and v.cpus
+# Read these details from user's default Vagrantfile if possible:
+#     http://mgdm.net/weblog/vagrantfile-inheritance/
+# Loop through set of python versions and configure
+# a VM for each one, something like this:
+#     http://maci0.wordpress.com/2013/11/09/dynamic-multi-machine-vagrantfile/
+# Resolve public vs private network issue
+

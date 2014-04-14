@@ -1,5 +1,4 @@
-# CAUTION!
-# Do not turn state_auto_order off, this will break everything.
+{% set pyver = pillar['pyver'] %}
 
 apt_pkgs:
     pkg.installed:
@@ -34,30 +33,32 @@ deadsnakes:
 python_pkgs:
     pkg.installed:
         - pkgs:
-            - python{{ pillar['pyver'] }}
-            - python{{ pillar['pyver'] }}-dev
-            - python{{ pillar['pyver'] }}-doc
+            - python{{ pyver }}
+            - python{{ pyver }}-dev
+            - python{{ pyver }}-doc
         - require:
             - pkgrepo: deadsnakes
 
 distribute:
     cmd.run:
-        - name: python{{ pillar['pyver'] }} /vagrant/distribute_setup.py
+        - name: python{{ pyver }} /vagrant/distribute_setup.py
         - require:
             - pkg: python_pkgs
 
 pip:
     cmd.run:
-        - name: easy_install-{{ pillar['pyver'] }} pip
+        - name: easy_install-{{ pyver }} pip
         - require:
             - cmd: distribute
 
-{% set pip = 'MAKEFLAGS=-j pip' + pillar['pyver'] %}
-{% set reqfile = '/vagrant/requirements.' + pillar['pyver'] %}
+{% set pip = 'pip' + pyver %}
+{% set pyver_ints = pyver|replace('.', '') %}
+{% set reqfile = '/vagrant/requirements.' + pyver_ints %}
+{% set logfile = '/vagrant/pip_' + pyver_ints + '.log' %}
 
 pip_pkgs:
     cmd.run:
-        - name: for pkg in `cat {{ reqfile }}`; do pip install "$pkg"; done
+        - name: /vagrant/install_reqs.sh "{{ pip }}" "{{ reqfile }}" "{{ logfile }}"
         - require:
             - cmd: pip
 
@@ -66,6 +67,6 @@ pip_pkgs:
 # Start iPython service (forever?)
 # Install R
 # Clipboard integration?
-# Fix scikit-learn URL, once there's a 3.4-compatible release
+# Fix scikit-learn and statsmodels URLs, once they have 3.4-compatible releases
 # Fix version numbers, so it's reproducible
 

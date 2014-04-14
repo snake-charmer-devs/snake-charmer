@@ -1,12 +1,10 @@
-snake-charmer
-=============
+# snake-charmer
 
 Snake Charmer: Portable virtual machines for scientific Python, using Vagrant.
 
-## Work in progress -- do not use yet
+# Work in progress -- do not use yet
 
-Introduction
-------------
+## Introduction
 
 Wouldn't it be great if you could magic up a local iPython Notebook server,
 complete with SciPy, Pandas, Matplotlib, PyMC, scikit-learn and all the usual
@@ -20,8 +18,7 @@ time?
 
 Well, read on.
 
-Requirements
-------------
+## Requirements
 
 Snake Charmer runs iPython and all the associated tools in a sandboxed virtual
 machine. It relies on [Vagrant](http://www.vagrantup.com/) for creating and
@@ -31,8 +28,7 @@ managing these, and [VirtualBox](https://www.virtualbox.org/) for running them
 (Experienced users of other VM hosting platforms can edit the Vagrantfile to
 use one of these instead, if they prefer.)
 
-Getting started
----------------
+## Getting started
 
 Check out this git repository:
 
@@ -71,8 +67,7 @@ You can see this in action by entering the following in a Notebook cell:
 
 This will show you all the files in your installation directory.
 
-What is included
-----------------
+## What is included
 
 Snake Charmer is designed to provide an out-of-the-box workbench for data
 analysis, statistical modelling, machine learning, mathematical programming
@@ -116,13 +111,26 @@ Coming soon: NLTK, other Python versions.
 
 Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
 gensim, mpld3, Pylearn2, cudamat, Gnumpy, py-earth, Orange, NeuroLab, PyBrain,
-Zipline, Quandl, Alchemy API, openpyxl, xlrd/xlwt, boto, gbq, SQLite,
-and one or more Hadoop clients.
+annoy, Zipline, Quandl, Alchemy API, openpyxl, xlrd/xlwt, boto, gbq,
+SQLite, and one or more Hadoop clients.
 
-Under the covers
-----------------
+## Under the covers
 
-Customizing your VM
--------------------
+## Customizing your VM
 
+## License
+
+    Copyright 2014 Andrew Clegg
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 
