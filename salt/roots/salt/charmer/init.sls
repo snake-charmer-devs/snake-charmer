@@ -58,7 +58,7 @@ pip:
 
 new_distribute:
     cmd.run:
-        - name: {{ pip }} install --upgrade distribute
+        - name: {{ pip }} install --upgrade distribute setuptools
         - require:
             - cmd: pip
 
