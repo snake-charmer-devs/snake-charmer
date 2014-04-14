@@ -21,9 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "charmed34" do |charmed34|
     
-    # Might not need port forwarding if we're on a bridged network?
     # charmed34.vm.network "forwarded_port", guest: 8888, host: 8834
-
     # TODO start notebook server on port 8834 via salt
 
     charmed34.vm.provision :salt do |salt|
@@ -36,6 +34,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     charmed34.vm.provider "virtualbox" do |v|
       v.name = "charmed34"
+      # TODO take these out
+      v.memory = 1024
+      v.cpus = 3
     end
 
     charmed34.vm.hostname = "charmed34"
