@@ -17,12 +17,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder "salt/roots", "/srv"
 
-  # config.vm.provision :salt do |salt|
-    # salt.minion_config = "salt/minion"
-    # salt.run_highstate = true
-  # end
+  config.vm.provision :salt do |salt|
+    salt.minion_config = "salt/minion"
+    salt.run_highstate = true
+  end
 
-  # config.vm.define "charmed" do |charmed|
-  # end
+  config.vm.define "charmed34" do |charmed34|
+    charmed34.vm.provision :salt do |salt|
+      salt.pillar({
+        "pyver" => "3.4"
+      })
+    end
+  end
 
 end

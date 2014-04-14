@@ -1,4 +1,5 @@
-# Needed for proper PPA management
+python-software-properties:
+    pkg.installed
 
 pandoc:
     pkg.installed
@@ -12,6 +13,18 @@ gfortran:
 libpq-dev:
     pkg.installed
 
+libhdf5-serial-1.8.4:
+    pkg.installed
+
+libhdf5-serial-dev:
+    pkg.installed
+
+libpng12-0:
+    pkg.installed
+
+libpng12-dev:
+    pkg.installed
+
 # scipy won't build when this is enabled, but we may not need it
 # libsuitesparse-dev:
 #     pkg.installed
@@ -19,7 +32,7 @@ libpq-dev:
 g++:
     pkg.installed
 
-python-software-properties:
+git:
     pkg.installed
 
 atlas:
@@ -30,6 +43,12 @@ atlas:
             - libatlas-dev
             - liblapack3gf
             - liblapack-dev
+
+xml_libs:
+    pkg.installed:
+        - pkgs:
+            - libxml2-dev
+            - libxslt1-dev
 
 deadsnakes:
     pkgrepo.managed:
@@ -59,6 +78,15 @@ pip_setup:
         - watch:
             - pkg: ez_setup
 
+pytables_reqs:
+    cmd.run:
+        - name: pip{{ pillar['pyver'] }} install numexpr cython
+        - creates: /usr/local/lib/python3.4/dist-packages/Cython/__init__.py
+        - watch:
+            - cmd: pip_setup
+            - pkg: libhdf5-serial-dev
+            - pkg: libhdf5-serial-1.8.4
+
 numpy_setup:
     cmd.run:
         - name:  pip{{ pillar['pyver'] }} install numpy
@@ -77,11 +105,32 @@ scipy_setup:
             - cmd: numpy_setup
             - pkg: g++
 
-libs_setup:
+matplotlib_setup:
     cmd.run:
-        - name: pip{{ pillar['pyver'] }} install ipython[all] matplotlib prettyplotlib seaborn pandas sympy nose scikit-learn deap psycopg2 pymc lxml theano tables fastcluster
+        - name: pip{{ pillar['pyver'] }} install matplotlib
+        - creates: /usr/local/lib/python{{ pillar['pyver'] }}/dist-packages/matplotlib/version.py
         - watch:
             - cmd: scipy_setup
+            - pkg: libpng12-0
+            - pkg: libpng12-dev
+
+# Temporary URL, as there's no 3.4-compatible release yet
+skl_setup:
+    cmd.run:
+        - name: pip{{ pillar['pyver'] }} install git+https://github.com/scikit-learn/scikit-learn.git@c3ab3baf85bb6abbfc3c4c3aa6dd099acc0c4815
+        - creates: /usr/local/lib/python{{ pillar['pyver'] }}/dist-packages/sklearn/__init__.py
+        - watch:
+            - cmd: scipy_setup
+            - pkg: git
+
+toolkit:
+    cmd.run:
+        - name: pip{{ pillar['pyver'] }} install ipython[all] prettyplotlib seaborn pandas sympy nose deap psycopg2 pymc lxml theano tables fastcluster
+        - watch:
+            - cmd: scipy_setup
+            - cmd: matplotlib_setup
+            - cmd: pytables_reqs
             - pkg: libpq-dev
+            - pkg: xml_libs
 
 
