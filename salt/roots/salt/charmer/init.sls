@@ -57,7 +57,7 @@ pip:
 
 pip_pkgs:
     cmd.run:
-        - name: for pkg in `cat {{ reqfile }}`; do pip install $pkg; done
+        - name: for pkg in `cat {{ reqfile }}`; do pip install "$pkg"; done
         - require:
             - cmd: pip
 
