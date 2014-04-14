@@ -104,7 +104,9 @@ version of each of the following modules installed.
 * Numeric and statistical computing:
     * [NumPy](http://www.numpy.org/)
     * [SciPy](http://www.scipy.org/)
+    * [Bottleneck](http://berkeleyanalytics.com/bottleneck/)
     * [Statsmodels](http://statsmodels.sourceforge.net/)
+    * [Patsy](http://patsy.readthedocs.org/en/latest/)
     * [Theano](http://deeplearning.net/software/theano/)
     * [numexpr](https://github.com/pydata/numexpr)
     * [SymPy](http://sympy.org/)
@@ -113,7 +115,9 @@ version of each of the following modules installed.
 Coming soon: NLTK, other Python versions.
 
 Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
-gensim, mpld3, SQLite, and one or more Hadoop clients.
+gensim, mpld3, Pylearn2, cudamat, Gnumpy, py-earth, Orange, NeuroLab, PyBrain,
+Zipline, Quandl, Alchemy API, openpyxl, xlrd/xlwt, boto, gbq, SQLite,
+and one or more Hadoop clients.
 
 Under the covers
 ----------------
