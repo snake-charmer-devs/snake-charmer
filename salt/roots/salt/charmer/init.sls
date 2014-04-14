@@ -56,13 +56,20 @@ pip:
 {% set reqfile = '/vagrant/requirements.' + pyver_ints %}
 {% set logfile = '/vagrant/pip_' + pyver_ints + '.log' %}
 
+distribute:
+    cmd.run:
+        - name: {{ pip }} install --upgrade distribute
+        - require:
+            - cmd: pip
+
 pip_pkgs:
     cmd.run:
         - name: /vagrant/install_reqs.sh "{{ pip }}" "{{ reqfile }}" "{{ logfile }}"
         - require:
-            - cmd: pip
+            - cmd: distribute
 
 # TODO
+# Check setuptools upgrade doesn't break else
 # Run test suites
 # Start iPython service (forever?)
 # Install R
