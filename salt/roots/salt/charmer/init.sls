@@ -121,7 +121,7 @@ pytables_reqs:
 
 toolkit_setup:
     cmd.run:
-        - name: {{ pip }} install ipython[all] prettyplotlib seaborn pandas sympy nose deap psycopg2 lxml theano tables fastcluster
+        - name: {{ pip }} install ipython[all] prettyplotlib seaborn pandas sympy nose deap psycopg2 lxml tables fastcluster statsmodels
         - require:
             - cmd: scipy_setup
             - cmd: matplotlib_setup
@@ -129,11 +129,14 @@ toolkit_setup:
             - pkg: libpq-dev
             - pkg: xml_libs
 
-# PyMC seems to misbehave when you install it in the middle of a bunch of other stuff
-pymc_setup:
+# These seem to misbehave when you install it in the middle of a bunch of other stuff
+
+{% set extra_pkgs = ['pymc', 'theano'] %}
+{% for pkg in extra_pkgs %}
+{{ pkg }}_setup:
     cmd.run:
-        - name: {{ pip }} install pymc
+        - name: {{ pip }} install {{ pkg }}
         - require:
             - cmd: toolkit_setup
-
+{% endfor %}
 
