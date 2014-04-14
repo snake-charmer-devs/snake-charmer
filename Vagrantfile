@@ -8,8 +8,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = "hashicorp/precise64"
 
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
-
   config.vm.network "public_network"
 
   config.ssh.forward_agent = true
@@ -17,17 +15,31 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder "salt/roots", "/srv"
 
-  config.vm.provision :salt do |salt|
-    salt.minion_config = "salt/minion"
-    salt.run_highstate = true
-  end
+  # TODO loop through set of python versions and configure
+  # a VM for each one, something like this:
+  # http://maci0.wordpress.com/2013/11/09/dynamic-multi-machine-vagrantfile/
 
   config.vm.define "charmed34" do |charmed34|
+    
+    # Might not need port forwarding if we're on a bridged network?
+    # charmed34.vm.network "forwarded_port", guest: 8888, host: 8834
+
+    # TODO start notebook server on port 8834 via salt
+
     charmed34.vm.provision :salt do |salt|
       salt.pillar({
         "pyver" => "3.4"
       })
+      salt.minion_config = "salt/minion"
+      salt.run_highstate = true
     end
+
+    charmed34.vm.provider "virtualbox" do |v|
+      v.name = "charmed34"
+    end
+
+    charmed34.vm.hostname = "charmed34"
+
   end
 
 end
