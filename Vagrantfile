@@ -21,15 +21,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     charmed34.vm.provision :salt do |salt|
       salt.pillar({
-        "pyver" => "3.4"
+        "pyver" => "3.4",
+        "theanover" => "rel-0.6"
       })
       salt.minion_config = "salt/minion"
-      salt.run_highstate = true
+      salt.run_highstate = false
     end
 
     charmed34.vm.provider "virtualbox" do |v|
       v.name = "charmed34"
-      v.memory = 1024
+      v.memory = 4096
       v.cpus = 3
     end
 

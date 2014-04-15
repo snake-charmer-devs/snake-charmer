@@ -10,7 +10,7 @@ Wouldn't it be great if you could magic up a local iPython Notebook server,
 complete with SciPy, Pandas, Matplotlib, PyMC, scikit-learn and all the usual
 goodness, and running the latest version of Python, just by typing one line?
 
-    vagrant up charmed34
+    vagrant up --provision charmed34
 
 And wouldn't it be great if you could do that from pretty much any Windows,
 Mac or Linux machine, and know that you'd get the exact same environment every
@@ -37,9 +37,10 @@ Check out this git repository:
 
 Start the VM:
 
-    vagrant up charmed34
+    vagrant up --provision charmed34
 
-Wait a moment until this command completes, and then click the following link:
+This command currently takes an hour or so to install all the necessary
+software. When it completes, click the following link:
 
 [http://localhost:8834/](http://localhost:8834/)
 
@@ -52,9 +53,20 @@ You can log into the server via
 from the same directory, for full command-line control. It's an Ubuntu 12.10
 box, under the covers.
 
+If you need to run it again later, you don't need `--provision` as it's
+already fully provisioned. Just do this:
+
+    vagrant up charmed34
+
+Some more useful commands:
+
+    vagrant halt charmed34 # shut down the VM, reclaim the memory it used
+    vagrant destroy charmed34 # wipe it completely, reclaiming disk space too
+    vagrant suspend charmed34 # 'hibernate' the machine, saving current state
+    vagrant resume charmed34 # 'unhibernate' the machine
+
 See the [Vagrant docs](http://docs.vagrantup.com/v2/cli/index.html) for
-information about other commands you can run, including `suspend`, `resume`,
-`halt` and `destroy`.
+more details.
 
 The `snake-charmer` directory where you run these commands from is visible
 from within the VM as `/vagrant`, so to make data available to the VM,

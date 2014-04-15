@@ -1,17 +1,17 @@
 # Run this with the appropriate version of Python that's just been installed
 
-import system
+import sys
 
 def check_nose(result):
     if not result.wasSuccessful():
-        system.exit(1)
+        sys.exit(1)
 
 print('Testing NumPy...')
 import numpy
 check_nose(numpy.test('full'))
 
 print('Testing SciPy...')
-import numpy
+import scipy
 check_nose(scipy.test('full'))
 
 print('Testing Matplotlib...')

@@ -1,4 +1,5 @@
 {% set pyver = pillar['pyver'] %}
+{% set theanover = pillar['theanover'] %}
 
 apt_pkgs:
     pkg.installed:
@@ -71,14 +72,11 @@ scipy:
         - require:
             - cmd: numpy
 
-# There's something weird going on with Theano. It sometimes takes two tries
-# before it installs.
-
-{% set theano_cmd = pip + ' install --log ' + piplog + ' theano' %}
+# Remove invalid character from Theano -- temporary workaround.
 
 theano:
     cmd.run:
-        - name: {{ theano_cmd }} || {{ theano_cmd }}
+        - name: git clone https://github.com/Theano/Theano.git && cd Theano && git checkout {{ theanover }} && truncate -s 0 NEWS.txt && {{ pip }} install --log {{ piplog }} .
         - require:
             - cmd: scipy
 
@@ -90,14 +88,6 @@ pip_pkgs:
         - name: /vagrant/install_reqs.sh "{{ pip }}" "{{ reqfile }}" "{{ piplog }}"
         - require:
             - cmd: theano
-
-{% set testlog = '/vagrant/test_' + pyver_ints + '.log' %}
-
-test:
-    cmd.run:
-        - name: python{{ pyver }} /vagrant/test_suites.py > {{ testlog }}
-        - require:
-            - cmd: pip_pkgs
 
 # TODO
 # Run more test suites

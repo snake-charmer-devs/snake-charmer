@@ -1,4 +1,3 @@
-git+https://github.com/Theano/Theano.git@305402bac7958815e8f0aa1ce5efa49dc06ac6ca
 git+https://github.com/numpy/numpydoc.git@56a1b39e8b16f2292f6b2b54ce26d259003fadad
 numpy
 Bottleneck
