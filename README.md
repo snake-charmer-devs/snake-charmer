@@ -2,7 +2,7 @@
 
 Portable virtual machines for scientific Python, using Vagrant.
 
-# Work in progress -- do not use yet
+## *Work in progress - not yet fully tested*
 
 ## Introduction
 
