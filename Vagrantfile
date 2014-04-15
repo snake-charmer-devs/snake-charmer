@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "charmed34" do |charmed34|
     
-    # charmed34.vm.network "forwarded_port", guest: 8888, host: 8834
+    charmed34.vm.network "forwarded_port", guest: 8834, host: 8834
 
     charmed34.vm.provision :salt do |salt|
       salt.pillar({

@@ -89,6 +89,12 @@ pip_pkgs:
         - require:
             - cmd: theano
 
+notebook:
+    cmd.run:
+        - name: python{{ pyver }} -m IPython notebook --pylab inline --port 88{{ pyver_ints }}
+        - require:
+            - cmd: theano
+
 # TODO
 # Run more test suites
 # Start iPython service

@@ -6,7 +6,7 @@ Portable virtual machines for scientific Python, using Vagrant.
 
 ## Introduction
 
-Wouldn't it be great if you could magic up a local iPython Notebook server,
+Wouldn't it be great if you could magic up a local IPython Notebook server,
 complete with SciPy, Pandas, Matplotlib, PyMC, scikit-learn and all the usual
 goodness, and running the latest version of Python, just by typing one line?
 
@@ -20,7 +20,7 @@ Well, read on.
 
 ## Requirements
 
-Snake Charmer runs iPython and all the associated tools in a sandboxed virtual
+Snake Charmer runs IPython and all the associated tools in a sandboxed virtual
 machine. It relies on [Vagrant](http://www.vagrantup.com/) for creating and
 managing these, and [VirtualBox](https://www.virtualbox.org/) for running them
  -- so please go and install those now.
@@ -44,7 +44,7 @@ software. When it completes, click the following link:
 
 [http://localhost:8834/](http://localhost:8834/)
 
-This will take you to a fully-kitted-out iPython Notebook server.
+This will take you to a fully-kitted-out IPython Notebook server.
 
 You can log into the server via
 
@@ -85,13 +85,13 @@ Snake Charmer is designed to provide an out-of-the-box workbench for data
 analysis, statistical modelling, machine learning, mathematical programming
 and visualization.
 
-It is designed to be used primarily via iPython Notebook.
+It is designed to be used primarily via IPython Notebook.
 
 The environment is based on Ubuntu 12.10 and Python 3.4, with
 the following modules installed.
 
 * Data handling and processing:
-    * [iPython](http://ipython.org/)
+    * [IPython](http://ipython.org/)
     * [Pandas](http://pandas.pydata.org/)
     * [PyTables](http://www.pytables.org/moin)
     * [lxml](http://lxml.de/lxmlhtml.html)

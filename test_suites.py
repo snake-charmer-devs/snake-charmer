@@ -30,7 +30,7 @@ print('Testing Theano...')
 import theano
 check_nose(theano.test())
 
-print('Testing iPython...')
-import iPython
-check_nose(iPython.test())
+print('Testing IPython...')
+import IPython
+check_nose(IPython.test())
 
