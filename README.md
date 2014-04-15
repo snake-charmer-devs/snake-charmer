@@ -1,6 +1,6 @@
-# snake-charmer
+# Snake Charmer
 
-Snake Charmer: Portable virtual machines for scientific Python, using Vagrant.
+Portable virtual machines for scientific Python, using Vagrant.
 
 # Work in progress -- do not use yet
 
@@ -41,7 +41,7 @@ Start the VM:
 
 Wait a moment until this command completes, and then click the following link:
 
-http://localhost:8834/
+[http://localhost:8834/](http://localhost:8834/)
 
 This will take you to a fully-kitted-out iPython Notebook server.
 

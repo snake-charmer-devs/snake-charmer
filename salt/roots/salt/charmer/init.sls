@@ -19,6 +19,7 @@ apt_pkgs:
             - liblapack-dev
             - libxml2-dev
             - libxslt1-dev
+            - libzmq-dev
 
 # scipy won't build when this is enabled, but we may not need it
 # libsuitesparse-dev:
@@ -54,19 +55,52 @@ pip:
 {% set pip = 'pip' + pyver %}
 {% set pyver_ints = pyver|replace('.', '') %}
 {% set reqfile = '/vagrant/requirements.' + pyver_ints %}
-{% set logfile = '/vagrant/pip_' + pyver_ints + '.log' %}
+{% set piplog = '/vagrant/pip_' + pyver_ints + '.log' %}
 
-# Use a script to install each requirement individually, as some of them
+# numpy and scipy first.
+
+numpy:
+    cmd.run:
+        - name: {{ pip }} install --log {{ piplog }} numpy
+        - require:
+            - cmd: pip
+
+scipy:
+    cmd.run:
+        - name: {{ pip }} install --log {{ piplog }} scipy
+        - require:
+            - cmd: numpy
+
+# There's something weird going on with Theano. It sometimes takes two tries
+# before it installs.
+
+{% set theano_cmd = pip + ' install --log ' + piplog + ' theano' %}
+
+theano:
+    cmd.run:
+        - name: {{ theano_cmd }} || {{ theano_cmd }}
+        - require:
+            - cmd: scipy
+
+# Use a script to install the rest individually, as some of them
 # will get messed up if they are installed together.
 
 pip_pkgs:
     cmd.run:
-        - name: /vagrant/install_reqs.sh "{{ pip }}" "{{ reqfile }}" "{{ logfile }}"
+        - name: /vagrant/install_reqs.sh "{{ pip }}" "{{ reqfile }}" "{{ piplog }}"
         - require:
-            - cmd: pip
+            - cmd: theano
+
+{% set testlog = '/vagrant/test_' + pyver_ints + '.log' %}
+
+test:
+    cmd.run:
+        - name: python{{ pyver }} /vagrant/test_suites.py > {{ testlog }}
+        - require:
+            - cmd: pip_pkgs
 
 # TODO
-# Run test suites
+# Run more test suites
 # Start iPython service
 # Install R
 # Clipboard integration?
