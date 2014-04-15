@@ -56,24 +56,21 @@ pip:
 {% set reqfile = '/vagrant/requirements.' + pyver_ints %}
 {% set logfile = '/vagrant/pip_' + pyver_ints + '.log' %}
 
-new_distribute:
-    cmd.run:
-        - name: {{ pip }} install --upgrade distribute setuptools
-        - require:
-            - cmd: pip
+# Use a script to install each requirement individually, as some of them
+# will get messed up if they are installed together.
 
 pip_pkgs:
     cmd.run:
         - name: /vagrant/install_reqs.sh "{{ pip }}" "{{ reqfile }}" "{{ logfile }}"
         - require:
-            - cmd: new_distribute
+            - cmd: pip
 
 # TODO
-# Check distribute upgrade doesn't break anything else
 # Run test suites
-# Start iPython service (forever?)
+# Start iPython service
 # Install R
 # Clipboard integration?
-# Fix scikit-learn and statsmodels URLs, once they have 3.4-compatible releases
+# Get rid of Github URLs, once those projects have 3.4-compatible releases
 # Fix version numbers, so it's reproducible
+# Notebook security: http://ipython.org/ipython-doc/stable/notebook/public_server.html
 

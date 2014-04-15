@@ -75,8 +75,8 @@ and visualization.
 
 It is designed to be used primarily via iPython Notebook.
 
-The environment is based on Ubuntu 12.10 and Python 3.4, with the latest
-version of each of the following modules installed.
+The environment is based on Ubuntu 12.10 and Python 3.4, with
+the following modules installed.
 
 * Data handling and processing:
     * [iPython](http://ipython.org/)
@@ -111,8 +111,8 @@ Coming soon: NLTK, other Python versions.
 
 Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
 gensim, mpld3, Pylearn2, cudamat, Gnumpy, py-earth, Orange, NeuroLab, PyBrain,
-annoy, Zipline, Quandl, Alchemy API, openpyxl, xlrd/xlwt, boto, gbq,
-SQLite, and one or more Hadoop clients.
+scikits-sparse, annoy, Zipline, Quandl, Alchemy API, openpyxl, xlrd/xlwt, boto,
+gbq, SQLite, and one or more Hadoop clients.
 
 ## Under the covers
 

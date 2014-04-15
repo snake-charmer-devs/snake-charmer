@@ -13,9 +13,9 @@ fastcluster
 sympy
 pandas
 nose
+git+https://github.com/Theano/Theano.git@305402bac7958815e8f0aa1ce5efa49dc06ac6ca
 git+https://github.com/statsmodels/statsmodels.git@d7ff1828cbd7c869f93aa86ea7dcd937fa90f5ff
-theano
-pymc
+git+https://github.com/pymc-devs/pymc.git@a8c872c25dc8ed8235b248c3ff1deba160eb9d8d
 psycopg2
 prettyplotlib
 seaborn
