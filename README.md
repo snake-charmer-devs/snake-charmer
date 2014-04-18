@@ -127,14 +127,17 @@ Coming soon: NLTK, other Python versions.
 
 Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
 gensim, mpld3, Pylearn2, cudamat, Gnumpy, py-earth, Orange, NeuroLab, PyBrain,
-scikits-sparse, annoy, Zipline, Quandl, Alchemy API, openpyxl, xlrd/xlwt,
-OpenCV, boto, gbq, SQLite, and one or more Hadoop clients.
+scikits-sparse, other scikits, annoy, Zipline, Quandl, Alchemy API, openpyxl,
+xlrd/xlwt, NetworkX, OpenCV, boto, gbq, SQLite, PyMongo, and one or more Hadoop clients.
 
 ## Under the covers
 
 ## Customizing your VM
 
 ## License
+
+Individual components are distributed under their own licenses. All
+original work is distributed under the Apache License:
 
     Copyright 2014 Andrew Clegg
 
