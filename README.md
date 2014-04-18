@@ -60,10 +60,10 @@ already fully provisioned. Just do this:
 
 Some more useful commands:
 
-    vagrant halt charmed34 # shut down the VM, reclaim the memory it used
+    vagrant halt charmed34    # shut down the VM, reclaim the memory it used
     vagrant destroy charmed34 # wipe it completely, reclaiming disk space too
     vagrant suspend charmed34 # 'hibernate' the machine, saving current state
-    vagrant resume charmed34 # 'unhibernate' the machine
+    vagrant resume charmed34  # 'unhibernate' the machine
 
 See the [Vagrant docs](http://docs.vagrantup.com/v2/cli/index.html) for
 more details.
@@ -78,6 +78,10 @@ You can see this in action by entering the following in a Notebook cell:
     os.listdir('/vagrant')
 
 This will show you all the files in your installation directory.
+
+Actually, this is also used as the current working directory for your IPython
+Notebook server, so any notebooks you create will appear hear. (NB This may
+change later...)
 
 ## What is included
 
