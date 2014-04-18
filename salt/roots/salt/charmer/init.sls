@@ -91,7 +91,7 @@ pip_pkgs:
 
 notebook:
     cmd.run:
-        - name: python{{ pyver }} -m IPython notebook --pylab inline --port 88{{ pyver_ints }}
+        - name: cd /vagrant && python{{ pyver }} -m IPython notebook --pylab inline --port 88{{ pyver_ints }}
         - require:
             - cmd: theano
 

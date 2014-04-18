@@ -123,8 +123,8 @@ Coming soon: NLTK, other Python versions.
 
 Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
 gensim, mpld3, Pylearn2, cudamat, Gnumpy, py-earth, Orange, NeuroLab, PyBrain,
-scikits-sparse, annoy, Zipline, Quandl, Alchemy API, openpyxl, xlrd/xlwt, boto,
-gbq, SQLite, and one or more Hadoop clients.
+scikits-sparse, annoy, Zipline, Quandl, Alchemy API, openpyxl, xlrd/xlwt,
+OpenCV, boto, gbq, SQLite, and one or more Hadoop clients.
 
 ## Under the covers
 
