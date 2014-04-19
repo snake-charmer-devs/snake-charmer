@@ -4,11 +4,15 @@
 Vagrant.require_version ">= 1.5.2"
 
 
+# Workaround for https://www.virtualbox.org/ticket/12879
+# (missing symlink in guest additions package)
+
 class MyInstaller < VagrantVbguest::Installers::Ubuntu
 
+  # Aftr running standard install process, put the missing
+  # symlink in place if it's not there already
   def install(opts=nil, &block)
     super
-    # Workaround for https://www.virtualbox.org/ticket/12879
     fix_link = "test -e /usr/lib/VBoxGuestAdditions || ln -s /usr/lib/x86_64-linux-gnu/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions"
     communicate.sudo(fix_link, opts, &block)
   end
@@ -23,13 +27,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # This seems dirty somehow
   unless Vagrant.has_plugin? "vagrant-vbguest"
-    cmd1 = ["plugin", "install", "vagrant-vbguest"]
-    cmd1.unshift "vagrant"
+
+    # Install vbguest via another vagrant process; wait for completion
+    cmd1 = ["vagrant", "plugin", "install", "vagrant-vbguest"]
     system *cmd1
     
+    # Now restart vagrant with same args
     cmd2 = ARGV
     cmd2.unshift "vagrant"
     exec *cmd2
+
   end
 
   config.vbguest.installer = MyInstaller
@@ -54,6 +61,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.run_highstate = true
     end
 
+    # Stop salt-minion service to save resources, and disable it
     charmed34.vm.provision "shell",
       inline: "service salt-minion stop; echo manual > /etc/init/salt-minion.override"
 
