@@ -4,6 +4,11 @@ Portable virtual machines for scientific Python, using Vagrant.
 
 ## *Work in progress - not yet fully tested*
 
+If you are interested in being an early adopter, please keep a close eye on
+the commits and issues here -- I am finding and fixing bugs almost daily.
+
+Thanks! -- [Andrew](https://twitter.com/andrew_clegg).
+
 ## Introduction
 
 Wouldn't it be great if you could magic up a local IPython Notebook server,
