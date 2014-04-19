@@ -12,8 +12,8 @@ goodness, and running the latest version of Python, just by typing one line?
 
     vagrant up charmed34
 
-And wouldn't it be great if you could do that from pretty much any Windows,
-Mac or Linux machine, and know that you'd get the exact same environment every
+And wouldn't it be great if you could do that from pretty much any Windows, Mac
+or Linux machine, and know that you'd get the exact same environment every
 time?
 
 Well, read on.
@@ -23,33 +23,33 @@ Well, read on.
 Snake Charmer runs IPython and all the associated tools in a sandboxed virtual
 machine. It relies on [Vagrant](http://www.vagrantup.com/) for creating and
 managing these, and [VirtualBox](https://www.virtualbox.org/) for running them
- -- so please go and install those now.
+-- so please go and install those now.
 
 (Experienced users of other VM hosting platforms can edit the Vagrantfile to
 use one of these instead, if they prefer.)
 
-See below for a [list of included Python packages](#what-is-included).
+Everything else is installed automatically. See below for a
+[list of included Python packages](#what-is-included).
 
 ## Getting started
 
 Check out this git repository:
 
-    git clone git@github.com:andrewclegg/snake-charmer.git
-    cd snake-charmer
+    git clone git@github.com:andrewclegg/snake-charmer.git cd snake-charmer
 
 Start the VM:
 
     vagrant up charmed34
 
-This command currently takes an hour or so to install all the necessary
-software. When it completes, click the following link:
+This command currently takes around an hour to download and install all the
+necessary software. When it completes, click the following link:
 
 [http://localhost:8834/](http://localhost:8834/)
 
 This will take you to a fully-kitted-out IPython Notebook server.
 
-On a VM that's already been fully configured, `vagrant up` will just restart
-it and check a few components are up to date, without going through the full
+On a VM that's already been fully configured, `vagrant up` will just restart it
+and check a few components are up to date, without going through the full
 install process.
 
 You can log into the server via
@@ -66,15 +66,15 @@ Some more useful commands:
     vagrant suspend charmed34 # 'hibernate' the machine, saving current state
     vagrant resume charmed34  # 'unhibernate' the machine
 
-See the [Vagrant docs](http://docs.vagrantup.com/v2/cli/index.html) for
-more details.
+See the [Vagrant docs](http://docs.vagrantup.com/v2/cli/index.html) for more
+details.
 
 ### Folder structure
 
 The notebook server runs from within the `notebooks` subdirectory of the
 current `snake-charmer` directory, and initially contains a single "Hello
-World" notebook. Inside the VM, `notebook` is within the home directory of
-the default user, called `vagrant`.
+World" notebook. Inside the VM, `notebook` is within the home directory of the
+default user, called `vagrant`.
 
 snake-charmer uses IPython 2 so any subdirectories of `notebooks` will be
 visible and navigable as folders in the IPython web interface. However, you
@@ -89,14 +89,16 @@ Or to put it another way:
 
     Folder on your computer           Folder within VM          Contents
     -----------------------           ----------------          --------
-    <home>/snake-charmer              /vagrant                  Your copy of this repo
-    <home>/snake-charmer/notebooks    /home/vagrant/notebooks   Any notebooks you create
-    <home>/snake-charmer/salt/roots   /srv                      Ignore this (internal use)
+    <home>/snake-charmer              /vagrant                  Your copy of
+    this repo <home>/snake-charmer/notebooks    /home/vagrant/notebooks   Any
+    notebooks you create <home>/snake-charmer/salt/roots   /srv
+    Ignore this (internal use)
 
-If you get your VM into a mess somehow, you can just go
+(`<home>` is wherever you were when you cloned this repo.)
 
-    vagrant destroy charmed34
-    vagrant up charmed34
+If you get your VM into a mess somehow, you can just type
+
+    vagrant destroy charmed34 vagrant up charmed34
 
 to build a new one. You won't lose any data, unless for some reason you've
 stored it in a directory that's local to the VM, i.e. *outside* the shared
@@ -104,9 +106,9 @@ folders listed above.
 
 ## What is included
 
-Snake Charmer is designed to provide an out-of-the-box workbench for data
-analysis, statistical modelling, machine learning, mathematical programming
-and visualization.
+Snake Charmer provides an out-of-the-box workbench for data analysis,
+statistical modelling, machine learning, mathematical programming and
+visualization.
 
 It is designed to be used primarily via IPython Notebook.
 

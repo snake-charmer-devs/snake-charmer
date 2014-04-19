@@ -10,10 +10,6 @@ print('Testing NumPy...')
 import numpy
 check_nose(numpy.test('full'))
 
-print('Testing SciPy...')
-import scipy
-check_nose(scipy.test('full'))
-
 print('Testing Matplotlib...')
 import matplotlib
 check_nose(matplotlib.test())
@@ -33,4 +29,14 @@ check_nose(theano.test())
 print('Testing IPython...')
 import IPython
 check_nose(IPython.test())
+
+print('Testing Pandas...')
+import pandas
+check_nose(pandas.test())
+
+# Temporarily moved to end as it's failing one
+
+print('Testing SciPy...')
+import scipy
+check_nose(scipy.test('full'))
 

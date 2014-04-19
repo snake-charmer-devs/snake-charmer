@@ -58,6 +58,10 @@ pip:
 {% set reqfile = '/vagrant/requirements.' + pyver_ints %}
 {% set piplog = '/vagrant/pip_' + pyver_ints + '.log' %}
 
+{{ piplog }}:
+    file.managed:
+        - contents: ""
+
 # numpy and scipy first.
 
 numpy:
@@ -65,8 +69,9 @@ numpy:
         - name: {{ pip }} install --log {{ piplog }} numpy
         - require:
             - cmd: pip
+            - file: {{ piplog }}
 
-scipy:
+Scipy:
     cmd.run:
         - name: {{ pip }} install --log {{ piplog }} scipy
         - require:
@@ -102,6 +107,12 @@ pip_pkgs:
         - require:
             - cmd: theano
 
+local_mathjax:
+    cmd.run:
+        - name: python{{ pyver }} -c "from IPython.external.mathjax import install_mathjax; install_mathjax()"
+        - require:
+            - cmd: pip_pkgs
+
 /etc/init/ipynb.conf:
     file.managed:
         - source: salt://ipynb.upstart
@@ -111,7 +122,7 @@ pip_pkgs:
         - template: jinja
         - defaults:
         - require:
-            - cmd: pip_pkgs
+            - cmd: local_mathjax
 
 ipynb:
     service.running:
@@ -120,6 +131,7 @@ ipynb:
             - file: /etc/init/ipynb.conf
 
 # TODO
+# Shutdown minion service after provisioning?
 # Run more test suites
 # Install R
 # Clipboard integration?
