@@ -67,20 +67,22 @@ Some more useful commands:
 See the [Vagrant docs](http://docs.vagrantup.com/v2/cli/index.html) for
 more details.
 
-The `snake-charmer` directory where you run these commands from is visible
-from within the VM as `/vagrant`, so to make data available to the VM,
-just copy it into there (or move or symlink it).
+The notebook server runs from within the `notebooks` subdirectory of the
+current `snake-charmer` directory, and initially contains a single "Hello
+World" notebook.
 
-You can see this in action by entering the following in a Notebook cell:
+The entire `snake-charmer` directory is visible within the VM as `/vagrant` in
+case you need it. Note that the VM **can't** see files outside these locations
+by default.
 
-    import os
-    os.listdir('/vagrant')
+If you get your VM into a mess somehow, you can just go
 
-This will show you all the files in your installation directory.
+    vagrant destroy charmed34
+    vagrant up charmed34
 
-Actually, this is also used as the current working directory for your IPython
-Notebook server, so any notebooks you create will appear hear. (NB This may
-change later...)
+to build a new one. You won't lose any data, unless for some reason you've
+stored it in a directory that's local to the VM, i.e. *outside* the default
+location (the `notebooks` folder) or `/vagrant`.
 
 ## What is included
 

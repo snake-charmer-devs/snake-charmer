@@ -82,7 +82,7 @@ https://github.com/Theano/Theano.git:
 
 /root/Theano/NEWS.txt:
     file.managed:
-        - source: ~ # Null = empty file
+        - contents: "Dummy file"
         - require:
             - git: https://github.com/Theano/Theano.git
 
