@@ -14,10 +14,6 @@ print('Testing scikit-learn...')
 import sklearn
 check_nose(sklearn.test())
 
-print('Testing Theano...')
-import theano
-check_nose(theano.test())
-
 print('Testing IPython...')
 import IPython
 check_nose(IPython.test())
@@ -44,4 +40,11 @@ print('Testing Matplotlib...')
 import matplotlib
 check_bool(matplotlib.test())
 
+print('Testing Theano...')
+import theano
+theano.config.compute_test_value = 'ignore'
+theano.config.compute_test_value_opt = 'ignore'
+check_nose(theano.test())
+
+# TODO for those packages without easy post-install testing, we should at least make sure they import
 
