@@ -56,7 +56,7 @@ You can log into the server via
 
     vagrant ssh charmed34
 
-from the same directory, for full command-line control. It's an Ubuntu 12.10
+from the same directory, for full command-line control. It's an Ubuntu 12.04
 box, under the covers.
 
 Some more useful commands:
@@ -112,7 +112,7 @@ visualization.
 
 It is designed to be used primarily via IPython Notebook.
 
-The environment is based on Ubuntu 12.10 and Python 3.4, with
+The environment is based on Ubuntu 12.04 and Python 3.4, with
 the following modules installed.
 
 * Data handling and processing:
