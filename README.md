@@ -28,7 +28,7 @@ managing these, and [VirtualBox](https://www.virtualbox.org/) for running them
 (Experienced users of other VM hosting platforms can edit the Vagrantfile to
 use one of these instead, if they prefer.)
 
-See below for a [#what-is-included](list of included Python packages).
+See below for a [list of included Python packages](#what-is-included).
 
 ## Getting started
 
