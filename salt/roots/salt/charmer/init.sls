@@ -59,8 +59,7 @@ pip:
 {% set piplog = '/vagrant/pip_' + pyver_ints + '.log' %}
 
 {{ piplog }}:
-    file.managed:
-        - contents: ""
+    file.absent
 
 # numpy and scipy first.
 
