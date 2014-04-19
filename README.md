@@ -87,11 +87,11 @@ by default.
 
 Or to put it another way:
 
-    Host folder                       VM folder                    Contents
-    -----------                       ---------                    --------
-    <home>/snake-charmer              /vagrant                     Your copy of this repo
-    <home>/snake-charmer/notebooks    /home/vagrant/notebooks      Any notebooks you create
-    <home>/snake-charmer/salt/roots   /srv                         Ignore this (internal use)
+    Folder on your computer           Folder within VM          Contents
+    -----------------------           ----------------          --------
+    <home>/snake-charmer              /vagrant                  Your copy of this repo
+    <home>/snake-charmer/notebooks    /home/vagrant/notebooks   Any notebooks you create
+    <home>/snake-charmer/salt/roots   /srv                      Ignore this (internal use)
 
 If you get your VM into a mess somehow, you can just go
 
