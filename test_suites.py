@@ -1,6 +1,7 @@
 # Run this with the appropriate version of Python that's just been installed
 
 import sys
+import subprocess
 
 def check_nose(result):
     if not result.wasSuccessful():
@@ -15,12 +16,13 @@ import sklearn
 check_nose(sklearn.test())
 
 print('Testing IPython...')
-import IPython
-check_nose(IPython.test())
+# -j means run in parallel, all cores
+retcode = subprocess.call(['iptests', '-j'])
+check_bool(retcode == 0)
 
 print('Testing Pandas...')
-import pandas
-check_nose(pandas.test())
+retcode = subprocess.call(['nosetests', 'pandas', '--processes=-1'])
+check_bool(retcode == 0)
 
 print('Testing NumPy...')
 import numpy
