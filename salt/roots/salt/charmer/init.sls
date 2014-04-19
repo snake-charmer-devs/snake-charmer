@@ -97,6 +97,17 @@ theano:
             - cmd: scipy
             - file: /root/Theano/NEWS.txt
 
+# Needed to use the right Fortran libs
+
+/home/vagrant/.theanorc:
+    file.managed:
+        - source: salt://theanorc
+        - user: vagrant
+        - group: vagrant
+        - mode: 655
+        - require:
+            - cmd: theano
+
 # Use a script to install the rest individually, as some of them
 # will get messed up if they are installed together.
 

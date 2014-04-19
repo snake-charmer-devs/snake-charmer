@@ -6,17 +6,9 @@ def check_nose(result):
     if not result.wasSuccessful():
         sys.exit(1)
 
-print('Testing NumPy...')
-import numpy
-check_nose(numpy.test('full'))
-
-print('Testing Matplotlib...')
-import matplotlib
-check_nose(matplotlib.test())
-
-print('Testing PyMC...')
-import pymc
-check_nose(pymc.test())
+def check_bool(result):
+    if not result:
+        sys.exit(1)
 
 print('Testing scikit-learn...')
 import sklearn
@@ -34,9 +26,22 @@ print('Testing Pandas...')
 import pandas
 check_nose(pandas.test())
 
-# Temporarily moved to end as it's failing one
+print('Testing NumPy...')
+import numpy
+check_nose(numpy.test('full'))
+
+# These have known (reported) issues in 3.4 at the moment
+
+print('Testing PyMC...')
+import pymc
+check_nose(pymc.test())
 
 print('Testing SciPy...')
 import scipy
 check_nose(scipy.test('full'))
+
+print('Testing Matplotlib...')
+import matplotlib
+check_bool(matplotlib.test())
+
 
