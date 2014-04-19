@@ -68,6 +68,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 end
 
 # TODO
+# Shutdown minion service after provisioning -- shell provisioner that runs afterwards?
 # Take out v.memory and v.cpus
 # Read these details from user's default Vagrantfile if possible:
 #     http://mgdm.net/weblog/vagrantfile-inheritance/

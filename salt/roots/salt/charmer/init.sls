@@ -70,7 +70,7 @@ numpy:
             - cmd: pip
             - file: {{ piplog }}
 
-Scipy:
+scipy:
     cmd.run:
         - name: {{ pip }} install --log {{ piplog }} scipy
         - require:
@@ -130,7 +130,6 @@ ipynb:
             - file: /etc/init/ipynb.conf
 
 # TODO
-# Shutdown minion service after provisioning?
 # Run more test suites
 # Install R
 # Clipboard integration?
