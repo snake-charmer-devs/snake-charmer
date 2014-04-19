@@ -25,8 +25,8 @@ machine. It relies on [Vagrant](http://www.vagrantup.com/) for creating and
 managing these, and [VirtualBox](https://www.virtualbox.org/) for running them
 -- so please go and install those now.
 
-(Experienced users of other VM hosting platforms can edit the Vagrantfile to
-use one of these instead, if they prefer.)
+*Experienced users of other VM hosting platforms can edit the Vagrantfile to
+use one of these instead, if they prefer.*
 
 Everything else is installed automatically. See below for a
 [list of included Python packages](#what-is-included).
@@ -47,6 +47,10 @@ necessary software. When it completes, click the following link:
 [http://localhost:8834/](http://localhost:8834/)
 
 This will take you to a fully-kitted-out IPython Notebook server.
+
+*If you're already a Vagrant user, be aware that Snake Charmer's Vagrantfile
+will attempt to install the [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest/)
+plugin automatically.*
 
 On a VM that's already been fully configured, `vagrant up` will just restart it
 and check a few components are up to date, without going through the full
@@ -87,12 +91,13 @@ by default.
 
 Or to put it another way:
 
-    Folder on your computer           Folder within VM          Contents
-    -----------------------           ----------------          --------
-    <home>/snake-charmer              /vagrant                  Your copy of
-    this repo <home>/snake-charmer/notebooks    /home/vagrant/notebooks   Any
-    notebooks you create <home>/snake-charmer/salt/roots   /srv
-    Ignore this (internal use)
+```
+Folder on your computer           Folder within VM          Contents
+-----------------------           ----------------          --------
+<home>/snake-charmer              /vagrant                  Your copy of this repo
+<home>/snake-charmer/notebooks    /home/vagrant/notebooks   Any notebooks you create
+<home>/snake-charmer/salt/roots   /srv                      Ignore this (internal use)
+```
 
 (`<home>` is wherever you were when you cloned this repo.)
 
