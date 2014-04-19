@@ -28,6 +28,8 @@ managing these, and [VirtualBox](https://www.virtualbox.org/) for running them
 (Experienced users of other VM hosting platforms can edit the Vagrantfile to
 use one of these instead, if they prefer.)
 
+See below for a [#what-is-included](list of included Python packages).
+
 ## Getting started
 
 Check out this git repository:
@@ -67,14 +69,17 @@ Some more useful commands:
 See the [Vagrant docs](http://docs.vagrantup.com/v2/cli/index.html) for
 more details.
 
+### Folder structure
+
 The notebook server runs from within the `notebooks` subdirectory of the
 current `snake-charmer` directory, and initially contains a single "Hello
 World" notebook. Inside the VM, `notebook` is within the home directory of
 the default user, called `vagrant`.
 
-snake-charmer uses IPython 2 so any subfolders of `notebooks` will be visible
-and navigable in the web interface. However, you can't actually *create*
-folders from the web interface yet, so you'd need to log in via ssh as above.
+snake-charmer uses IPython 2 so any subdirectories of `notebooks` will be
+visible and navigable as folders in the IPython web interface. However, you
+can't actually *create* directories from the web interface yet, so you'd need
+to log in via ssh as above to do this.
 
 The entire `snake-charmer` directory is visible within the VM as `/vagrant` in
 case you need it. Note that the VM **can't** see files outside these locations
