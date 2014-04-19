@@ -54,6 +54,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.run_highstate = true
     end
 
+    charmed34.vm.provision "shell",
+      inline: "service salt-minion stop; echo manual > /etc/init/salt-minion.override"
+
     charmed34.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.name = "charmed34"
@@ -68,12 +71,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 end
 
 # TODO
-# Shutdown minion service after provisioning -- shell provisioner that runs afterwards?
 # Take out v.memory and v.cpus
 # Read these details from user's default Vagrantfile if possible:
 #     http://mgdm.net/weblog/vagrantfile-inheritance/
 # Loop through set of python versions and configure
 # a VM for each one, something like this:
 #     http://maci0.wordpress.com/2013/11/09/dynamic-multi-machine-vagrantfile/
-# Resolve public vs private network issue
 
