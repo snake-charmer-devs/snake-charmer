@@ -1,18 +1,43 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+Vagrant.require_version ">= 1.5.2"
+
+
+class MyInstaller < VagrantVbguest::Installers::Ubuntu
+
+  def install(opts=nil, &block)
+    super
+    # Workaround for https://www.virtualbox.org/ticket/12879
+    fix_link = "test -e /usr/lib/VBoxGuestAdditions || ln -s /usr/lib/x86_64-linux-gnu/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions"
+    communicate.sudo(fix_link, opts, &block)
+  end
+
+end
+
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.box = "hashicorp/precise64"
+  # This seems dirty somehow
+  unless Vagrant.has_plugin? "vagrant-vbguest"
+    cmd1 = ["plugin", "install", "vagrant-vbguest"]
+    cmd1.unshift "vagrant"
+    system *cmd1
+    
+    cmd2 = ARGV
+    cmd2.unshift "vagrant"
+    exec *cmd2
+  end
 
-  config.vm.network "public_network"
+  config.vbguest.installer = MyInstaller
+  
+  config.vm.box = "hashicorp/precise64"
 
   config.ssh.forward_agent = true
 
-  # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder "salt/roots", "/srv"
 
   config.vm.define "charmed34" do |charmed34|
@@ -25,10 +50,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         "theanover" => "rel-0.6"
       })
       salt.minion_config = "salt/minion"
-      salt.run_highstate = false
+      salt.run_highstate = true
     end
 
     charmed34.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.name = "charmed34"
       v.memory = 4096
       v.cpus = 3
@@ -41,8 +67,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 end
 
 # TODO
-# Start notebook server on port 8834 via salt
-# Make this persist between sessions?
 # Take out v.memory and v.cpus
 # Read these details from user's default Vagrantfile if possible:
 #     http://mgdm.net/weblog/vagrantfile-inheritance/

@@ -10,7 +10,7 @@ Wouldn't it be great if you could magic up a local IPython Notebook server,
 complete with SciPy, Pandas, Matplotlib, PyMC, scikit-learn and all the usual
 goodness, and running the latest version of Python, just by typing one line?
 
-    vagrant up --provision charmed34
+    vagrant up charmed34
 
 And wouldn't it be great if you could do that from pretty much any Windows,
 Mac or Linux machine, and know that you'd get the exact same environment every
@@ -37,7 +37,7 @@ Check out this git repository:
 
 Start the VM:
 
-    vagrant up --provision charmed34
+    vagrant up charmed34
 
 This command currently takes an hour or so to install all the necessary
 software. When it completes, click the following link:
@@ -46,17 +46,16 @@ software. When it completes, click the following link:
 
 This will take you to a fully-kitted-out IPython Notebook server.
 
+On a VM that's already been fully configured, `vagrant up` will just restart
+it and check a few components are up to date, without going through the full
+install process.
+
 You can log into the server via
 
     vagrant ssh charmed34
 
 from the same directory, for full command-line control. It's an Ubuntu 12.10
 box, under the covers.
-
-If you need to run it again later, you don't need `--provision` as it's
-already fully provisioned. Just do this:
-
-    vagrant up charmed34
 
 Some more useful commands:
 

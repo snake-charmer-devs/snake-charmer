@@ -1,0 +1,16 @@
+description     "Run IPython Notebook server"
+
+start on runlevel [3]
+stop on runlevel [!2345]
+
+# if you want it to automatically restart if it crashes, leave the next line in
+respawn
+
+{% set pyver = pillar['pyver'] %}
+{% set pyver_ints = pyver|replace('.', '') %}
+
+script
+    cd /vagrant
+    su -c "python{{ pyver }} -m IPython notebook --pylab inline --port 88{{ pyver_ints }}" vagrant
+end script
+

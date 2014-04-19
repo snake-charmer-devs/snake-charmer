@@ -89,15 +89,25 @@ pip_pkgs:
         - require:
             - cmd: theano
 
-notebook:
-    cmd.run:
-        - name: cd /vagrant && python{{ pyver }} -m IPython notebook --pylab inline --port 88{{ pyver_ints }}
+/etc/init/ipynb.conf:
+    file.managed:
+        - source: salt://ipynb.upstart
+        - user: root
+        - group: root
+        - mode: 655
+        - template: jinja
+        - defaults:
         - require:
-            - cmd: theano
+            - cmd: pip_pkgs
+
+ipynb:
+    service.running:
+        - enable: True
+        - require:
+            - file: /etc/init/ipynb.conf
 
 # TODO
 # Run more test suites
-# Start iPython service
 # Install R
 # Clipboard integration?
 # Get rid of Github URLs, once those projects have 3.4-compatible releases
