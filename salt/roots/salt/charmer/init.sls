@@ -74,11 +74,18 @@ scipy:
 
 # Remove invalid character from Theano -- temporary workaround.
 
+https://github.com/Theano/Theano.git:
+    git.latest:
+        - rev: {{ theanover }}
+        - target: /root/Theano
+        - force_checkout: True
+
 theano:
     cmd.run:
-        - name: git clone https://github.com/Theano/Theano.git && cd Theano && git checkout {{ theanover }} && truncate -s 0 NEWS.txt && {{ pip }} install --log {{ piplog }} .
+        - name: cd /root/Theano && truncate -s 0 NEWS.txt && {{ pip }} install --log {{ piplog }} .
         - require:
             - cmd: scipy
+            - git: https://github.com/Theano/Theano.git
 
 # Use a script to install the rest individually, as some of them
 # will get messed up if they are installed together.
