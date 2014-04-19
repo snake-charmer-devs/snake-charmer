@@ -17,6 +17,7 @@ nose
 git+https://github.com/statsmodels/statsmodels.git@d7ff1828cbd7c869f93aa86ea7dcd937fa90f5ff
 git+https://github.com/pymc-devs/pymc.git@a8c872c25dc8ed8235b248c3ff1deba160eb9d8d
 psycopg2
+brewer2mpl
 prettyplotlib
 seaborn
 ipython[all]

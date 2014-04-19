@@ -10,7 +10,7 @@ respawn
 {% set pyver_ints = pyver|replace('.', '') %}
 
 script
-    cd /vagrant
+    cd /home/vagrant/notebooks
     su -c "python{{ pyver }} -m IPython notebook --pylab inline --ip='*' --port 88{{ pyver_ints }}" vagrant
 end script
 

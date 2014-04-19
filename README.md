@@ -103,6 +103,7 @@ the following modules installed.
 * Graphics and visualization:
     * [Matplotlib](http://matplotlib.org/)
     * [prettyplotlib](http://olgabot.github.io/prettyplotlib/)
+    * [brewer2mpl](https://github.com/jiffyclub/brewer2mpl)
     * [Seaborn](http://www.stanford.edu/~mwaskom/software/seaborn/)
 
 * Machine learning and inference:

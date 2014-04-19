@@ -80,12 +80,18 @@ https://github.com/Theano/Theano.git:
         - target: /root/Theano
         - force_checkout: True
 
+/root/Theano/NEWS.txt:
+    file.managed:
+        - source: ~ # Null = empty file
+        - require:
+            - git: https://github.com/Theano/Theano.git
+
 theano:
     cmd.run:
-        - name: cd /root/Theano && truncate -s 0 NEWS.txt && {{ pip }} install --log {{ piplog }} .
+        - name: {{ pip }} install --log {{ piplog }} /root/Theano
         - require:
             - cmd: scipy
-            - git: https://github.com/Theano/Theano.git
+            - file: /root/Theano/NEWS.txt
 
 # Use a script to install the rest individually, as some of them
 # will get messed up if they are installed together.
