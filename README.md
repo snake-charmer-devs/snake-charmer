@@ -69,11 +69,24 @@ more details.
 
 The notebook server runs from within the `notebooks` subdirectory of the
 current `snake-charmer` directory, and initially contains a single "Hello
-World" notebook.
+World" notebook. Inside the VM, `notebook` is within the home directory of
+the default user, called `vagrant`.
+
+snake-charmer uses IPython 2 so any subfolders of `notebooks` will be visible
+and navigable in the web interface. However, you can't actually *create*
+folders from the web interface yet, so you'd need to log in via ssh as above.
 
 The entire `snake-charmer` directory is visible within the VM as `/vagrant` in
 case you need it. Note that the VM **can't** see files outside these locations
 by default.
+
+Or to put it another way:
+
+    Host folder                       VM folder                    Contents
+    -----------                       ---------                    --------
+    <home>/snake-charmer              /vagrant                     Your copy of this repo
+    <home>/snake-charmer/notebooks    /home/vagrant/notebooks      Any notebooks you create
+    <home>/snake-charmer/salt/roots   /srv                         Ignore this (internal use)
 
 If you get your VM into a mess somehow, you can just go
 
@@ -81,8 +94,8 @@ If you get your VM into a mess somehow, you can just go
     vagrant up charmed34
 
 to build a new one. You won't lose any data, unless for some reason you've
-stored it in a directory that's local to the VM, i.e. *outside* the default
-location (the `notebooks` folder) or `/vagrant`.
+stored it in a directory that's local to the VM, i.e. *outside* the shared
+folders listed above.
 
 ## What is included
 
