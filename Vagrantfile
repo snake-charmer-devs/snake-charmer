@@ -4,22 +4,6 @@
 Vagrant.require_version ">= 1.5.2"
 
 
-# Workaround for https://www.virtualbox.org/ticket/12879
-# (missing symlink in guest additions package)
-
-class MyInstaller < VagrantVbguest::Installers::Ubuntu
-
-  # Aftr running standard install process, put the missing
-  # symlink in place if it's not there already
-  def install(opts=nil, &block)
-    super
-    fix_link = "test -e /usr/lib/VBoxGuestAdditions || ln -s /usr/lib/x86_64-linux-gnu/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions"
-    communicate.sudo(fix_link, opts, &block)
-  end
-
-end
-
-
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -39,7 +23,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   end
 
-  config.vbguest.installer = MyInstaller
+  # Workaround for https://www.virtualbox.org/ticket/12879
+  # (missing symlink in guest additions package)
+
+  config.vbguest.installer = Class.new(VagrantVbguest::Installers::Ubuntu) do
+
+    # Aftr running standard install process, put the missing
+    # symlink in place if it's not there already
+    def install(opts=nil, &block)
+      super
+      fix_link = "test -e /usr/lib/VBoxGuestAdditions || ln -s /usr/lib/x86_64-linux-gnu/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions"
+      communicate.sudo(fix_link, opts, &block)
+    end
+
+  end
   
   config.vm.box = "hashicorp/precise64"
 
