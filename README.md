@@ -40,7 +40,8 @@ Everything else is installed automatically. See below for a
 
 Check out this git repository:
 
-    git clone git@github.com:andrewclegg/snake-charmer.git cd snake-charmer
+    git clone git@github.com:andrewclegg/snake-charmer.git
+    cd snake-charmer
 
 Start the VM:
 
