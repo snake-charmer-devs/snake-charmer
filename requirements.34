@@ -22,3 +22,4 @@ prettyplotlib
 seaborn
 ipython[all]
 git+https://github.com/scikit-learn/scikit-learn.git@c3ab3baf85bb6abbfc3c4c3aa6dd099acc0c4815
+runipy
