@@ -5,7 +5,7 @@ scipy
 matplotlib
 patsy
 numexpr
-cython
+git+https://github.com/cython/cython.git@c646da0b6527bf2ad18e706eb4273c712ac356a8
 tables
 beautifulsoup4==4.2.1
 lxml
