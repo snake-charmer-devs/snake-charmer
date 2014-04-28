@@ -32,17 +32,27 @@ deadsnakes:
         - require:
             - pkg: apt_pkgs
 
-# Workaround for annoying dangling symlink:
+# Workarounds for annoying dangling symlink:
 # https://github.com/nose-devs/nose/issues/731
-# We ensure here that /u/l/man is either a valid directory,
-# or links to a valid directory.
 
-/usr/local/man:
+/usr/local/share/man:
     file.directory:
         - user: root
         - group: root
         - mode: 755
         - follow_symlinks: True
+        - recurse: True
+        - require:
+            - pkg: apt_pkgs
+
+man_dir_check:
+    cmd.run:
+        - name: test -d /usr/local/man || ln -sf /usr/local/share/man /usr/local/man
+        - user: root
+        - group: root
+        - require: /usr/local/share/man
+
+# Install Python etc.
 
 python_pkgs:
     pkg.installed:
@@ -52,7 +62,7 @@ python_pkgs:
             - python{{ pyver }}-doc
         - require:
             - pkgrepo: deadsnakes
-            - file: /usr/local/man
+            - cmd: man_dir_check
 
 distribute:
     cmd.run:
@@ -74,7 +84,7 @@ pip:
 {{ piplog }}:
     file.absent
 
-# numpy and scipy first.
+# Now the Python packages -- numpy and scipy first.
 
 numpy:
     cmd.run:
