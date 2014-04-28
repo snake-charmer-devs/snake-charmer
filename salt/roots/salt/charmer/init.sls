@@ -32,6 +32,18 @@ deadsnakes:
         - require:
             - pkg: apt_pkgs
 
+# Workaround for annoying dangling symlink:
+# https://github.com/nose-devs/nose/issues/731
+# We ensure here that /u/l/man is either a valid directory,
+# or links to a valid directory.
+
+/usr/local/man:
+    file.directory:
+        - user: root
+        - group: root
+        - mode: 755
+        - follow_symlinks: True
+
 python_pkgs:
     pkg.installed:
         - pkgs:
@@ -40,6 +52,7 @@ python_pkgs:
             - python{{ pyver }}-doc
         - require:
             - pkgrepo: deadsnakes
+            - file: /usr/local/man
 
 distribute:
     cmd.run:
