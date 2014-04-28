@@ -71,6 +71,7 @@ box, under the covers.
 
 Some more useful commands:
 
+    vagrant reload charmed34  # reboot the VM
     vagrant halt charmed34    # shut down the VM, reclaim the memory it used
     vagrant destroy charmed34 # wipe it completely, reclaiming disk space too
     vagrant suspend charmed34 # 'hibernate' the machine, saving current state
@@ -203,7 +204,8 @@ accessible from the host, via port forwarding.
 are parameterized by Python version. This is what the two digits on the end of
 the VM name (e.g. `charmed34`) refer to.
 * Having more than one VM using the same Python version, on the same host, is
-not currently supported.
+not currently supported. In principle it's possible, but it would require
+additional work to implement naming and port forwarding correctly.
 
 #### Salt
 
@@ -219,24 +221,80 @@ repo, and install the appropriate Python version from there.
 1. One by one, install the required Python packages via Pip, using
 a `requirements` file containing a list of Python packages
 selected to work with the Python version requested (e.g. 3.4 for `charmed34`).
-1. Install the iPython Notebook process as a Unix service, start it, and set it
+1. Install the IPython Notebook process as a Unix service, start it, and set it
 to start automatically when the VM boots.
 
 Notes:
 
 * The files used by Salt to configure the VM are in the `salt/roots/salt`
-subdirectory of this repo. Most of the action happens in `init.sls`.
+subdirectory of your Snake Charmer installation directory. Most of the action
+happens in `init.sls`.
 * Many aspects of these config files, e.g. package version numbers,
 are parameterized by Python version. This is what the two digits on the end of
 the VM name (e.g. `charmed34`) refer to.
-* The Salt logs is `/var/log/salt/minion` on the VM, in case you need it for
+* The Salt log is `/var/log/salt/minion` on the VM, in case you need it for
 debugging.
-* The Pip logs -- which are likely to be much more useful if you do need to
-debug a failed package install -- are in `/vagrant/pip_NN.log` on the VM,
+* The Pip log -- which is likely to be much more useful if you do need to
+debug a failed package install -- is in `/vagrant/pip&#95;NN.log` on the VM,
 where *NN* is the package number. As `/vagrant/` is shared with the host, you
-can also see this file in the repo directory.
+can also see this file in the Snake Charmer installation directory.
 
-## Customizing your VM
+### Boot process in more detail
+
+### Troubleshooting
+
+If a VM starts behaving strangely, the golden rule is:
+**Don't waste time fixing it.**
+
+This may sound strange, but the advantage of Snake Charmer is that you can
+create a factory-fresh VM with almost no effort at all.
+
+The first thing to try is to reboot the VM:
+
+    vagrant reload 
+
+Option two is rebooting and reprovisioning the machine:
+
+    vagrant reload --provision charmed34
+
+This essentially attempts to reapply the Vagrant and Salt configuration steps
+described above.
+
+If this doesn't fix the problem, then delete it completely, and recreate it:
+
+    vagrant destroy charmed34
+    vagrant up charmed34
+
+If this still doesn't fix it, you may have found a bug. Please open a
+[Github issue](https://github.com/andrewclegg/snake-charmer/issues)
+describing it in as much detail as possible, preferably with
+instructions on how to reproduce it.
+
+The VirtualBox admin GUI can of course be used to check on the status of VMs,
+inspect their hardware and network configuration, manually start or stop them,
+attach via the console, etc.
+
+#### Important reminder
+
+Only use the **host** filesystem to store data, notebooks and other scripts.
+That is, only use file paths on the VM that are within `/vagrant` (the synced
+folder that corresponds with your Snake Charmer install directory) or
+`~/notebooks` (which is just a shortcut into `/vagrant/notebooks`).
+
+If you store files in other places, they **will** be lost forever when you
+destroy a VM. Also, the virtual disk on the VM is configured with an 80GB
+limit -- it grows to take up real disk space on the host up to this limit,
+and then stops.
+
+If you need to make data from elsewhere available to a VM, and you don't want
+to copy it, the best options are:
+
+* On the host, create a symbolic link from the original location to a new
+location within your Snake Charmer install directory, **or**
+* Add another synced folder (see below) to make the original location visible
+directly within the VM.
+
+## Customizing your VMs
 
 ## License
 
