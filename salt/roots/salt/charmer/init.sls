@@ -44,7 +44,7 @@ deadsnakes:
         - recurse:
             - user
             - group
-            - dir_mode
+            - mode
         - require:
             - pkg: apt_pkgs
 
