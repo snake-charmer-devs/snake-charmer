@@ -50,7 +50,8 @@ man_dir_check:
         - name: test -d /usr/local/man || ln -sf /usr/local/share/man /usr/local/man
         - user: root
         - group: root
-        - require: /usr/local/share/man
+        - require:
+            - file: /usr/local/share/man
 
 # Install Python etc.
 
