@@ -139,6 +139,7 @@ pip_pkgs:
     cmd.run:
         - name: /vagrant/install_reqs.sh "{{ pip }}" "{{ reqfile }}" "{{ piplog }}"
         - require:
+            - cmd: theano
             - file: /home/vagrant/.theanorc
 
 local_mathjax:
