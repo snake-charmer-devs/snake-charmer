@@ -39,9 +39,12 @@ deadsnakes:
     file.directory:
         - user: root
         - group: root
-        - mode: 755
+        - dir_mode: 755
         - follow_symlinks: True
-        - recurse: True
+        - recurse:
+            - user
+            - group
+            - dir_mode
         - require:
             - pkg: apt_pkgs
 
