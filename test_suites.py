@@ -12,8 +12,8 @@ def check_bool(result):
         sys.exit(1)
 
 print('Testing scikit-learn...')
-import sklearn
-check_nose(sklearn.test())
+retcode = subprocess.call(['nosetests', '--exe', 'sklearn', '--processes=-1'])
+check_bool(retcode == 0)
 
 print('Testing IPython...')
 # -j means run in parallel, all cores
@@ -28,11 +28,11 @@ print('Testing NumPy...')
 import numpy
 check_nose(numpy.test('full'))
 
-# These have known (reported) issues in 3.4 at the moment
-
 print('Testing PyMC...')
 import pymc
 check_nose(pymc.test())
+
+# These have known (reported) issues in 3.4 at the moment
 
 print('Testing SciPy...')
 import scipy

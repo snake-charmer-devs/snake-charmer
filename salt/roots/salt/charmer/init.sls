@@ -21,6 +21,14 @@ apt_pkgs:
             - libxml2-dev
             - libxslt1-dev
             - libzmq-dev
+            - libtiff4-dev
+            - libjpeg8-dev
+            - zlib1g-dev
+            - libfreetype6-dev
+            - liblcms1-dev
+            - libwebp-dev
+            - tcl8.5-dev
+            - tk8.5-dev
 
 # scipy won't build when this is enabled, but we may not need it
 # libsuitesparse-dev:
