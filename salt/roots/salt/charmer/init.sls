@@ -141,6 +141,7 @@ ipynb:
             - file: /etc/init/ipynb.conf
 
 # TODO
+# Version numbers for scipy and numpy
 # Run more test suites
 # Install R
 # Clipboard integration?
