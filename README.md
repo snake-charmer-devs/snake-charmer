@@ -126,6 +126,8 @@ It is designed to be used primarily via IPython Notebook.
 The environment is based on Ubuntu 12.04 and Python 3.4, with
 the following modules installed.
 
+*N.B. package version numbers will be frozen and listed here, when first Snake Charmer stable version is released.*
+
 * Data handling and processing:
     * [IPython](http://ipython.org/)
     * [Pandas](http://pandas.pydata.org/)
@@ -157,6 +159,7 @@ the following modules installed.
     * [Cython](http://cython.org/)
 
 Coming soon: runipy, Joblib, NLTK, other Python versions. Optionally R for rmagic.
+Ubuntu 14.04 LTS.
 
 Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
 gensim, mpld3, Pylearn2, cudamat, Gnumpy, py-earth, Orange, NeuroLab, PyBrain,
@@ -165,6 +168,69 @@ openpyxl, xlrd/xlwt, NetworkX, OpenCV, boto, gbq, SQLite, PyMongo, mpi4py,
 PyCUDA, Jubatus, Vowpal Wabbit, and one or more Hadoop clients.
 
 ## Under the covers
+
+### Setup process in more detail
+
+When you first perform a `vagrant up` command on a new VM, the following steps
+take place.
+
+#### Vagrant
+
+Firstly, Vagrant performs the following steps (slightly simplified).
+
+1. Test for the presence of the `vagrant-vbguest` plugin, and
+install it automatically if it's missing.
+1. Download a standard Ubuntu VM image from
+[Vagrant Cloud](https://vagrantcloud.com/).
+1. Create a new VM from the image, with port forwarding and folder
+sharing configured as described earlier.
+1. Install the Salt minion (i.e. client) service on the VM.
+1. Tell the Salt minion to configure the new machine (see below).
+1. Stop the Salt minion service, and disable run-on-startup behaviour.
+
+Notes:
+
+* `vagrant-vbguest` is required in order to keep VirtualBox's guest extensions
+package on the VM version-synced with your VirtualBox package on the host.
+* The VM is set up to use NAT networking, so it can see the LAN and internet
+but will not appear as a distinct device on the network. It is therefore only
+accessible from the host, via port forwarding.
+** If your host has more than one network interface available, you'll be
+prompted by Vagrant to pick one.
+* Many aspects of the `Vagrantfile`, for example port numbers for forwarding,
+are parameterized by Python version. This is what the two digits on the end of
+the VM name (e.g. `charmed34`) refer to.
+
+#### Salt
+
+The Salt-based configuration procedure follows the following process --
+once again, slightly simplified.
+
+1. Install a number of required packages on the VM from standard Ubuntu
+apt repositories.
+1. Enable the third-party [deadsnakes](https://launchpad.net/~fkrull/+archive/deadsnakes)
+repo, and install the appropriate Python version from there.
+1. Install `distribute` directly from
+[pypi](http://pypi.python.org/packages/source/d/distribute/) in order to provide Pip.
+1. One by one, install the required Python packages via Pip, using
+a `requirements` file containing a list of Python packages
+selected to work with the Python version requested (e.g. 3.4 for `charmed34`).
+1. Install the iPython Notebook process as a Unix service, start it, and set it
+to start automatically when the VM boots.
+
+Notes:
+
+* The files used by Salt to configure the VM are in the `salt/roots/salt`
+subdirectory of this repo.
+* Many aspects of these config files, e.g. package version numbers,
+are parameterized by Python version. This is what the two digits on the end of
+the VM name (e.g. `charmed34`) refer to.
+* The Salt logs is `/var/log/salt/minion` on the VM, in case you need it for
+debugging.
+* The Pip logs -- which are likely to be much more useful if you do need to
+debug a failed package install -- are in `/vagrant/pip_NN.log` on the VM,
+where *NN* is the package number. As `/vagrant/` is shared with the host, you
+can also see this file in the repo directory.
 
 ## Customizing your VM
 
