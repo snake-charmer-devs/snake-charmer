@@ -13,7 +13,7 @@ sympy
 pandas
 nose
 git+https://github.com/statsmodels/statsmodels.git@d7ff1828cbd7c869f93aa86ea7dcd937fa90f5ff
-git+https://github.com/andrewclegg/pymc@examples_install
+git+https://github.com/andrewclegg/pymc@66c3f3743de9c39643ba4fb3ef14f79e4845e8f3
 psycopg2
 brewer2mpl
 prettyplotlib
