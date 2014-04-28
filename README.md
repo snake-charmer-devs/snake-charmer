@@ -196,8 +196,9 @@ package on the VM version-synced with your VirtualBox package on the host.
 * The VM is set up to use NAT networking, so it can see the LAN and internet
 but will not appear as a distinct device on the network. It is therefore only
 accessible from the host, via port forwarding.
-** If your host has more than one network interface available, you'll be
-prompted by Vagrant to pick one.
+  * The host's DNS configuration will be used to resolve hostname queries.
+  * If your host has more than one network interface available, you'll be
+  prompted by Vagrant to pick one.
 * Many aspects of the `Vagrantfile`, for example port numbers for forwarding,
 are parameterized by Python version. This is what the two digits on the end of
 the VM name (e.g. `charmed34`) refer to.
