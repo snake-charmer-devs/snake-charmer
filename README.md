@@ -156,7 +156,7 @@ the following modules installed.
     * [SymPy](http://sympy.org/)
     * [Cython](http://cython.org/)
 
-Coming soon: NLTK, other Python versions. Optionally R for rmagic.
+Coming soon: runipy, Joblib, NLTK, other Python versions. Optionally R for rmagic.
 
 Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
 gensim, mpld3, Pylearn2, cudamat, Gnumpy, py-earth, Orange, NeuroLab, PyBrain,
