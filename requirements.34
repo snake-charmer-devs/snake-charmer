@@ -1,7 +1,5 @@
 git+https://github.com/numpy/numpydoc.git@56a1b39e8b16f2292f6b2b54ce26d259003fadad
-numpy
 Bottleneck
-scipy
 matplotlib
 patsy
 numexpr
@@ -15,7 +13,7 @@ sympy
 pandas
 nose
 git+https://github.com/statsmodels/statsmodels.git@d7ff1828cbd7c869f93aa86ea7dcd937fa90f5ff
-git+https://github.com/pymc-devs/pymc.git@examples_install
+git+https://github.com/andrewclegg/pymc@examples_install
 psycopg2
 brewer2mpl
 prettyplotlib
