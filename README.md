@@ -181,7 +181,8 @@ Firstly, Vagrant performs the following steps (slightly simplified).
 1. Test for the presence of the `vagrant-vbguest` plugin, and
 install it automatically if it's missing.
 1. Download a standard Ubuntu VM image from
-[Vagrant Cloud](https://vagrantcloud.com/).
+[Vagrant Cloud](https://vagrantcloud.com/), unless you have a local copy
+cached from a previous Vagrant run.
 1. Create a new VM from the image, with port forwarding and folder
 sharing configured as described earlier.
 1. Install the Salt minion (i.e. client) service on the VM.
@@ -200,6 +201,8 @@ prompted by Vagrant to pick one.
 * Many aspects of the `Vagrantfile`, for example port numbers for forwarding,
 are parameterized by Python version. This is what the two digits on the end of
 the VM name (e.g. `charmed34`) refer to.
+* Having more than one VM using the same Python version, on the same host, is
+not currently supported.
 
 #### Salt
 
@@ -221,7 +224,7 @@ to start automatically when the VM boots.
 Notes:
 
 * The files used by Salt to configure the VM are in the `salt/roots/salt`
-subdirectory of this repo.
+subdirectory of this repo. Most of the action happens in `init.sls`.
 * Many aspects of these config files, e.g. package version numbers,
 are parameterized by Python version. This is what the two digits on the end of
 the VM name (e.g. `charmed34`) refer to.
