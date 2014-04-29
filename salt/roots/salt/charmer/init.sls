@@ -103,7 +103,7 @@ pip:
         {% if pkg['rev'] is defined %}
         - rev: {{ pkg['rev'] }}
         {% endif %}
-        - target: {{ target }}
+        - target: {{ src }}
         - force_checkout: true
 
     {% if name == 'Theano' %}
