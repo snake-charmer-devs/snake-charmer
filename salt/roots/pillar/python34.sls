@@ -5,7 +5,7 @@ pyver: '3.4'
 apt_pkgs:
     - g++
     - gfortran
-    - git: 1.7.9.5-1
+    - git: 1:1.7.9.5-1
     - libatlas-base-dev
     - libatlas-dev
     - libatlas3gf-base
