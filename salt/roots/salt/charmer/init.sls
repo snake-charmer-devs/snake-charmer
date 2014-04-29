@@ -92,6 +92,7 @@ pip:
 {% set pyver_ints = pyver|replace('.', '') %}
 {% set reqfile = '/vagrant/requirements.' + pyver_ints %}
 {% set piplog = '/vagrant/pip_' + pyver_ints + '.log' %}
+{% set pipcache = '/vagrant/pip_cache' %}
 
 {{ piplog }}:
     file.absent
@@ -100,14 +101,14 @@ pip:
 
 numpy:
     cmd.run:
-        - name: {{ pip }} install --log {{ piplog }} numpy
+        - name: {{ pip }} install --log {{ piplog }} --download-cache {{ pipcache }} numpy==1.8.1 # FIXME
         - require:
             - cmd: pip
             - file: {{ piplog }}
 
 scipy:
     cmd.run:
-        - name: {{ pip }} install --log {{ piplog }} scipy
+        - name: {{ pip }} install --log {{ piplog }} --download-cache {{ pipcache }} scipy==0.13.3
         - require:
             - cmd: numpy
 
@@ -116,10 +117,10 @@ scipy:
 https://github.com/Theano/Theano.git:
     git.latest:
         - rev: {{ theanover }}
-        - target: /root/Theano
+        - target: /root/src/theano
         - force_checkout: True
 
-/root/Theano/NEWS.txt:
+/root/theano/NEWS.txt:
     file.managed:
         - contents: "Dummy file"
         - require:
@@ -127,10 +128,10 @@ https://github.com/Theano/Theano.git:
 
 theano:
     cmd.run:
-        - name: {{ pip }} install --log {{ piplog }} /root/Theano
+        - name: {{ pip }} install --log {{ piplog }} /root/src/theano#egg=Theano
         - require:
             - cmd: scipy
-            - file: /root/Theano/NEWS.txt
+            - file: /root/src/theano/NEWS.txt
 
 # Needed to use the right Fortran libs
 
@@ -184,4 +185,3 @@ ipynb:
 # Get rid of Github URLs, once those projects have 3.4-compatible releases
 # Fix version numbers, so it's reproducible
 # Notebook security: http://ipython.org/ipython-doc/stable/notebook/public_server.html
-
