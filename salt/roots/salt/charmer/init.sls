@@ -101,14 +101,14 @@ pip:
 
 numpy:
     cmd.run:
-        - name: {{ pip }} install --log {{ piplog }} --download-cache {{ pipcache }} numpy==1.8.1 # FIXME
+        - name: {{ pip }} install --log {{ piplog }} --download-cache {{ pipcache }} numpy==1.8.1 # FIXME param
         - require:
             - cmd: pip
             - file: {{ piplog }}
 
 scipy:
     cmd.run:
-        - name: {{ pip }} install --log {{ piplog }} --download-cache {{ pipcache }} scipy==0.13.3
+        - name: {{ pip }} install --log {{ piplog }} --download-cache {{ pipcache }} scipy==0.13.3 # FIXME param
         - require:
             - cmd: numpy
 
@@ -120,7 +120,7 @@ https://github.com/Theano/Theano.git:
         - target: /root/src/theano
         - force_checkout: True
 
-/root/theano/NEWS.txt:
+/root/src/theano/NEWS.txt:
     file.managed:
         - contents: "Dummy file"
         - require:
