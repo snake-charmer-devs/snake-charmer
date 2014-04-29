@@ -141,8 +141,6 @@ ipynb:
         - enable: True
 
 # TODO
-# Move apt pkg list to pillar
-# Run more test suites
 # Install R
 # Clipboard integration?
 # Fix version numbers, so it's reproducible
