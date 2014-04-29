@@ -6,31 +6,7 @@
 apt_pkgs:
     pkg.installed:
         - pkgs: 
-            - python-software-properties
-            - pandoc
-            - libfreetype6-dev
-            - gfortran
-            - libpq-dev
-            - libhdf5-serial-dev
-            - libpng12-dev
-            - g++
-            - git
-            - libatlas3gf-base
-            - libatlas-base-dev
-            - libatlas-dev
-            - liblapack3gf
-            - liblapack-dev
-            - libxml2-dev
-            - libxslt1-dev
-            - libzmq-dev
-            - libtiff4-dev
-            - libjpeg8-dev
-            - zlib1g-dev
-            - libfreetype6-dev
-            - liblcms1-dev
-            - libwebp-dev
-            - tcl8.5-dev
-            - tk8.5-dev
+            {{ pillar['apt_pkgs'] }}
 
 # scipy won't build when this is enabled, but we may not need it
 # libsuitesparse-dev:

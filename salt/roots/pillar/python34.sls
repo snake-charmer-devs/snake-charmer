@@ -1,6 +1,34 @@
-pyver: "3.4"
+pyver: '3.4'
 
-# List of dicts, so order is important
+# Deb packages (with optional versions) to install via apt -- order is not important
+
+apt_pkgs:
+    - g++
+    - gfortran
+    - git: 1.7.9.5-1
+    - libatlas-base-dev
+    - libatlas-dev
+    - libatlas3gf-base
+    - libfreetype6-dev
+    - libhdf5-serial-dev
+    - libjpeg8-dev
+    - liblapack-dev
+    - liblapack3gf
+    - liblcms1-dev
+    - libpng12-dev
+    - libpq-dev
+    - libtiff4-dev
+    - libwebp-dev
+    - libxml2-dev
+    - libxslt1-dev
+    - libzmq-dev
+    - pandoc
+    - python-software-properties
+    - tcl8.5-dev
+    - tk8.5-dev
+    - zlib1g-dev
+
+# Python packages to install via pip -- a list of dicts, so order is maintained
 
 pip_pkgs:
     - name: numpy
