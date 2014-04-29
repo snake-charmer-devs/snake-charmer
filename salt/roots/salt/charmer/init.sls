@@ -128,7 +128,7 @@ https://github.com/Theano/Theano.git:
 
 theano:
     cmd.run:
-        - name: {{ pip }} install --log {{ piplog }} /root/src/theano#egg=Theano
+        - name: {{ pip }} install --log {{ piplog }} -e /root/src/theano#egg=Theano
         - require:
             - cmd: scipy
             - file: /root/src/theano/NEWS.txt
