@@ -120,7 +120,7 @@ pip:
     {% else %}
     # Build and install from PyPI, caching downloaded package
     cmd.run:
-        - name: {{ pip }} install --log "{{ piplog }}" --download-cache "{{ pipcache }}" "{{ pkg['name'] }}/{{ pkg['version'] }}"
+        - name: {{ pip }} install --log "{{ piplog }}" --download-cache "{{ pipcache }}" "{{ pkg['name'] }}{{ pkg['version'] if pkg['version'] }}"
     {% endif %}
     {% if pkg['name'] == 'ipython' %}
     # Install mathjax so we can use iPython without internet
