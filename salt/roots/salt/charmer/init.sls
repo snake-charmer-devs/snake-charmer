@@ -98,7 +98,7 @@ pip:
     git.latest:
         - name: {{ pkg['git'] }}
         {% if pkg['rev'] is defined %}
-        - rev: {{ rev }}
+        - rev: {{ pkg['rev'] }}
         {% endif %}
         - target: {{ gitcache }}/{{ pkg['name'] }}
         - force_checkout: true
@@ -148,8 +148,6 @@ pip:
 ipynb:
     service.running:
         - enable: True
-        - require:
-            - file: /etc/init/ipynb.conf
 
 # TODO
 # Move apt pkg list to pillar
