@@ -52,15 +52,15 @@ necessary software. When it completes, click the following link:
 
 [http://localhost:8834/](http://localhost:8834/)
 
-This will take you to a fully-kitted-out IPython Notebook server.
+This will take you to a fully-kitted-out IPython Notebook server. Open the
+"Hello World" notebook in there, to see a full list of installed packages.
 
 *If you're already a Vagrant user, be aware that Snake Charmer's Vagrantfile
 will attempt to install the [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest/)
 plugin automatically.*
 
-On a VM that's already been fully configured, `vagrant up` will just restart it
-and check a few components are up to date, without going through the full
-install process.
+On a VM that's already been fully configured, `vagrant up` will just restart
+it, without going through the full install process.
 
 You can log into the server via
 
@@ -90,7 +90,7 @@ default user, called `vagrant`.
 snake-charmer uses IPython 2 so any subdirectories of `notebooks` will be
 visible and navigable as folders in the IPython web interface. However, you
 can't actually *create* directories from the web interface yet, so you'd need
-to log in via ssh as above to do this.
+to log in via ssh, or just enter a shell command into IPython with `!`.
 
 The entire `snake-charmer` directory is visible within the VM as `/vagrant` in
 case you need it. Note that the VM **can't** see files outside these locations
@@ -110,7 +110,8 @@ Folder on your computer           Folder within VM          Contents
 
 If you get your VM into a mess somehow, you can just type
 
-    vagrant destroy charmed34 vagrant up charmed34
+    vagrant destroy charmed34
+    vagrant up charmed34
 
 to build a new one. You won't lose any data, unless for some reason you've
 stored it in a directory that's local to the VM, i.e. *outside* the shared
@@ -218,8 +219,8 @@ apt repositories.
 repo, and install the appropriate Python version from there.
 1. Install `distribute` directly from
 [pypi](http://pypi.python.org/packages/source/d/distribute/) in order to provide Pip.
-1. One by one, install the required Python packages via Pip, using
-a `requirements` file containing a list of Python packages
+1. One by one, install the required Python packages via Pip, caching them
+locally outside the VM to save time later if they are needed again.
 selected to work with the Python version requested (e.g. 3.4 for `charmed34`).
 1. Install the IPython Notebook process as a Unix service, start it, and set it
 to start automatically when the VM boots.
@@ -238,6 +239,10 @@ debugging.
 debug a failed package install -- is in `/vagrant/pip&#95;NN.log` on the VM,
 where *NN* is the package number. As `/vagrant/` is shared with the host, you
 can also see this file in the Snake Charmer installation directory.
+* The cached packages are stored in the `.cache` directory within the Snake
+Charmer install directory -- or `/vagrant/.cache` within the VM. It's safe
+to delete this cache any time, except while you're actually performing a
+provisioning operation in Vagrant.
 
 ### Boot process in more detail
 
@@ -255,6 +260,7 @@ The first thing to try is to reboot the VM:
 
 Option two is rebooting and reprovisioning the machine:
 
+    rm -rf .cache # make sure you're in the snake-charmer directory ;-)
     vagrant reload --provision charmed34
 
 This essentially attempts to reapply the Vagrant and Salt configuration steps
