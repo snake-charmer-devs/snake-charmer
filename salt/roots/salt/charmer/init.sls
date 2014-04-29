@@ -91,44 +91,59 @@ pip:
 # Some of them have post-processing steps inserted after them.
 
 {% for pkg in pillar['pip_pkgs'] %}
+{% set name = pkg['name'] %}
 
-{{ pkg['name'] }}:
-    {% if pkg['git'] is defined %}
-    # Checkout/refresh from github
+{% if pkg['git'] is defined %}
+    {% set url = pkg['git'] %}
+    {% set src = gitcache ~ '/' ~ name %}
+
+# Checkout/refresh from github
+{{ url }}:
     git.latest:
-        - name: {{ pkg['git'] }}
         {% if pkg['rev'] is defined %}
         - rev: {{ pkg['rev'] }}
         {% endif %}
-        - target: {{ gitcache }}/{{ pkg['name'] }}
+        - target: {{ target }}
         - force_checkout: true
-        {% if pkg['name'] == 'Theano' %}
-    # Remove invalid character from Theano -- temporary workaround
+
+    {% if name == 'Theano' %}
+# Remove invalid character from Theano -- temporary workaround
+{{ src }}/NEWS.txt:
     file.managed:
-        - name: {{ gitcache }}/{{ pkg['name'] }}/NEWS.txt
         - contents: "Dummy file"
-    # Supply rc file to use correct fortran libraries
+
+# Supply rc file to use correct fortran libraries
+/home/vagrant/.theanorc:
     file.managed:
         - source: salt://theanorc
         - user: vagrant
         - group: vagrant
         - mode: 655
-        {% endif %}
-    # Build and install from local working copy
-    cmd.run:
-        - name: {{ pip }} install --log "{{ piplog }}" "{{ gitcache }}/{{ pkg['name'] }}"
-    {% else %}
-    # Build and install from PyPI, caching downloaded package
-    {% if pkg['version'] is defined %}
-        {% set spec = pkg['name'] ~ pkg['version'] %}
-    {% else %}
-        {% set spec = pkg['name'] %}
     {% endif %}
+
+# Build and install from local working copy
+{{ name }}_install:
+    cmd.run:
+        - name: {{ pip }} install --log "{{ piplog }}" "{{ src }}"
+
+{% else %}
+
+    {% if pkg['version'] is defined %}
+        {% set spec = name ~ pkg['version'] %}
+    {% else %}
+        {% set spec = name %}
+    {% endif %}
+
+# Build and install from PyPI, caching downloaded package
+{{ name }}_install:
     cmd.run:
         - name: {{ pip }} install --log "{{ piplog }}" --download-cache "{{ pipcache }}" "{{ spec }}"
-    {% endif %}
-    {% if pkg['name'] == 'ipython' %}
-    # Install mathjax so we can use iPython without internet
+
+{% endif %}
+
+    {% if name == 'ipython' %}
+# Install mathjax so we can use iPython without internet
+local_mathjax:
     cmd.run:
         - name: python{{ pyver }} -c "from IPython.external.mathjax import install_mathjax; install_mathjax()"
     {% endif %}
