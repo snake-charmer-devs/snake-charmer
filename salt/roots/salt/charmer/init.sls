@@ -93,7 +93,7 @@ pip:
 {% for pkg in pillar['pip_pkgs'] %}
 
 {{ pkg['name'] }}:
-    {% if pkg['git'] %}
+    {% if pkg['git'] is defined %}
     # Checkout/refresh from github
     git.latest:
         - name: {{ pkg['git'] }}
