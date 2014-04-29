@@ -50,10 +50,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     charmed34.vm.network "forwarded_port", guest: 8834, host: 8834
 
     charmed34.vm.provision :salt do |salt|
-      salt.pillar({
-        "pyver" => "3.4",
-        "theanover" => "46b19c24e3b04bbde3f2cf957824e07885916b9b"
-      })
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
     end
