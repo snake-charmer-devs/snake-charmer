@@ -128,8 +128,8 @@ pip:
 
 {% else %}
 
-    {% if pkg['version'] is defined %}
-        {% set spec = name ~ pkg['version'] %}
+    {% if pkg['ver'] is defined %}
+        {% set spec = name ~ pkg['ver'] %}
     {% else %}
         {% set spec = name %}
     {% endif %}
