@@ -11,9 +11,9 @@ while read line
 do
   if [[ "$line" = git+http* ]]
   then
-    "$PIP" install --no-clean --log "$LOGFILE" --download-cache "$DL_CACHE" -e "$LINE" 
+    "$PIP" install --log "$LOGFILE" --download-cache "$DL_CACHE" -e "$line" 
   else
-    "$PIP" install --no-clean --log "$LOGFILE" --download-cache "$DL_CACHE" "$line"
+    "$PIP" install --log "$LOGFILE" --download-cache "$DL_CACHE" "$line"
   fi
 done < "$FILENAME"
 
