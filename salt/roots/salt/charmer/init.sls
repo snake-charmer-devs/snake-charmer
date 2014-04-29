@@ -125,7 +125,7 @@ pip:
         {% set spec = pkg['name'] %}
     {% endif %}
     cmd.run:
-        - name: {{ pip }} install --log "{{ piplog }}" --download-cache "{{ pipcache }}" "{{ pkgspec }}"
+        - name: {{ pip }} install --log "{{ piplog }}" --download-cache "{{ pipcache }}" "{{ spec }}"
     {% endif %}
     {% if pkg['name'] == 'ipython' %}
     # Install mathjax so we can use iPython without internet
