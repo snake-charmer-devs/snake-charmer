@@ -164,10 +164,14 @@ Coming soon: runipy, Joblib, NLTK, other Python versions. Optionally R for rmagi
 Ubuntu 14.04 LTS.
 
 Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
-gensim, mpld3, Pylearn2, cudamat, Gnumpy, py-earth, Orange, NeuroLab, PyBrain,
-scikits-sparse, other scikits, annoy, Zipline, Quandl, BNFinder, Alchemy API,
-openpyxl, xlrd/xlwt, NetworkX, OpenCV, boto, gbq, SQLite, PyMongo, mpi4py,
-PyCUDA, Jubatus, Vowpal Wabbit, and one or more Hadoop clients.
+SysCorr, bayesian, PEBL, libpgm, BayesPy, STAN, BayesOpt, gensim, mpld3,
+Pylearn2, cudamat, Gnumpy, py-earth, Orange, NeuroLab, PyBrain, scikits-sparse,
+other scikits, annoy, Zipline, Quandl, BNFinder, Alchemy API, openpyxl,
+xlrd/xlwt, NetworkX, OpenCV, boto, gbq, SQLite, PyMongo, mpi4py, PyCUDA,
+Jubatus, Vowpal Wabbit, and one or more Hadoop clients.
+
+If you have suggestions for any other packages to add, please submit them by
+raising an [issue](https://github.com/andrewclegg/snake-charmer/issues).
 
 ## Under the covers
 
