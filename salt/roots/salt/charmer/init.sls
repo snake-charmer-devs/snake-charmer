@@ -45,15 +45,19 @@ python_pkgs:
             - python{{ pyver }}-dev
             - python{{ pyver }}-doc
 
+{% set easy_install = 'easy_install-' ~ pyver %}
+{% set pip = 'pip' ~ pyver %}
+
 distribute:
     cmd.run:
         - name: python{{ pyver }} /vagrant/distribute_setup.py
+        - unless: which {{ easy_install }}
 
 pip:
     cmd.run:
-        - name: easy_install-{{ pyver }} pip
+        - name: {{ easy_install }} pip
+        - unless: which {{ pip }}
 
-{% set pip = 'pip' + pyver %}
 {% set pyver_ints = pyver|replace('.', '') %}
 {% set piplog = '/vagrant/pip_' + pyver_ints + '.log' %}
 {% set pipcache = '/vagrant/.cache/pip' %}
@@ -126,14 +130,27 @@ local_mathjax:
 
 {% endfor %}
 
-# Upstart service configuration - start on boot
+# Generate post-install sanity check script
+
+/root/sanity_check.py:
+    file.managed:
+        - source: salt://sanity_check.py
+        - user: root
+        - group: root
+        - mode: 755
+        - template: jinja
+        - context: 
+                python: /usr/bin/python{{ pyver }}
+                nb_url: http://localhost:88{{ pyver_ints }}/tree
+
+# Upstart service configuration -- start on boot
 
 /etc/init/ipynb.conf:
     file.managed:
         - source: salt://ipynb.upstart
         - user: root
         - group: root
-        - mode: 655
+        - mode: 755
         - template: jinja
 
 ipynb:
@@ -141,7 +158,5 @@ ipynb:
         - enable: True
 
 # TODO
-# Install R
-# Clipboard integration?
 # Fix version numbers, so it's reproducible
 # Notebook security: http://ipython.org/ipython-doc/stable/notebook/public_server.html

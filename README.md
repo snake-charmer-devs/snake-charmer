@@ -47,17 +47,19 @@ Start the VM:
 
     vagrant up charmed34
 
-This command currently takes around an hour to download and install all the
-necessary software. When it completes, click the following link:
-
-[http://localhost:8834/](http://localhost:8834/)
-
-This will take you to a fully-kitted-out IPython Notebook server. Open the
-"Hello World" notebook in there, to see a full list of installed packages.
-
 *If you're already a Vagrant user, be aware that Snake Charmer's Vagrantfile
 will attempt to install the [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest/)
 plugin automatically.*
+
+This command currently takes around an hour to download and install all the
+necessary software. When this completes, it will run some tests and then
+display a message like this:
+
+    Your VM is up and running: [http://localhost:8834/tree](http://localhost:8834/tree)
+
+This will take you to a fully-kitted-out IPython Notebook server. Open the
+"Hello World" notebook to see a full list of installed packages and other
+system information.
 
 On a VM that's already been fully configured, `vagrant up` will just restart
 it, without going through the full install process.
@@ -136,12 +138,14 @@ the following modules installed.
     * [PyTables](http://www.pytables.org/moin)
     * [lxml](http://lxml.de/lxmlhtml.html)
     * [Psycopg](http://initd.org/psycopg/)
+    * [joblib](https://pythonhosted.org/joblib/)
 
 * Graphics and visualization:
     * [Matplotlib](http://matplotlib.org/)
     * [prettyplotlib](http://olgabot.github.io/prettyplotlib/)
     * [brewer2mpl](https://github.com/jiffyclub/brewer2mpl)
     * [Seaborn](http://www.stanford.edu/~mwaskom/software/seaborn/)
+    * [Pillow](http://python-imaging.github.io/)
 
 * Machine learning and inference:
     * [scikit-learn](http://scikit-learn.org/)
@@ -160,8 +164,8 @@ the following modules installed.
     * [SymPy](http://sympy.org/)
     * [Cython](http://cython.org/)
 
-Coming soon: runipy, Joblib, NLTK, other Python versions. Optionally R for rmagic.
-Ubuntu 14.04 LTS.
+Coming soon: NLTK, other Python versions. Optionally R
+for rmagic. Ubuntu 14.04 LTS.
 
 Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
 SysCorr, bayesian, PEBL, libpgm, BayesPy, STAN, BayesOpt, gensim, mpld3,
@@ -262,13 +266,21 @@ The first thing to try is to reboot the VM:
 
     vagrant reload 
 
-Option two is rebooting and reprovisioning the machine:
+Option two is reprovisioning the machine. This runs through the install
+process and ensures all required packages are installed. First, delete the
+package cache in case anything in there is messed up:
 
-    rm -rf .cache # make sure you're in the snake-charmer directory ;-)
+    # On OS X or Linux:
+    rm -rf .cache
+
+    # Or on Windows:
+    rd /s /q .cache
+
+    # N.B. Make sure you're in the snake-charmer directory first!
+
+Then reboot and reprovision:
+
     vagrant reload --provision charmed34
-
-This essentially attempts to reapply the Vagrant and Salt configuration steps
-described above.
 
 If this doesn't fix the problem, then delete it completely, and recreate it:
 

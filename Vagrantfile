@@ -54,9 +54,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.run_highstate = true
     end
 
-    # Stop salt-minion service to save resources, and disable it
+    # Stop salt-minion service to save resources, and disable it;
+    # then run post-install sanity check
     charmed34.vm.provision "shell",
-      inline: "service salt-minion stop; echo manual > /etc/init/salt-minion.override"
+      inline: "service salt-minion stop; echo manual > /etc/init/salt-minion.override; /root/sanity_check.py"
 
     charmed34.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
