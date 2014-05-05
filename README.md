@@ -57,7 +57,7 @@ display a message like this:
 
     Your VM is up and running: http://localhost:8834/tree
 
-This will take you to a fully-kitted-out IPython Notebook server. Open the
+This link will take you to a fully-kitted-out IPython Notebook server. Open the
 "Hello World" notebook to see a full list of installed packages and other
 system information.
 
@@ -254,6 +254,8 @@ provisioning operation in Vagrant.
 
 ### Boot process in more detail
 
+**TODO**
+
 ### Troubleshooting
 
 If a VM starts behaving strangely, the golden rule is:
@@ -317,6 +319,8 @@ location within your Snake Charmer install directory, **or**
 directly within the VM.
 
 ## Customizing your VMs
+
+**TODO**
 
 ## License
 
