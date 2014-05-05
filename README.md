@@ -218,8 +218,8 @@ additional work to implement naming and port forwarding correctly.
 
 #### Salt
 
-The Salt-based configuration procedure follows the following process --
-once again, slightly simplified.
+The [Salt](http://www.saltstack.org)-based configuration procedure follows
+the following process -- once again, slightly simplified.
 
 1. Install a number of required packages on the VM from standard Ubuntu
 apt repositories.
