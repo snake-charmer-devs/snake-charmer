@@ -55,7 +55,7 @@ This command currently takes around an hour to download and install all the
 necessary software. When this completes, it will run some tests and then
 display a message like this:
 
-    Your VM is up and running: [http://localhost:8834/tree](http://localhost:8834/tree)
+    Your VM is up and running: http://localhost:8834/tree
 
 This will take you to a fully-kitted-out IPython Notebook server. Open the
 "Hello World" notebook to see a full list of installed packages and other
