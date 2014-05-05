@@ -48,5 +48,4 @@ theano.config.compute_test_value = 'ignore'
 theano.config.compute_test_value_opt = 'ignore'
 check_nose(theano.test())
 
-# TODO for those packages without easy post-install testing, we should at least make sure they import
 

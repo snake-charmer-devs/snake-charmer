@@ -244,7 +244,7 @@ the VM name (e.g. `charmed34`) refer to.
 * The Salt log is `/var/log/salt/minion` on the VM, in case you need it for
 debugging.
 * The Pip log -- which is likely to be much more useful if you do need to
-debug a failed package install -- is in `/vagrant/pip&#95;NN.log` on the VM,
+debug a failed package install -- is in `/vagrant/pip_NN.log` on the VM,
 where *NN* is the package number. As `/vagrant/` is shared with the host, you
 can also see this file in the Snake Charmer installation directory.
 * The cached packages are stored in the `.cache` directory within the Snake
