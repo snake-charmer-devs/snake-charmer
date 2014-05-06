@@ -17,7 +17,7 @@ check_bool(retcode == 0)
 
 print('Testing IPython...')
 # -j means run in parallel, all cores
-retcode = subprocess.call(['iptests', '-j'])
+retcode = subprocess.call(['iptest3', '-j'])
 check_bool(retcode == 0)
 
 print('Testing Pandas...')
