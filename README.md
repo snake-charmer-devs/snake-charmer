@@ -12,8 +12,9 @@ Thanks! -- [Andrew](https://twitter.com/andrew_clegg).
 ## Introduction
 
 Wouldn't it be great if you could magic up a local IPython Notebook server,
-complete with SciPy, Pandas, Matplotlib, PyMC, scikit-learn and all the usual
-goodness, and running the latest version of Python, just by typing one line?
+complete with SciPy, Pandas, Matplotlib, PyMC, scikit-learn, R integration,
+and all the usual goodness, and running the latest version of Python, just
+by typing one line?
 
     vagrant up charmed34
 
