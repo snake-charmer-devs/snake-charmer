@@ -36,7 +36,7 @@ managing these, and [VirtualBox](https://www.virtualbox.org/) for running them
 use one of these instead, if they prefer.*
 
 Everything else is installed automatically. See below for a
-[list of included Python packages](#what-is-included).
+[list of included packages](#what-is-included).
 
 ## Getting started
 
