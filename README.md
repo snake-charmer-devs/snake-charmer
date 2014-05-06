@@ -89,7 +89,7 @@ current `snake-charmer` directory, and initially contains a single "Hello
 World" notebook. Inside the VM, `notebook` is within the home directory of the
 default user, called `vagrant`.
 
-snake-charmer uses IPython 2 so any subdirectories of `notebooks` will be
+Snake Charmer uses IPython 2 so any subdirectories of `notebooks` will be
 visible and navigable as folders in the IPython web interface. However, you
 can't actually *create* directories from the web interface yet, so you'd need
 to log in via ssh, or just enter a shell command into IPython with `!`.
@@ -164,8 +164,12 @@ the following modules installed.
     * [SymPy](http://sympy.org/)
     * [Cython](http://cython.org/)
 
-Coming soon: NLTK, other Python versions. Optionally R
-for rmagic. Ubuntu 14.04 LTS.
+* Non-Python tools with Python bindings:
+    * [R](http://www.r-project.org/)
+        * [r-base-dev and r-recommended](http://cran.r-project.org/bin/linux/ubuntu/) packages
+        * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) for Python integration
+
+Coming soon: NLTK. Other Python versions. Ubuntu 14.04 LTS.
 
 Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
 SysCorr, bayesian, PEBL, libpgm, BayesPy, STAN, BayesOpt, gensim, mpld3,
@@ -321,6 +325,40 @@ directly within the VM.
 ## Customizing your VMs
 
 **TODO**
+
+## F.A.Q.
+
+### Why does Snake Charmer use virtual machines, rather than just installing all its components in a virtualenv?
+
+Some packages don't play well with virtualenv. Also, there are always
+dependencies on the underlying operating system, or on libraries installed via
+its native package management. These differences can't be contained within a
+virtualenv.
+
+One of the primary goals of Snake Charmer is reproducibility. It lets you build
+environments that are guaranteed to behave the same way no matter what machine
+you are using.
+
+Another goal is portability. A Snake Charmer VM can be duplicated, and
+redeployed on another machine -- or a whole cluster of machines.
+
+Virtual machines are the easiest way to achieve these goals. They also allow us
+to include non-Python components like R -- this would be impossible in a
+virtualenv.
+
+Finally, VMs allow you to set resource usage limits (e.g. on RAM and CPU) that
+can prevent runaway processes from rendering a machine unusable.
+
+### What's the advantage of Snake Charmer over Anaconda or Canopy?
+
+These semi-commercial Scientific Python distributions provide free editions,
+but you are reliant on the goodwill of a commercial organisation -- and all
+the comments above about the drawbacks of virtualenvs compared to VMs also
+apply to these specialist distros.
+
+Also, Snake Charmer provides more up-to-date and comprehensive packages. At the
+time of writing, neither Anaconda nor Canopy support Python 3.4. And they both
+offer a restricted range of packages.
 
 ## License
 

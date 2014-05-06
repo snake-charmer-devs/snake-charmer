@@ -12,9 +12,17 @@ apt_pkgs:
 # libsuitesparse-dev:
 #     pkg.installed
 
+# Additional apt repositories
+
 deadsnakes:
     pkgrepo.managed:
         - ppa: fkrull/deadsnakes
+
+# FIXME the following repo is currently version-specific
+
+cran:
+    pkgrepo.managed:
+        - name: deb http://cran.ma.imperial.ac.uk/bin/linux/ubuntu precise/
 
 # Workarounds for annoying dangling symlink:
 # https://github.com/nose-devs/nose/issues/731

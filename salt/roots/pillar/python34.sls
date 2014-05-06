@@ -24,6 +24,8 @@ apt_pkgs:
     - libzmq-dev
     - pandoc
     - python-software-properties
+    - r-base-dev
+    - r-recommended
     - tcl8.5-dev
     - tk8.5-dev
     - zlib1g-dev
@@ -78,4 +80,5 @@ pip_pkgs:
     - name:   Pillow
       import: PIL
     - name:   joblib
+    - name:   rpy2
 
