@@ -1,6 +1,7 @@
 # Snake Charmer
 
-Portable virtual machines for scientific Python, using Vagrant.
+Portable virtual machines for scientific Python, built with Vagrant,
+VirtualBox and Salt.
 
 ## *Work in progress - not yet fully tested*
 
