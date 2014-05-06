@@ -15,6 +15,7 @@ apt_pkgs:
     - liblapack-dev
     - liblapack3gf
     - liblcms1-dev
+    - liblzo2-dev
     - libpng12-dev
     - libpq-dev
     - libtiff4-dev
@@ -22,6 +23,7 @@ apt_pkgs:
     - libxml2-dev
     - libxslt1-dev
     - libzmq-dev
+    - parallel
     - pandoc
     - python-software-properties
     - r-base-dev

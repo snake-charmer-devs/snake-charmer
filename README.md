@@ -166,7 +166,8 @@ the following modules installed.
     * [SymPy](http://sympy.org/)
     * [Cython](http://cython.org/)
 
-* Non-Python tools with Python bindings:
+* Non-Python tools:
+    * [GNU Parallel](http://www.gnu.org/software/parallel/)
     * [R](http://www.r-project.org/)
         * [r-base-dev and r-recommended](http://cran.r-project.org/bin/linux/ubuntu/) packages
         * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) for Python integration
