@@ -1,19 +1,22 @@
 #!/bin/bash
 
-rm -rf ~/test_output
-mkdir ~/test_output
+DIR=~/test_output
+
+rm -rf $DIR
+mkdir $DIR
+cd $DIR # bash inherits CWD by default
 
 # FIXME this is all Python 3 specific -- need to parameterize
 
-parallel --dry-run --progress --files --gnu python3.4 {} <<COMMANDS
-`which iptest3` --all > ipython.txt 2>&1
-/usr/local/lib/python3.4/dist-packages/tables/tests/test_all.py > pytables.txt 2>&1
--c "import numpy; numpy.test('full')" > numpy.txt 2>&1
--c "import scipy; scipy.test('full')" > scipy.txt 2>&1
--c "import theano; theano.test()" > theano.txt 2>&1
--c "import pymc; pymc.test('full')" > pymc.txt 2>&1
--c "import matplotlib; matplotlib.test()" matplotlib.txt 2>&1
-/usr/local/bin/nosetests pandas > pandas.txt 2>&1
-/usr/local/bin/nosetests sklearn --exe > scikit-learn.txt 2>&1
+parallel --dry-run --progress --files --gnu bash -c {} <<COMMANDS
+python3.4 `which iptest3` --all > ipython.txt 2>&1
+python3.4 /usr/local/lib/python3.4/dist-packages/tables/tests/test_all.py > pytables.txt 2>&1
+python3.4 -c "import numpy; numpy.test('full')" > numpy.txt 2>&1
+python3.4 -c "import scipy; scipy.test('full')" > scipy.txt 2>&1
+python3.4 -c "import theano; theano.test()" > theano.txt 2>&1
+python3.4 -c "import pymc; pymc.test('full')" > pymc.txt 2>&1
+python3.4 -c "import matplotlib; matplotlib.test()" matplotlib.txt 2>&1
+python3.4 /usr/local/bin/nosetests pandas > pandas.txt 2>&1
+python3.4 /usr/local/bin/nosetests sklearn --exe > scikit-learn.txt 2>&1
 COMMANDS
 
