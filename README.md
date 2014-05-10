@@ -1,9 +1,9 @@
 # Snake Charmer
 
-Portable virtual machines for scientific Python, built with Vagrant,
+A portable Python workbench for data science, built with Vagrant,
 VirtualBox and Salt.
 
-## *Work in progress - not yet fully tested*
+## *Work in progress - pre-release version*
 
 If you are interested in being an early adopter, please keep a close eye on
 the commits and issues here -- I am finding and fixing bugs almost daily.
@@ -155,6 +155,9 @@ the following modules installed.
     * [DEAP](https://code.google.com/p/deap/)
     * [fastcluster](http://danifold.net/fastcluster.html)
 
+* Natural language processing and text mining:
+    * [NLTK 3.0 Alpha](http://www.nltk.org/nltk3-alpha/) (warning: experimental!)
+
 * Numeric and statistical computing:
     * [NumPy](http://www.numpy.org/)
     * [SciPy](http://www.scipy.org/)
@@ -172,7 +175,7 @@ the following modules installed.
         * [r-base-dev and r-recommended](http://cran.r-project.org/bin/linux/ubuntu/) packages
         * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) for Python integration
 
-Coming soon: NLTK. Other Python versions. Ubuntu 14.04 LTS.
+Coming soon: Other Python versions. Ubuntu 14.04 LTS.
 
 Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
 SysCorr, bayesian, PEBL, libpgm, BayesPy, STAN, BayesOpt, gensim, mpld3,
