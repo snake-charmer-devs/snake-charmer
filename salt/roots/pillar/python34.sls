@@ -91,3 +91,6 @@ pip_pkgs:
     - name:   nltk
       git:    https://github.com/nltk/nltk.git
       rev:    24e257a6fd29df503e9ffe628f96604012c8a8e1
+
+# TODO Fix version numbers, so it's reproducible
+

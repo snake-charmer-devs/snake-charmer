@@ -52,6 +52,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     charmed34.vm.provision :salt do |salt|
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
+      salt.pillar({
+        "run_tests" => ENV["CHARMER_TEST"] || "false",
+        "slimline" => ENV["CHARMER_SLIM"] || "false"
+      })
     end
 
     # Stop salt-minion service to save resources, and disable it;
@@ -62,8 +66,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     charmed34.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.name = "charmed34"
-      v.memory = 2048
-      v.cpus = 2
+      v.memory = Integer(ENV["CHARMER_RAM"] || 2048)
+      v.cpus = Integer(ENV["CHARMER_CPUS"] || 2)
     end
 
     charmed34.vm.hostname = "charmed34"
@@ -73,9 +77,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 end
 
 # TODO
-# Take out v.memory and v.cpus
-# Read these details from user's default Vagrantfile if possible:
-#     http://mgdm.net/weblog/vagrantfile-inheritance/
 # Loop through set of python versions and configure
 # a VM for each one, something like this:
 #     http://maci0.wordpress.com/2013/11/09/dynamic-multi-machine-vagrantfile/
