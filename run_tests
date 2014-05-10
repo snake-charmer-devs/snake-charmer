@@ -19,5 +19,6 @@ python3.4 -c "import matplotlib; matplotlib.test()" > matplotlib.txt 2>&1
 python3.4 /usr/local/bin/nosetests pandas > pandas.txt 2>&1
 python3.4 /usr/local/bin/nosetests sklearn --exe > scikit-learn.txt 2>&1
 python3.4 /usr/local/bin/nosetests joblib > joblib.txt 2>&1
+(ln -s /vagrant/.cache/src/Pillow/Images . && python3.4 /vagrant/.cache/src/Pillow/selftest.py --installed) > pillow.txt 2>&1
 COMMANDS
 
