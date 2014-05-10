@@ -3,13 +3,6 @@
 A portable Python workbench for data science, built with Vagrant,
 VirtualBox and Salt.
 
-## *Work in progress - pre-release version*
-
-If you are interested in being an early adopter, please keep a close eye on
-the commits and issues here -- I am finding and fixing bugs almost daily.
-
-Thanks! -- [Andrew](https://twitter.com/andrew_clegg).
-
 ## Introduction
 
 Wouldn't it be great if you could magic up a local IPython Notebook server,
@@ -24,6 +17,13 @@ or Linux machine, and know that you'd get the exact same environment every
 time?
 
 Well, read on.
+
+### *Work in progress - pre-release version*
+
+If you are interested in being an early adopter, please keep a close eye on
+the commits and issues here -- I am finding and fixing bugs almost daily.
+
+Thanks! -- [Andrew](https://twitter.com/andrew_clegg).
 
 ## Requirements
 
