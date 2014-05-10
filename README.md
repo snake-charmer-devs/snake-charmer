@@ -365,8 +365,13 @@ offer a restricted range of packages.
 
 ## License
 
-Individual components are distributed under their own licenses. All
-original work is distributed under the Apache License:
+Snake Charmer does **not** include bundled distributions of its components
+(Python, Ubuntu, Python libraries, other libraries and packages etc.). Rather,
+it provides a set of machine-readable instructions for obtaining these
+components from third-party open-source repositories. Please refer to each
+individual component's documentation for license details.
+
+Snake Charmer itself is distributed under the Apache License:
 
     Copyright 2014 Andrew Clegg
 
