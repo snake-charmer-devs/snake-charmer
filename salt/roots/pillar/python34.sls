@@ -87,4 +87,7 @@ pip_pkgs:
       git:    https://github.com/joblib/joblib.git
       rev:    6c4abdb0461e65857ef3b9dd5247a6d8911ce54e
     - name:   rpy2
-
+    - name:   pyyaml
+    - name:   nltk
+      git:    https://github.com/nltk/nltk.git
+      rev:    24e257a6fd29df503e9ffe628f96604012c8a8e1
