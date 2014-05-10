@@ -81,6 +81,8 @@ pip_pkgs:
     - name:   runipy
     - name:   Pillow
       import: PIL
+      git:    https://github.com/python-imaging/Pillow.git
+      rev:    84a701a82b33896a4d6997743c2131ab0a40c588
     - name:   joblib
       git:    https://github.com/joblib/joblib.git
       rev:    6c4abdb0461e65857ef3b9dd5247a6d8911ce54e
