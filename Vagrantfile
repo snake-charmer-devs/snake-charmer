@@ -1,6 +1,17 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+require 'yaml'
+
+def get_env(key, default)
+  if ENV.has_key? key
+    return YAML.load(ENV[key])
+  else
+    return default
+  end
+end
+
+
 Vagrant.require_version ">= 1.5.2"
 
 
@@ -53,8 +64,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
       salt.pillar({
-        "run_tests" => ENV["CHARMER_TEST"] || false,
-        "slimline" => ENV["CHARMER_SLIM"] || false
+        "run_tests" => get_env("CHARMER_TEST", false),
+        "slimline" => get_env("CHARMER_SLIM", false)
       })
     end
 
@@ -66,8 +77,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     charmed34.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.name = "charmed34"
-      v.memory = Integer(ENV["CHARMER_RAM"] || 2048)
-      v.cpus = Integer(ENV["CHARMER_CPUS"] || 2)
+      v.memory = get_env("CHARMER_RAM", 2048)
+      v.cpus = get_env("CHARMER_CPUS", 2)
     end
 
     charmed34.vm.hostname = "charmed34"
