@@ -82,5 +82,7 @@ pip_pkgs:
     - name:   Pillow
       import: PIL
     - name:   joblib
+      git:    https://github.com/joblib/joblib.git
+      rev:    6c4abdb0461e65857ef3b9dd5247a6d8911ce54e
     - name:   rpy2
 
