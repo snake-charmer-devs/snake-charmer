@@ -53,8 +53,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
       salt.pillar({
-        "run_tests" => ENV["CHARMER_TEST"] || "false",
-        "slimline" => ENV["CHARMER_SLIM"] || "false"
+        "run_tests" => ENV["CHARMER_TEST"] || false,
+        "slimline" => ENV["CHARMER_SLIM"] || false
       })
     end
 
