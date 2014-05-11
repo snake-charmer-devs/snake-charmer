@@ -18,7 +18,7 @@ $PYTHON `which theano-nose` --processes=$THEANO_THREADS --process-timeout=9999 -
 sleep 60 # ramp-up time
 
 parallel --gnu --jobs $PARALLEL_THREADS bash -c {} <<COMMANDS
-$PYTHON `which iptest3` --all > ipython.txt 2>&1
+$PYTHON `which iptest3` -j 1 --all > ipython.txt 2>&1
 $PYTHON /usr/local/lib/$PYTHON/dist-packages/tables/tests/test_all.py > pytables.txt 2>&1
 $PYTHON -c "import numpy; numpy.test('full')" > numpy.txt 2>&1
 $PYTHON -c "import scipy; scipy.test('full')" > scipy.txt 2>&1
