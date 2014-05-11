@@ -32,8 +32,8 @@ machine. It relies on [Vagrant](http://www.vagrantup.com/) for creating and
 managing these, and [VirtualBox](https://www.virtualbox.org/) for running them
 -- so please go and install those now.
 
-*Experienced users of other VM hosting platforms can edit the Vagrantfile to
-use one of these instead, if they prefer.*
+*Experienced users of other virtualization platforms can edit the Vagrantfile
+to use one of these instead, if they prefer.*
 
 Everything else is installed automatically. See below for a
 [list of included packages](#what-is-included).
