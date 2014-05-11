@@ -195,11 +195,12 @@ gensim_install:
 
 # Run full test suite
 
-{% set cpus = int(grains['num_cpus'], 4) // 2 }}
+{% set theano_threads = int(grains['num_cpus'], 4) // 2 %}
+{% set parallel_threads = int(grains['num_cpus'], 4) - theano_threads %}
 
 run_tests:
     cmd.run:
-        - name: /vagrant/run_tests python{{ pyver }} ~/test_output {{ cpus }}
+        - name: /vagrant/run_tests python{{ pyver }} ~/test_output {{ theano_threads }} {{ parallel_threads }}
         - user: vagrant
         - group: vagrant
 

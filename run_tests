@@ -3,6 +3,7 @@
 PYTHON=$1
 DIR=$2
 THEANO_THREADS=$3
+PARALLEL_THREADS=$4
 
 rm -rf $DIR
 mkdir $DIR
