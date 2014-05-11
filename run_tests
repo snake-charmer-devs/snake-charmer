@@ -11,8 +11,9 @@ cd $DIR # bash inherits CWD by default
 # will use 1 thread per 2 cores. Then start enough parallel tests of other
 # packages to keep the load near max.
 
+$PYTHON /vagrant/test_theano.py > theano.txt 2>&1 &
+
 parallel --gnu --load '90%' bash -c {} <<COMMANDS
-$PYTHON /vagrant/test_theano.py > theano.txt 2>&1
 $PYTHON `which iptest3` --all > ipython.txt 2>&1
 $PYTHON /usr/local/lib/$PYTHON/dist-packages/tables/tests/test_all.py > pytables.txt 2>&1
 $PYTHON -c "import numpy; numpy.test('full')" > numpy.txt 2>&1
@@ -26,4 +27,8 @@ $PYTHON /usr/local/bin/nosetests joblib > joblib.txt 2>&1
 $PYTHON /usr/local/lib/$PYTHON/dist-packages/nltk/test/runtests.py > nltk.txt 2>&1
 (cd /vagrant/.cache/src/gensim && $PYTHON setup.py test) > gensim.txt 2>&1
 COMMANDS
+
+# Don't quit until all children return
+
+wait
 
