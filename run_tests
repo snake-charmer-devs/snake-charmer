@@ -13,7 +13,7 @@ cd $DIR # bash inherits CWD by default
 
 find ~/.theano -name lock_dir -delete
 
-$PYTHON `which theano-nose` --processes=$THEANO_THREADS --process-timeout=9999 --process-restartworker --batch=100 --theano 
+$PYTHON `which theano-nose` --processes=$THEANO_THREADS --process-timeout=9999 --process-restartworker --batch=100 --theano > theano.txt 2>&1 &
 
 sleep 60 # ramp-up time
 
