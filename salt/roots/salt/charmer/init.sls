@@ -195,9 +195,11 @@ gensim_install:
 
 # Run full test suite
 
+{% set cpus = int(grains['num_cpus'], 4) // 2 }}
+
 run_tests:
     cmd.run:
-        - name: /vagrant/run_tests python{{ pyver }} ~/test_output
+        - name: /vagrant/run_tests python{{ pyver }} ~/test_output {{ cpus }}
         - user: vagrant
         - group: vagrant
 
