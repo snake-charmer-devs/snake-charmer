@@ -156,7 +156,8 @@ the following modules installed.
     * [fastcluster](http://danifold.net/fastcluster.html)
 
 * Natural language processing and text mining:
-    * [NLTK 3.0 Alpha](http://www.nltk.org/nltk3-alpha/) (warning: experimental!)
+    * [gensim](http://radimrehurek.com/gensim)
+    * [NLTK](http://www.nltk.org/nltk3-alpha/) 3.0 Alpha (warning: experimental!)
 
 * Numeric and statistical computing:
     * [NumPy](http://www.numpy.org/)
