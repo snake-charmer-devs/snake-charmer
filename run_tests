@@ -11,7 +11,7 @@ cd $DIR # bash inherits CWD by default
 
 # Theano and IPython tests can be heavyweight, so start them first.
 
-find ~/.theano -name lock_dir -delete
+find ~/.theano -depth -name lock_dir -exec rm -rf '{}' \;
 
 $PYTHON `which theano-nose` --processes=$THEANO_THREADS --process-timeout=9999 --process-restartworker --batch=100 --theano > theano.txt 2>&1 &
 
