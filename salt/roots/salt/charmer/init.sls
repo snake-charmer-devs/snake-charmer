@@ -195,8 +195,8 @@ gensim_install:
 
 # Run full test suite
 
-{% set theano_threads = int(grains['num_cpus'], 4) // 2 %}
-{% set parallel_threads = int(grains['num_cpus'], 4) - theano_threads %}
+{% set theano_threads = grains['num_cpus'] // 2 %}
+{% set parallel_threads = grains['num_cpus'] - theano_threads %}
 
 run_tests:
     cmd.run:
