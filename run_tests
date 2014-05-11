@@ -13,9 +13,9 @@ cd $DIR # bash inherits CWD by default
 
 $PYTHON /vagrant/test_theano.py > theano.txt 2>&1 &
 
-sleep 90 # Give Theano a chance to ramp up
+sleep 120 # Give Theano a chance to ramp up
 
-parallel --gnu --load '80%' bash -c {} <<COMMANDS
+parallel --gnu --load '75%' bash -c {} <<COMMANDS
 $PYTHON `which iptest3` --all > ipython.txt 2>&1
 $PYTHON /usr/local/lib/$PYTHON/dist-packages/tables/tests/test_all.py > pytables.txt 2>&1
 $PYTHON -c "import numpy; numpy.test('full')" > numpy.txt 2>&1
