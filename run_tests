@@ -9,8 +9,7 @@ rm -rf $DIR
 mkdir $DIR
 cd $DIR # bash inherits CWD by default
 
-# Theano tests are really heavyweight, so start them first. Then start enough
-# parallel tests of other packages to keep the load near max.
+# Theano tests are really heavyweight, so start them first.
 
 find ~/.theano -name lock_dir -delete
 
@@ -18,7 +17,7 @@ $PYTHON `which theano-nose` --processes=$THEANO_THREADS --process-timeout=9999 -
 
 sleep 60 # ramp-up time
 
-parallel --gnu --load '75%' bash -c {} <<COMMANDS
+parallel --gnu --jobs $PARALLEL_THREADS bash -c {} <<COMMANDS
 $PYTHON `which iptest3` --all > ipython.txt 2>&1
 $PYTHON /usr/local/lib/$PYTHON/dist-packages/tables/tests/test_all.py > pytables.txt 2>&1
 $PYTHON -c "import numpy; numpy.test('full')" > numpy.txt 2>&1
