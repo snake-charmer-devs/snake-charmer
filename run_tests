@@ -13,7 +13,7 @@ $PYTHON /vagrant/test_theano.py > theano.txt 2>&1 &
 
 # Then start enough parallel tests of other packages to keep the load near max
 
-parallel --gnu --load '100%' bash -c {} <<COMMANDS
+parallel --gnu --load '90%' bash -c {} <<COMMANDS
 $PYTHON `which iptest3` --all > ipython.txt 2>&1
 $PYTHON /usr/local/lib/$PYTHON/dist-packages/tables/tests/test_all.py > pytables.txt 2>&1
 $PYTHON -c "import numpy; numpy.test('full')" > numpy.txt 2>&1
