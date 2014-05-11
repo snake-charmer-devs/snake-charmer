@@ -165,18 +165,6 @@ ipynb:
     service.running:
         - enable: True
 
-{% if pillar.get('run_tests', false) %}
-
-# Run full test suite
-
-run_tests:
-    cmd.run:
-        - name: /vagrant/run_tests python{{ pyver }} ~/test_output
-        - user: vagrant
-        - group: vagrant
-
-{% endif %}
-
 {% if not pillar.get('slimline', false) %}
 
 # Download NLTK sample data
@@ -202,4 +190,17 @@ https://github.com/piskvorky/gensim.git:
 gensim_install:
     cmd.run:
         - name: cd {{ src }} && python{{ pyver }} setup.py install
+
+{% if pillar.get('run_tests', false) %}
+
+# Run full test suite
+
+run_tests:
+    cmd.run:
+        - name: /vagrant/run_tests python{{ pyver }} ~/test_output
+        - user: vagrant
+        - group: vagrant
+
+{% endif %}
+
 

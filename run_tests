@@ -9,7 +9,7 @@ cd $DIR # bash inherits CWD by default
 
 # Theano tests are really heavyweight, so start them first --
 # the script will use 1 thread per core
-$PYTHON /vagrant/test_theano.py > theano.txt 2>&1
+$PYTHON /vagrant/test_theano.py > theano.txt 2>&1 &
 
 # Then start enough parallel tests of other packages to keep the load near max
 
