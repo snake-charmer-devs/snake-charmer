@@ -136,6 +136,7 @@ the following modules installed.
 
 * Data handling and processing:
     * [IPython](http://ipython.org/)
+        * [runipy](https://pypi.python.org/pypi/runipy)
     * [Pandas](http://pandas.pydata.org/)
     * [PyTables](http://www.pytables.org/moin)
     * [lxml](http://lxml.de/lxmlhtml.html)

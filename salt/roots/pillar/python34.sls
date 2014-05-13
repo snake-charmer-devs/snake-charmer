@@ -1,6 +1,7 @@
 pyver: '3.4'
 
 # Deb packages (with optional versions) to install via apt -- order is not important
+# TODO fix apt version numbers -- but need a way to automate checking for updates
 
 apt_pkgs:
     - g++
@@ -46,22 +47,33 @@ pip_pkgs:
       git:    https://github.com/numpy/numpydoc.git
       rev:    56a1b39e8b16f2292f6b2b54ce26d259003fadad
     - name:   Bottleneck
+      ver:    ==0.8.0
     - name:   matplotlib
+      ver:    ==1.3.1
     - name:   patsy
+      ver:    ==0.2.1
     - name:   numexpr
+      ver:    ==2.4
     - name:   Cython
       git:    https://github.com/cython/cython.git
       rev:    c646da0b6527bf2ad18e706eb4273c712ac356a8
     - name:   tables
+      ver:    ==3.1.1
     - name:   beautifulsoup4
       ver:    ==4.2.1
       import: bs4
     - name:   lxml
+      ver:    ==3.3.5
     - name:   deap
+      ver:    ==1.0.1
     - name:   fastcluster
+      ver:    ==1.1.13
     - name:   sympy
+      ver:    ==0.7.5
     - name:   pandas
+      ver:    ==0.13.1
     - name:   nose
+      ver:    ==1.3.3
     - name:   statsmodels
       git:    https://github.com/statsmodels/statsmodels.git
       rev:    d7ff1828cbd7c869f93aa86ea7dcd937fa90f5ff
@@ -69,16 +81,22 @@ pip_pkgs:
       git:    https://github.com/andrewclegg/pymc
       rev:    66c3f3743de9c39643ba4fb3ef14f79e4845e8f3
     - name:   psycopg2
+      ver:    ==2.5.2
     - name:   brewer2mpl
+      ver:    ==1.4
     - name:   prettyplotlib
+      ver:    ==0.1.7
     - name:   seaborn
+      ver:    ==0.3.1
     - name:   ipython[all]
       import: IPython
+      ver:    ==2.0.0
     - name:   scikit-learn
       git:    https://github.com/scikit-learn/scikit-learn.git
       rev:    c3ab3baf85bb6abbfc3c4c3aa6dd099acc0c4815
       import: sklearn
     - name:   runipy
+      ver:    ==0.0.8
     - name:   Pillow
       import: PIL
       git:    https://github.com/python-imaging/Pillow.git
@@ -87,13 +105,15 @@ pip_pkgs:
       git:    https://github.com/joblib/joblib.git
       rev:    6c4abdb0461e65857ef3b9dd5247a6d8911ce54e
     - name:   rpy2
+      ver:    ==2.3.10
     - name:   pyyaml
       import: yaml
+      ver:    ==3.11
     - name:   nltk
       git:    https://github.com/nltk/nltk.git
       rev:    24e257a6fd29df503e9ffe628f96604012c8a8e1
     - name:   Pyro4
       import: Pyro4
+      ver:    ==4.25
 
-# TODO Fix version numbers, so it's reproducible
 
