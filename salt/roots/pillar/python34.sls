@@ -1,37 +1,36 @@
 pyver: '3.4'
 
 # Deb packages (with optional versions) to install via apt -- order is not important
-# TODO fix apt version numbers -- but need a way to automate checking for updates
 
 apt_pkgs:
-    - g++
-    - gfortran
+    - g++: 4:4.6.3-1ubuntu5
+    - gfortran: 4:4.6.3-1ubuntu5
     - git: 1:1.7.9.5-1
-    - libatlas-base-dev
-    - libatlas-dev
-    - libatlas3gf-base
-    - libfreetype6-dev
-    - libhdf5-serial-dev
-    - libjpeg8-dev
-    - liblapack-dev
-    - liblapack3gf
-    - liblcms1-dev
-    - liblzo2-dev
-    - libpng12-dev
-    - libpq-dev
-    - libtiff4-dev
-    - libwebp-dev
-    - libxml2-dev
-    - libxslt1-dev
-    - libzmq-dev
-    - parallel
-    - pandoc
-    - python-software-properties
-    - r-base-dev
-    - r-recommended
-    - tcl8.5-dev
-    - tk8.5-dev
-    - zlib1g-dev
+    - libatlas-base-dev: 3.8.4-3build1
+    - libatlas-dev: 3.8.4-3build1
+    - libatlas3gf-base: 3.8.4-3build1
+    - libfreetype6-dev: 2.4.8-1ubuntu2.1
+    - libhdf5-serial-dev: 1.8.4-patch1-3ubuntu2
+    - libjpeg8-dev: 8c-2ubuntu7
+    - liblapack-dev: 3.3.1-1
+    - liblapack3gf: 3.3.1-1
+    - liblcms1-dev: 1.19.dfsg-1ubuntu3
+    - liblzo2-dev: 2.06-1
+    - libpng12-dev: 1.2.46-3ubuntu4
+    - libpq-dev: 9.1.13-0ubuntu0.12.04
+    - libtiff4-dev: 3.9.5-2ubuntu1.6
+    - libwebp-dev: 0.1.3-2.1ubuntu1
+    - libxml2-dev: 2.7.8.dfsg-5.1ubuntu4.6
+    - libxslt1-dev: 1.1.26-8ubuntu1.3
+    - libzmq-dev: 2.1.11-1ubuntu1
+    - parallel: 20121122-0ubuntu1~ubuntu12.04.1
+    - pandoc: 1.9.1.1-1
+    - python-software-properties: 0.82.7.7
+    - r-base-dev: 2.14.1-1
+    - r-recommended: 2.14.1-1
+    - tcl8.5-dev: 8.5.11-1ubuntu1
+    - tk8.5-dev: 8.5.11-1
+    - zlib1g-dev: 1.2.3.4.dfsg-3ubuntu4
 
 # Python packages to install via pip -- a list of dicts, so order is maintained
 
