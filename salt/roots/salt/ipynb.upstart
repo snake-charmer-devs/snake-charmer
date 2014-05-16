@@ -11,6 +11,6 @@ respawn
 
 script
     cd /home/vagrant/notebooks
-    su -c "python{{ pyver }} -m IPython notebook --pylab inline --ip='*' --port 88{{ pyver_ints }}" vagrant
+    su -c "python{{ pyver }} -m IPython notebook --matplotlib inline --ip='*' --port 88{{ pyver_ints }}" vagrant
 end script
 
