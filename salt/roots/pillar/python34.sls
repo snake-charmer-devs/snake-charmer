@@ -30,7 +30,7 @@ apt_pkgs:
     - r-recommended: 2.14.1-1
     - tcl8.5-dev: 8.5.11-1ubuntu1
     - tk8.5-dev: 8.5.11-1
-    - zlib1g-dev: 1.2.3.4.dfsg-3ubuntu4
+    - zlib1g-dev: 1:1.2.3.4.dfsg-3ubuntu4
 
 # Python packages to install via pip -- a list of dicts, so order is maintained
 
