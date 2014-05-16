@@ -1,7 +1,31 @@
 # DO NOT SWITCH STATE AUTO ORDERING OFF!
+# We just allow Salt to apply these states in order, instead of manually
+# specifying dependencies.
 
 {% set pyver = pillar['pyver'] %}
 {% set theanover = pillar['theanover'] %}
+{% set pyver_ints = pyver|replace('.', '') %}
+
+# Some scripts we'll need
+
+/root/bin:
+    file.recurse:
+        - source: salt://bin
+        - template: jinja
+        - dir_mode: '0755'
+        - file_mode: '0755'
+        - context: 
+                python: /usr/bin/python{{ pyver }}
+                nb_url: http://localhost:88{{ pyver_ints }}/tree
+
+# Replace apt package cache with symlink to folder shared from host
+
+/var/cache/apt/archives:
+    file.symlink:
+        - target: /srv/cache/apt
+        - force: true
+
+# Install apt packages from standard repos
 
 apt_pkgs:
     pkg.installed:
@@ -58,7 +82,7 @@ python_pkgs:
 
 distribute:
     cmd.run:
-        - name: python{{ pyver }} /vagrant/distribute_setup.py
+        - name: python{{ pyver }} /root/bin/distribute_setup.py
         - unless: which {{ easy_install }}
 
 pip:
@@ -66,15 +90,14 @@ pip:
         - name: {{ easy_install }} pip
         - unless: which {{ pip }}
 
-{% set pyver_ints = pyver|replace('.', '') %}
-{% set piplog = '/vagrant/pip_' + pyver_ints + '.log' %}
-{% set pipcache = '/vagrant/.cache/pip' %}
-{% set gitcache = '/vagrant/.cache/src' %}
+{% set piplog = '/srv/log/pip.log' %}
+{% set pipcache = '/srv/cache/pip' %}
+{% set gitcache = '/srv/cache/src' %}
 
 {{ piplog }}:
     file.absent
 
-# Loop through pillar data and install all standard source-based packages.
+# Loop through pillar data and install all standard Python packages.
 # Handle them differently depending on whether they're github or pypi based.
 # Some of them have post-processing steps inserted after them.
 
@@ -103,7 +126,7 @@ pip:
 # Supply rc file to use correct fortran libraries
 /home/vagrant/.theanorc:
     file.managed:
-        - source: salt://theanorc
+        - source: salt://etc/theanorc
         - user: vagrant
         - group: vagrant
         - mode: 655
@@ -138,28 +161,11 @@ local_mathjax:
 
 {% endfor %}
 
-# Generate post-install sanity check script
-
-/root/sanity_check.py:
-    file.managed:
-        - source: salt://sanity_check.py
-        - user: root
-        - group: root
-        - mode: 755
-        - template: jinja
-        - context: 
-                python: /usr/bin/python{{ pyver }}
-                nb_url: http://localhost:88{{ pyver_ints }}/tree
-
 # Upstart service configuration -- start on boot
 
 /etc/init/ipynb.conf:
-    file.managed:
-        - source: salt://ipynb.upstart
-        - user: root
-        - group: root
-        - mode: 755
-        - template: jinja
+    file.symlink:
+        - target: /root/bin/ipynb.upstart
 
 ipynb:
     service.running:
@@ -200,7 +206,7 @@ gensim_install:
 
 run_tests:
     cmd.run:
-        - name: /vagrant/run_tests python{{ pyver }} ~/test_output {{ theano_threads }} {{ parallel_threads }}
+        - name: /root/bin/run_tests python{{ pyver }} ~/test_output {{ theano_threads }} {{ parallel_threads }}
         - user: vagrant
         - group: vagrant
 

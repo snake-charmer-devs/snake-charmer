@@ -26,9 +26,9 @@ $PYTHON -c "import matplotlib; matplotlib.test()" > matplotlib.txt 2>&1
 $PYTHON /usr/local/bin/nosetests pandas > pandas.txt 2>&1
 $PYTHON /usr/local/bin/nosetests sklearn --exe > scikit-learn.txt 2>&1
 $PYTHON /usr/local/bin/nosetests joblib > joblib.txt 2>&1
-(ln -s /vagrant/.cache/src/Pillow/Images . && $PYTHON /vagrant/.cache/src/Pillow/selftest.py --installed) > pillow.txt 2>&1
+(ln -s /srv/cache/src/Pillow/Images . && $PYTHON /srv/cache/src/Pillow/selftest.py --installed) > pillow.txt 2>&1
 $PYTHON /usr/local/lib/$PYTHON/dist-packages/nltk/test/runtests.py > nltk.txt 2>&1
-(cd /vagrant/.cache/src/gensim && $PYTHON setup.py test) > gensim.txt 2>&1
+(cd /srv/cache/src/gensim && $PYTHON setup.py test) > gensim.txt 2>&1
 COMMANDS
 
 # Don't quit until all children return

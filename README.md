@@ -3,6 +3,8 @@
 A portable Python workbench for data science, built with Vagrant,
 VirtualBox and Salt.
 
+<!-- toc -->
+
 ## Introduction
 
 Wouldn't it be great if you could magic up a local IPython Notebook server,
@@ -61,7 +63,9 @@ display a message like this:
 
 This link will take you to a fully-kitted-out IPython Notebook server. Open the
 "Hello World" notebook to see a full list of installed packages and other
-system information.
+system information. *N.B.* The notebook server is started with inline graphics
+enabled for matplotlib, but _not_ `--pylab`, as this is
+[considered harmful](http://carreau.github.io/posts/10-No-PyLab-Thanks.ipynb.html).
 
 On a VM that's already been fully configured, `vagrant up` will just restart
 it, without going through the full install process.
@@ -88,38 +92,50 @@ details.
 
 The notebook server runs from within the `notebooks` subdirectory of the
 current `snake-charmer` directory, and initially contains a single "Hello
-World" notebook. Inside the VM, `notebook` is within the home directory of the
-default user, called `vagrant`.
+World" notebook.
 
 Snake Charmer uses IPython 2 so any subdirectories of `notebooks` will be
 visible and navigable as folders in the IPython web interface. However, you
 can't actually *create* directories from the web interface yet, so you'd need
 to log in via ssh, or just enter a shell command into IPython with `!`.
 
-The entire `snake-charmer` directory is visible within the VM as `/vagrant` in
-case you need it. Note that the VM **can't** see files outside these locations
-by default.
+Vagrant sets up a number of synced folders, which are directories visible to
+both the VM and the host (your computer). Files placed in these will be visible
+to both the VM and the host, so this is a good way to make data available to
+the VMs. If you create more than one VM (feature coming soon!), files in synced
+folders will be visible to all of them -- apart from /srv/log which is specific
+to one VM only.
 
-Or to put it another way:
+The paths in the left-hand column are relative to the `snake-charmer` install
+directory -- your local copy of this repo.
 
-```
-Folder on your computer           Folder within VM          Contents
------------------------           ----------------          --------
-<home>/snake-charmer              /vagrant                  Your copy of this repo
-<home>/snake-charmer/notebooks    /home/vagrant/notebooks   Any notebooks you create
-<home>/snake-charmer/salt/roots   /srv                      Ignore this (internal use)
-```
+    Folder on your computer   Folder within VM         Contents
+    ------------------------  -----------------------  --------
+    notebooks                 /home/vagrant/notebooks  Any notebooks
+    data                      /home/vagrant/data       Data you wish to share (initially empty)
+    .cache                    /srv/cache               Cache for downloaded files
+    log/charmed34             /srv/log                 Certain setup logs, useful for debugging only
+    salt/roots/salt           /srv/salt                Config management information (ignore this)
+    salt/roots/pillar         /srv/pillar              Config management information (ignore this)
 
-(`<home>` is wherever you were when you cloned this repo.)
+### Data persistence
 
 If you get your VM into a mess somehow, you can just type
 
     vagrant destroy charmed34
     vagrant up charmed34
 
-to build a new one. You won't lose any data, unless for some reason you've
-stored it in a directory that's local to the VM, i.e. *outside* the shared
-folders listed above.
+to build a new one. Files in synced folders will not be affected if you do
+this, so you won't lose any data or notebooks. However, any data stored on the
+VM but *outside* these synced folders will be lost.
+
+The virtual disk on each VM is configured with an 80GB limit -- it grows to
+take up real disk space on the host up to this limit, and then stops. But data
+stored in synced folders does not count towards this. So you will likely never
+reach the 80GB limit.
+
+If you want to make another folder available to the VM, see **Customizing your
+VMs** below.
 
 ## What is included
 
@@ -180,7 +196,7 @@ the following modules installed.
 Coming soon: Other Python versions. Ubuntu 14.04 LTS.
 
 Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
-SysCorr, bayesian, PEBL, libpgm, BayesPy, STAN, BayesOpt, gensim, mpld3,
+SysCorr, bayesian, PEBL, libpgm, BayesPy, STAN, BayesOpt, mpld3,
 Pylearn2, cudamat, Gnumpy, py-earth, Orange, NeuroLab, PyBrain, scikits-sparse,
 other scikits, annoy, Zipline, Quandl, BNFinder, Alchemy API, openpyxl,
 xlrd/xlwt, NetworkX, OpenCV, boto, gbq, SQLite, PyMongo, mpi4py, PyCUDA,
@@ -253,14 +269,12 @@ happens in `init.sls`.
 * Many aspects of these config files, e.g. package version numbers,
 are parameterized by Python version. This is what the two digits on the end of
 the VM name (e.g. `charmed34`) refer to.
-* The Salt log is `/var/log/salt/minion` on the VM, in case you need it for
+* The Salt log is `log/<VM name>/minion` on the host, in case you need it for
 debugging.
 * The Pip log -- which is likely to be much more useful if you do need to
-debug a failed package install -- is in `/vagrant/pip_NN.log` on the VM,
-where *NN* is the package number. As `/vagrant/` is shared with the host, you
-can also see this file in the Snake Charmer installation directory.
+debug a failed package install -- is in `log/<VM name>/pip.log` on the host.
 * The cached packages are stored in the `.cache` directory within the Snake
-Charmer install directory -- or `/vagrant/.cache` within the VM. It's safe
+Charmer install directory -- or `/srv/cache` within the VM. It's safe
 to delete this cache any time, except while you're actually performing a
 provisioning operation in Vagrant.
 
@@ -312,23 +326,9 @@ attach via the console, etc.
 
 #### Important reminder
 
-Only use the **host** filesystem to store data, notebooks and other scripts.
-That is, only use file paths on the VM that are within `/vagrant` (the synced
-folder that corresponds with your Snake Charmer install directory) or
-`~/notebooks` (which is just a shortcut into `/vagrant/notebooks`).
-
-If you store files in other places, they **will** be lost forever when you
-destroy a VM. Also, the virtual disk on the VM is configured with an 80GB
-limit -- it grows to take up real disk space on the host up to this limit,
-and then stops.
-
-If you need to make data from elsewhere available to a VM, and you don't want
-to copy it, the best options are:
-
-* On the host, create a symbolic link from the original location to a new
-location within your Snake Charmer install directory, **or**
-* Add another synced folder (see below) to make the original location visible
-directly within the VM.
+Only use the **host** filesystem to store data, notebooks etc. -- that is, the
+`data` and `notebooks` folders which are synced to the VM. If you store files
+in other places on a VM, they **will** be lost forever when you destroy it. 
 
 ## Customizing your VMs
 
@@ -336,41 +336,17 @@ directly within the VM.
 
 ## F.A.Q.
 
-### Why does Snake Charmer use virtual machines, rather than just installing all its components in a virtualenv?
+See the separate [Snake Charmer F.A.Q.](FAQ.md).
 
-Some packages don't play well with virtualenv. Also, there are always
-dependencies on the underlying operating system, or on libraries installed via
-its native package management. These differences can't be contained within a
-virtualenv.
+## Credits
 
-One of the primary goals of Snake Charmer is reproducibility. It lets you build
-environments that are guaranteed to behave the same way no matter what machine
-you are using.
-
-Another goal is portability. A Snake Charmer VM can be duplicated, and
-redeployed on another machine -- or a whole cluster of machines.
-
-Virtual machines are the easiest way to achieve these goals. They also allow us
-to include non-Python components like R -- this would be impossible in a
-virtualenv.
-
-Finally, VMs allow you to set resource usage limits (e.g. on RAM and CPU) that
-can prevent runaway processes from rendering a machine unusable.
-
-### What's the advantage of Snake Charmer over Anaconda or Canopy?
-
-These semi-commercial Scientific Python distributions provide free editions,
-but you are reliant on the goodwill of a commercial organisation -- and all
-the comments above about the drawbacks of virtualenvs compared to VMs also
-apply to these specialist distros.
-
-Also, Snake Charmer provides more up-to-date and comprehensive packages. At the
-time of writing, neither Anaconda nor Canopy support Python 3.4. And they both
-offer a restricted range of packages.
+Developed by [Andrew Clegg](https://github.com/andrewclegg) (Twitter:
+[@andrew_clegg](http://twitter.com/andrew_clegg)), tested at
+[Pearson](http://labs.pearson.com/).
 
 ## License
 
-Snake Charmer does **not** include bundled distributions of its components
+Snake Charmer does *not* include bundled distributions of its components
 (Python, Ubuntu, Python libraries, other libraries and packages etc.). Rather,
 it provides a set of machine-readable instructions for obtaining these
 components from third-party open-source repositories. Please refer to each

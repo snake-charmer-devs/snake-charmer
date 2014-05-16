@@ -11,6 +11,25 @@ def get_env(key, default)
   end
 end
 
+def mkdir(dir)
+  Dir.mkdir dir unless File.exists? dir
+end
+
+def install_plugins(*plugins)
+  plugins.each do |plugin|
+    unless Vagrant.has_plugin? plugin
+      # Install vbguest via another vagrant process; wait for completion
+      cmd1 = ["vagrant", "plugin", "install", plugin]
+      system *cmd1
+    end
+  end
+
+  # Now restart vagrant with same args as current invocation
+  cmd2 = ARGV
+  cmd2.unshift "vagrant"
+  exec *cmd2
+end
+
 
 Vagrant.require_version ">= 1.5.2"
 
@@ -20,19 +39,11 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  # This seems dirty somehow
-  unless Vagrant.has_plugin? "vagrant-vbguest"
+  install_plugins "vagrant-vbguest", "vagrant-cachier"
 
-    # Install vbguest via another vagrant process; wait for completion
-    cmd1 = ["vagrant", "plugin", "install", "vagrant-vbguest"]
-    system *cmd1
-    
-    # Now restart vagrant with same args
-    cmd2 = ARGV
-    cmd2.unshift "vagrant"
-    exec *cmd2
-
-  end
+  # Create data and log directories
+  mkdir 'data'
+  mkdir 'log'
 
   # Workaround for https://www.virtualbox.org/ticket/12879
   # (missing symlink in guest additions package)
@@ -52,13 +63,34 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "hashicorp/precise64"
 
   config.ssh.forward_agent = true
+  config.ssh.forward_x11 = true
 
-  config.vm.synced_folder "salt/roots", "/srv"
+  # Disable default synced folder -- it will lead to messiness...
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  # These locations are shared between all VMs
+  # TODO -- make these read only where possible
   config.vm.synced_folder "notebooks", "/home/vagrant/notebooks"
+  config.vm.synced_folder "data", "/home/vagrant/data"
+  config.vm.synced_folder "salt/roots/salt", "/srv/salt"
+  config.vm.synced_folder "salt/roots/pillar", "/srv/pillar"
+  config.vm.synced_folder ".cache", "/srv/cache"
 
   config.vm.define "charmed34" do |charmed34|
+
+    # These locations are unique to each VM
+    mkdir "log/charmed34"
+    charmed34.vm.synced_folder "log/charmed34", "/srv/log"
     
+    # Bound ports -- IPython Notebook and SSH
     charmed34.vm.network "forwarded_port", guest: 8834, host: 8834
+    charmed34.vm.network "forwarded_port", guest: 22, host: 2234
+
+    # Unbound ports 9034, 9134 ... 9934 for user use -- forwarded automatically
+    for i in 90..99
+      port = (i * 100) + 34
+      charmed34.vm.network "forwarded_port", guest: port, host: port
+    end
 
     charmed34.vm.provision :salt do |salt|
       salt.minion_config = "salt/minion"
@@ -72,7 +104,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Stop salt-minion service to save resources, and disable it;
     # then run post-install sanity check
     charmed34.vm.provision "shell",
-      inline: "service salt-minion stop; echo manual > /etc/init/salt-minion.override; /root/sanity_check.py"
+      inline: "service salt-minion stop; echo manual > /etc/init/salt-minion.override; /root/bin/sanity_check.py"
 
     charmed34.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
