@@ -184,7 +184,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [Bottleneck](http://berkeleyanalytics.com/bottleneck/) 0.8.0
     * [Statsmodels](http://statsmodels.sourceforge.net/) 0.6.0 dev
     * [Patsy](http://patsy.readthedocs.org/en/latest/) 0.2.1
-    * [Theano](http://deeplearning.net/software/theano/) 0.6.0 dev
+    * [Theano](http://deeplearning.net/software/theano/) 0.6.0
     * [numexpr](https://github.com/pydata/numexpr) 2.4
     * [SymPy](http://sympy.org/) 0.7.5
     * [Cython](http://cython.org/) 0.21 dev
