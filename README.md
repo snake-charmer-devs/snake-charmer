@@ -197,12 +197,12 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 
 Coming soon: Other Python versions. Ubuntu 14.04 LTS.
 
-Potential future additions include: CrossCat, BayesDB, Bokeh, Blaze, Numba,
-SysCorr, bayesian, PEBL, libpgm, BayesPy, STAN, BayesOpt, mpld3,
-Pylearn2, cudamat, Gnumpy, py-earth, Orange, NeuroLab, PyBrain, scikits-sparse,
-other scikits, annoy, Zipline, Quandl, BNFinder, Alchemy API, openpyxl,
-xlrd/xlwt, NetworkX, OpenCV, boto, gbq, SQLite, PyMongo, mpi4py, PyCUDA,
-Jubatus, Vowpal Wabbit, and one or more Hadoop clients.
+Potential future additions include: Numba, CrossCat, BayesDB, Bokeh, Blaze,
+numdifftools, PuLP, numdifftools, CVXPY, SysCorr, bayesian, PEBL, libpgm,
+BayesPy, STAN, BayesOpt, mpld3, Pylearn2, nimfa, py-earth, Orange, NeuroLab,
+PyBrain, scikits-sparse, other scikits, annoy, Zipline, Quandl, BNFinder,
+Alchemy API, openpyxl, xlrd/xlwt, NetworkX, OpenCV, boto, gbq, SQLite, PyMongo,
+mpi4py, PyCUDA, Jubatus, Vowpal Wabbit, and one or more Hadoop clients.
 
 If you have suggestions for any other packages to add, please submit them by
 raising an [issue](https://github.com/andrewclegg/snake-charmer/issues).

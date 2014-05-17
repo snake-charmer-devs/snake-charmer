@@ -2,6 +2,13 @@
 
 ## Frequently Asked Questions
 
+### Why is the virtual machine called charmed34?
+
+"34" is the 3.4 from Python 3.4, without the decimal point. And "charmed"
+as in snake charmers.
+
+The plan is to offer a number of different VMs with different Python versions.
+
 ### Why does Snake Charmer use virtual machines, rather than just installing all its components in a virtualenv?
 
 Some packages don't play well with virtualenv. Also, there are always
