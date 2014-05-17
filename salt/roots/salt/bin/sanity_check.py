@@ -19,7 +19,7 @@ import {{ name }}
 try:
     print("Imported {{ name }} %s OK" % {{ name }}.__version__)
 except AttributeError:
-    print("Imported {{ name }} %s OK")
+    print("Imported {{ name }} OK")
 
 {% endfor %}
 
