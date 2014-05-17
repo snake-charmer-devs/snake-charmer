@@ -24,14 +24,14 @@ sudo $PYTHON `which iptest3` --all show parallel > ipython.parallel.out 2>&1
 
 # PyTables
 
-sleep 1m
+sleep 30
 
 nice -n -14 $PYTHON /usr/local/lib/$PYTHON/dist-packages/tables/tests/test_all.py --heavy > pytables.out 2>&1 &
 
 
 # SymPy
 
-sleep 1m
+sleep 30
 
 nice -n -13 nosetests --exe sympy > sympy.out 2>&1 &
 
@@ -43,14 +43,14 @@ nice -n -12 $PYTHON `which iptest3` --all show html kernel.inprocess autoreload 
 
 # PyMC
 
-sleep 1m
+sleep 30
 
 nice -n -11 $PYTHON -c "import pymc; pymc.test('full')" > pymc.out 2>&1 &
 
 
 # Theano
 
-sleep 1m
+sleep 30
 
 export OLDFLAGS=$THEANO_FLAGS
 
@@ -63,98 +63,98 @@ export THEANO_FLAGS=$OLDFLAGS
 
 # NumPy
 
-sleep 1m
+sleep 30
 
 nice -n -9 $PYTHON -c "import numpy; numpy.test('full')" > numpy.out 2>&1 &
 
 
 # SciPy
 
-sleep 1m
+sleep 30
 
 nice -n -8 $PYTHON -c "import scipy; scipy.test('full')" > scipy.out 2>&1 &
 
 
 # Matpotlib
 
-sleep 1m
+sleep 30
 
 nice -n -7 $PYTHON -c "import matplotlib; matplotlib.test()" > matplotlib.out 2>&1 &
 
 
 # Pandas
 
-sleep 1m
+sleep 30
 
 nice -n -6 $PYTHON /usr/local/bin/nosetests pandas > pandas.out 2>&1 &
 
 
 # scikit-learn
 
-sleep 1m
+sleep 30
 
 nice -n -5 $PYTHON /usr/local/bin/nosetests sklearn --exe > scikit-learn.out 2>&1 &
 
 
 # Joblib
 
-sleep 1m
+sleep 30
 
 nice -n -4 $PYTHON /usr/local/bin/nosetests joblib > joblib.out 2>&1 &
 
 
 # Pillow
 
-sleep 1m
+sleep 30
 
 (ln -s /srv/cache/src/Pillow/Images . && nice -n -3 $PYTHON /srv/cache/src/Pillow/selftest.py --installed) > pillow.out 2>&1 &
 
 
 # NLTK
 
-sleep 1m
+sleep 30
 
 nice -n -2 $PYTHON /usr/local/lib/$PYTHON/dist-packages/nltk/test/runtests.py > nltk.out 2>&1 &
 
 
 # gensim
 
-sleep 1m
+sleep 30
 
 (cd /srv/cache/src/gensim && nice -n -1 $PYTHON setup.py test) > gensim.out 2>&1 &
 
 
 # Cython
 
-sleep 1m
+sleep 30
 
 (cd /srv/cache/src/Cython/ && nice -n 0 $PYTHON runtests.py -vv) > cython.out 2>&1 &
 
 
 # Bottleneck
 
-sleep 1m
+sleep 30
 
 nice -n 1 $PYTHON -c "import bottleneck as bn; bn.test()" > bottleneck.out 2>&1 &
 
 
 # Statsmodels
 
-sleep 1m
+sleep 30
 
 nice -n 2 $PYTHON -c "import statsmodels as sm; sm.test()" > statsmodels.out 2>&1 &
 
 
 # Numexpr
 
-sleep 1m
+sleep 30
 
 nice -n 3 $PYTHON /usr/local/bin/nosetests numexpr > numexpr.out 2>&1 &
 
 
 # Patsy
 
-sleep 1m
+sleep 30
 
 nice -n 4 $PYTHON /usr/local/bin/nosetests patsy > patsy.out 2>&1 &
 
