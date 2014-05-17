@@ -24,8 +24,6 @@ sudo $PYTHON `which iptest3` --all show parallel > ipython.parallel.out 2>&1
 
 # PyTables
 
-sleep 30
-
 nice -n -14 $PYTHON /usr/local/lib/$PYTHON/dist-packages/tables/tests/test_all.py --heavy > pytables.out 2>&1 &
 
 
