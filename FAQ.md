@@ -9,6 +9,17 @@ as in snake charmers.
 
 The plan is to offer a number of different VMs with different Python versions.
 
+### Can I share and distribute my Snake Charmer VMs via Vagrant Cloud?
+
+Absolutely! We think this would be a great way to share experimental results
+(reproducibly), foster international collaborations, publish data sets
+interactively, and facilitate training, mentoring and learning.
+
+For now, you'll have to refer to the
+[sharing](http://docs.vagrantup.com/v2/share/index.html) and
+[boxing](http://docs.vagrantup.com/v2/boxes.html) docs for more details, but
+watch this space for Snake Charmer-centric tutorials later.
+
 ### Why does Snake Charmer use virtual machines, rather than just installing all its components in a virtualenv?
 
 Some packages don't play well with virtualenv. Also, there are always
@@ -60,28 +71,20 @@ feature of some
 [recent NVIDIA hardware](http://www.nvidia.com/object/dedicated-gpus.html)
 but this is not yet possible in Python. _(As far as I know anyway...)_
 
+If you definitely need this feature, try the specialized Python distros
+mentioned above.
+
 ### Can I run desktop GUI apps, like IPython Qt Console, or Tkinter apps?
 
 Yes, but it's a bit fiddly. You can ssh into the VM using `vagrant ssh` and
 start them from the command line, and they'll run as X11 apps, as if your VM
-was a remote Linux server. However, Windows users will need to install an X
-server such as [Xming](http://sourceforge.net/projects/xming/) in order to do
-this.
+was a remote Linux server. However, Windows users (and OS X users, Mountain
+Lion onward) will need to install an X server such as
+[Xming](http://sourceforge.net/projects/xming/) or
+[XQuartz](http://xquartz.macosforge.org) to make this work.
 
-### Are Snake Charmer VMs secure?
-
-#### No.
-
-The default username and password `vagrant`/`vagrant` is the same for most
-Vagrant boxes, as is the insecure private key used for passwordless
-authentication. And even if you don't put any sensitive data into your VM,
-there [may still be ways](http://blog.ontoillogical.com/blog/2012/10/31/breaking-in-and-out-of-vagrant/)
-to get access to the host from the guest. (We have closed that particular
-loophole but can't guarantee there aren't others.)
-
-In short, only use it on trusted networks.
-
-Tightening security in Snake Charmer would be very useful indeed -- any volunteers?
+Plus no GUI frameworks are installed by default on the VMs -- it's a very
+stripped-down server-oriented edition of Ubuntu.
 
 ### How can I connect to the VM by passwordless SSH from an application or script?
 
@@ -95,6 +98,13 @@ username, and use the default `insecure_private_key` that vagrant ships with.
 Type `vagrant ssh-config` to check where this is on your system.
 
 Basically everything on the VM happens as this user.
+
+**N.B.** As a token nod to security (see below), the SSH port forwarding on the
+host computer only binds to 127.0.0.1 (localhost) by default. So an incoming
+SSH connection from another machine would have to connect first to the host
+(your physical computer) and then tunnel through to the VM. In the future,
+there may be an option to disable this restriction, and expose the SSH port on
+the VM to the whole world (at your own risk...).
 
 ### How can I connect to other ports on the VM, apart from SSH and the Notebook webserver?
 
@@ -126,4 +136,36 @@ httpd.serve_forever()
 ```
 
 Connecting to port 9034 on the host will attach to this webserver on the VM.
+
+Unlike the SSH and Notebook ports, these ports are intentionally _not_
+protected from remote machines attaching to them, as a convenience for you --
+but don't expose any vulnerable or sensitive services there and then come
+running to us. No refunds...
+
+### Are Snake Charmer VMs secure?
+
+#### Not especially, no.
+
+The default username and password `vagrant`/`vagrant` is the same for most
+Vagrant boxes, as is the insecure private key used for passwordless
+authentication. By default, the Notebook and SSH port forwarders only bind to
+your computer's `localhost` address, making it slightly harder for someone to
+own your VM over a network -- _in theory_, that means they'd need to be logged
+onto your physical computer already. But it's not an insurmountable obstacle
+for a dedicated attacker. Also, it's rather dependent on VirtualBox's
+networking configuration, which tends to change from release to release.
+
+And even if you don't put any sensitive data into your VM,
+there [may still be ways](http://blog.ontoillogical.com/blog/2012/10/31/breaking-in-and-out-of-vagrant/)
+to get access to the host from the guest. (We have closed that particular
+loophole but can't guarantee there aren't others.)
+
+In short, only use Snake Charmer on trusted networks.
+
+Tightening security would be very useful indeed -- can you help?
+
+### Can I run Snake Charmer on cloud services like AWS, or other virtualization platforms like VMWare?
+
+In theory, yes, although probably not without some considerable work. In the
+future, we'd like to be able to make that easy out-of-the-box.
 

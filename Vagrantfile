@@ -89,8 +89,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     charmed34.vm.synced_folder "log/charmed34", "/srv/log"
     
     # Bound ports -- IPython Notebook and SSH
-    charmed34.vm.network "forwarded_port", guest: 8834, host: 8834
-    charmed34.vm.network "forwarded_port", guest: 22, host: 2234
+    charmed34.vm.network "forwarded_port", guest: 8834, host: 8834, host_ip: "127.0.0.1"
+    charmed34.vm.network "forwarded_port", guest: 22, host: 2234, host_ip: "127.0.0.1"
 
     # Unbound ports 9034, 9134 ... 9934 for user use -- forwarded automatically
     for i in 90..99

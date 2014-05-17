@@ -1,3 +1,6 @@
 file_client: local
+
 log_file: /srv/log/minion
 
+providers:
+    service: upstart
