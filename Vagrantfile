@@ -48,8 +48,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   install_plugins "vagrant-vbguest"
 
-  # Create data and log directories
-  mkdir "data", "log", ".cache"
+  # Create some directories
+  mkdir "data", "log", ".cache", ".cache/apt", ".cache/apt/partial"
 
   # Workaround for https://www.virtualbox.org/ticket/12879
   # (missing symlink in guest additions package)
@@ -98,6 +98,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       charmed34.vm.network "forwarded_port", guest: port, host: port
     end
 
+    # Wipe salt minion log ready for fresh run
+    charmed34.vm.provision "shell",
+      inline: "truncate -s 0 /srv/log/minion"
+
+    # Install and configure packages via salt
     charmed34.vm.provision :salt do |salt|
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
@@ -112,6 +117,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     charmed34.vm.provision "shell",
       inline: "service salt-minion stop; echo manual > /etc/init/salt-minion.override; /root/bin/sanity_check.py"
 
+    # VM settings
     charmed34.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.name = "charmed34"
@@ -122,6 +128,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     charmed34.vm.hostname = "charmed34"
 
   end
+
+  # Write top of git log into data so we can show it in Hello World notebook
+  system "git log -n 1 > data/last_commit.txt"
 
 end
 

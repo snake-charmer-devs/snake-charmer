@@ -168,7 +168,7 @@ the following modules installed.
 
 * Machine learning and inference:
     * [scikit-learn](http://scikit-learn.org/)
-    * [PyMC](http://pymc-devs.github.io/pymc/)
+    * [PyMC3](http://pymc-devs.github.io/pymc/) Alpha (warning: experimental!)
     * [DEAP](https://code.google.com/p/deap/)
     * [fastcluster](http://danifold.net/fastcluster.html)
 
