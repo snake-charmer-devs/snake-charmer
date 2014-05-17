@@ -26,15 +26,18 @@ over Vagrant Cloud, and repackage them as new boxes.
 Finally, VMs allow you to set resource usage limits (e.g. on RAM and CPU) that
 can prevent runaway processes from rendering a machine unusable.
 
-### What are the advantages of Snake Charmer over Anaconda or Canopy?
+### What are the advantages of Snake Charmer over Anaconda, Canopy or Sage?
 
-These semi-commercial Scientific Python distributions provide free editions,
-but you are reliant on the goodwill of a commercial organisation -- and none
-of the advantages of VMs described above apply to these distros.
+Anaconda and Canopy are Scientific Python distributions providing free
+editions, but they are dependent on the support of a commercial organisation.
+None of the advantages of VMs described above apply to these distros. Sage is
+open source, run by a non-profit, and available as a VM, but is quite academic
+and focused largely on pure maths.
 
-Also, Snake Charmer aims to provide more up-to-date packages. At the time of
-writing, neither Anaconda nor Canopy support Python 3.4. And they tend to
-offer slightly older versions of packages.
+Also, Snake Charmer aims to provide more up-to-date software -- in fact, this
+is a key goal. At the time of writing, neither Sage nor Canopy support Python 3
+at all, and Anaconda doesn't support 3.4. Package versions are similarly
+limited.
 
 ### Are Snake Charmer VMs slow?
 
@@ -66,11 +69,12 @@ The default username and password `vagrant`/`vagrant` is the same for most
 Vagrant boxes, as is the insecure private key used for passwordless
 authentication. And even if you don't put any sensitive data into your VM,
 there [may still be ways](http://blog.ontoillogical.com/blog/2012/10/31/breaking-in-and-out-of-vagrant/)
-to get access to the host from the guest.
+to get access to the host from the guest. (We have closed that particular
+loophole but can't guarantee there aren't others.)
 
 In short, only use it on trusted networks.
 
-Hardening Snake Charmer would be very useful indeed -- any volunteers?
+Tightening security in Snake Charmer would be very useful indeed -- any volunteers?
 
 ### How can I connect to the VM by passwordless SSH from an application or script?
 

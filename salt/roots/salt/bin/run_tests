@@ -19,6 +19,7 @@ $PYTHON `which iptest3` -j $PARALLEL_THREADS --all > ipython.out 2>&1
 
 parallel --gnu --jobs $PARALLEL_THREADS bash -c {} <<COMMANDS
 $PYTHON /usr/local/lib/$PYTHON/dist-packages/tables/tests/test_all.py --heavy > pytables.out 2>&1
+$PYTHON -c "import sympy; sympy.runtests.run_all_tests()" > sympy.out 2>&1
 $PYTHON -c "import numpy; numpy.test('full')" > numpy.out 2>&1
 $PYTHON -c "import scipy; scipy.test('full')" > scipy.out 2>&1
 $PYTHON -c "import pymc; pymc.test('full')" > pymc.out 2>&1

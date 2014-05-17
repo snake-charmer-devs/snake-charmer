@@ -103,8 +103,8 @@ Vagrant sets up a number of synced folders, which are directories visible to
 both the VM and the host (your computer). Files placed in these will be visible
 to both the VM and the host, so this is a good way to make data available to
 the VMs. If you create more than one VM (feature coming soon!), files in synced
-folders will be visible to all of them -- apart from /srv/log which is specific
-to one VM only.
+folders will be visible to all of them -- apart from `/srv/log` which is
+specific to one VM only.
 
 The paths in the left-hand column are relative to the `snake-charmer` install
 directory -- your local copy of this repo.
@@ -134,8 +134,8 @@ take up real disk space on the host up to this limit, and then stops. But data
 stored in synced folders does not count towards this. So you will likely never
 reach the 80GB limit.
 
-If you want to make another folder available to the VM, see **Customizing your
-VMs** below.
+If you want to make another folder available to the VM, see the
+[customization guide](CUSTOMIZING.md).
 
 ## What is included
 
@@ -332,9 +332,13 @@ Only use the **host** filesystem to store data, notebooks etc. -- that is, the
 `data` and `notebooks` folders which are synced to the VM. If you store files
 in other places on a VM, they **will** be lost forever when you destroy it. 
 
-## Customizing your VMs
+## Sharing your VMs
 
 **TODO**
+
+## Customizing your VMs
+
+See the separate [customization guide](CUSTOMIZING.md).
 
 ## F.A.Q.
 
@@ -345,6 +349,9 @@ See the separate [Snake Charmer F.A.Q.](FAQ.md).
 Developed by [Andrew Clegg](https://github.com/andrewclegg) (Twitter:
 [@andrew_clegg](http://twitter.com/andrew_clegg)), tested at
 [Pearson](http://labs.pearson.com/).
+
+Thanks to the authors and contributors of all the world-class open source
+components included, whose hard work has made this possible.
 
 ## License
 
