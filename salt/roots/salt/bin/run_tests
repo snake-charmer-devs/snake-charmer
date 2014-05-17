@@ -13,22 +13,22 @@ cd $DIR # bash inherits CWD by default
 
 [ -d ~/.theano ] && find ~/.theano -depth -name lock_dir -exec rm -rf '{}' \;
 
-$PYTHON `which theano-nose` --processes=$THEANO_THREADS --process-timeout=9999 --process-restartworker --batch=100 --theano > theano.txt 2>&1 &
+$PYTHON `which theano-nose` --processes=$THEANO_THREADS --process-timeout=9999 --process-restartworker --batch=100 --theano > theano.out 2>&1 &
 
-$PYTHON `which iptest3` -j $PARALLEL_THREADS --all > ipython.txt 2>&1
+$PYTHON `which iptest3` -j $PARALLEL_THREADS --all > ipython.out 2>&1
 
 parallel --gnu --jobs $PARALLEL_THREADS bash -c {} <<COMMANDS
-$PYTHON /usr/local/lib/$PYTHON/dist-packages/tables/tests/test_all.py > pytables.txt 2>&1
-$PYTHON -c "import numpy; numpy.test('full')" > numpy.txt 2>&1
-$PYTHON -c "import scipy; scipy.test('full')" > scipy.txt 2>&1
-$PYTHON -c "import pymc; pymc.test('full')" > pymc.txt 2>&1
-$PYTHON -c "import matplotlib; matplotlib.test()" > matplotlib.txt 2>&1
-$PYTHON /usr/local/bin/nosetests pandas > pandas.txt 2>&1
-$PYTHON /usr/local/bin/nosetests sklearn --exe > scikit-learn.txt 2>&1
-$PYTHON /usr/local/bin/nosetests joblib > joblib.txt 2>&1
-(ln -s /srv/cache/src/Pillow/Images . && $PYTHON /srv/cache/src/Pillow/selftest.py --installed) > pillow.txt 2>&1
-$PYTHON /usr/local/lib/$PYTHON/dist-packages/nltk/test/runtests.py > nltk.txt 2>&1
-(cd /srv/cache/src/gensim && $PYTHON setup.py test) > gensim.txt 2>&1
+$PYTHON /usr/local/lib/$PYTHON/dist-packages/tables/tests/test_all.py > pytables.out 2>&1
+$PYTHON -c "import numpy; numpy.test('full')" > numpy.out 2>&1
+$PYTHON -c "import scipy; scipy.test('full')" > scipy.out 2>&1
+$PYTHON -c "import pymc; pymc.test('full')" > pymc.out 2>&1
+$PYTHON -c "import matplotlib; matplotlib.test()" > matplotlib.out 2>&1
+$PYTHON /usr/local/bin/nosetests pandas > pandas.out 2>&1
+$PYTHON /usr/local/bin/nosetests sklearn --exe > scikit-learn.out 2>&1
+$PYTHON /usr/local/bin/nosetests joblib > joblib.out 2>&1
+(ln -s /srv/cache/src/Pillow/Images . && $PYTHON /srv/cache/src/Pillow/selftest.py --installed) > pillow.out 2>&1
+$PYTHON /usr/local/lib/$PYTHON/dist-packages/nltk/test/runtests.py > nltk.out 2>&1
+(cd /srv/cache/src/gensim && $PYTHON setup.py test) > gensim.out 2>&1
 COMMANDS
 
 # Don't quit until all children return

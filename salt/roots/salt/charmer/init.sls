@@ -206,7 +206,7 @@ gensim_install:
 
 run_tests:
     cmd.run:
-        - name: /root/bin/run_tests python{{ pyver }} ~/test_output {{ theano_threads }} {{ parallel_threads }}
+        - name: /root/bin/run_tests python{{ pyver }} /srv/log/test_output {{ theano_threads }} {{ parallel_threads }}
         - user: vagrant
         - group: vagrant
 
