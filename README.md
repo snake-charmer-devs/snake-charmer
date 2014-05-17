@@ -148,7 +148,9 @@ It is designed to be used primarily via IPython Notebook.
 The environment is based on Ubuntu 12.04 and Python 3.4, with
 the following modules installed.
 
-*N.B. package version numbers will be frozen and listed here, when first Snake Charmer stable version is released.*
+Packages marked 'alpha' or 'dev' should be considered experimental, although
+in many cases they are largely problem-free. We will endeavour to discover and
+document any known issues [here](https://github.com/andrewclegg/snake-charmer/issues).
 
 * Data handling and processing:
     * [IPython](http://ipython.org/) 2.0.0
@@ -174,7 +176,7 @@ the following modules installed.
 
 * Natural language processing and text mining:
     * [gensim](http://radimrehurek.com/gensim) 0.9.1
-    * [NLTK](http://www.nltk.org/nltk3-alpha/) 3.0 alpha 3
+    * [NLTK](http://www.nltk.org/nltk3-alpha/) 3.0 alpha 3 (very experimental)
 
 * Numeric and statistical computing:
     * [NumPy](http://www.numpy.org/) 1.8.1
