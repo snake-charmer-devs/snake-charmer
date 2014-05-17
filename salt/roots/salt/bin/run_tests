@@ -22,11 +22,6 @@ sudo $PYTHON `which iptest3` --all show parallel > ipython.parallel.out 2>&1
 
 # Then just bring the others in slowly, with progressively lower priority
 
-# IPython
-
-nice -n -15 $PYTHON `which iptest3` --all show html kernel.inprocess autoreload terminal core kernel lib qt nbformat testing nbconvert config extensions utils > ipython.OTHERS.out 2>&1 &
-
-
 # PyTables
 
 sleep 1m
@@ -41,11 +36,9 @@ sleep 1m
 nice -n -13 nosetests --exe sympy > sympy.out 2>&1 &
 
 
-# Numba
+# IPython
 
-sleep 1m
-
-nice -n -12 $PYTHON -c "import numba.testing as test; test.multitest()" > numba.out 2>&1 &
+nice -n -12 $PYTHON `which iptest3` --all show html kernel.inprocess autoreload terminal core kernel lib qt nbformat testing nbconvert config extensions utils > ipython.OTHERS.out 2>&1 &
 
 
 # PyMC
@@ -136,7 +129,6 @@ sleep 1m
 sleep 1m
 
 (cd /srv/cache/src/Cython/ && nice -n 0 $PYTHON runtests.py -vv) > cython.out 2>&1 &
-
 
 
 # Bottleneck
