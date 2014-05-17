@@ -39,7 +39,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  install_plugins "vagrant-vbguest", "vagrant-cachier"
+  install_plugins "vagrant-vbguest"
 
   # Create data and log directories
   mkdir 'data'
