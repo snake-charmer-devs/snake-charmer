@@ -24,7 +24,7 @@ apt_pkgs:
     - libxml2-dev: 2.7.8.dfsg-5.1ubuntu4.7
     - libxslt1-dev: 1.1.26-8ubuntu1.3
     - libzmq-dev: 2.1.11-1ubuntu1
-    - llvm-3.3-dev: 3.3-5ubuntu4~precise1
+    - llvm-3.3-dev: 1:3.3-5ubuntu4~precise1
     - parallel: 20121122-0ubuntu1~ubuntu12.04.1
     - pandoc: 1.9.1.1-1
     - python-software-properties: 0.82.7.7
@@ -123,7 +123,7 @@ pip_pkgs:
     - name:   llvmpy
       git:    https://github.com/llvmpy/llvmpy.git
       rev:    34900d27481bd3457a4fac03569eb152b0fa8678
-      setup:  LLVM_CONFIG_PATH=/usr/bin/llvm-config-3.3 python3.4 setup.py install
+      setup:  (LLVM_CONFIG_PATH=/usr/bin/llvm-config-3.3 python3.4 setup.py install)
     - name:   numba
       git:    https://github.com/numba/numba.git
       rev:    4b9a36e7b344823fa2d2bb85221a14ff9e0abb03
