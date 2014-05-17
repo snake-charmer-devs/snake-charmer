@@ -11,23 +11,30 @@ def get_env(key, default)
   end
 end
 
-def mkdir(dir)
-  Dir.mkdir dir unless File.exists? dir
+def mkdir(*dirs)
+  dirs.each do |dir|
+    Dir.mkdir dir unless File.exists? dir
+  end
 end
 
 def install_plugins(*plugins)
+  needs_restart = false
+
   plugins.each do |plugin|
     unless Vagrant.has_plugin? plugin
       # Install vbguest via another vagrant process; wait for completion
       cmd1 = ["vagrant", "plugin", "install", plugin]
       system *cmd1
+      needs_restart = true
     end
   end
 
-  # Now restart vagrant with same args as current invocation
-  cmd2 = ARGV
-  cmd2.unshift "vagrant"
-  exec *cmd2
+  if needs_restart
+    # Restart vagrant with same args as current invocation
+    cmd2 = ARGV
+    cmd2.unshift "vagrant"
+    exec *cmd2
+  end
 end
 
 
@@ -42,8 +49,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   install_plugins "vagrant-vbguest"
 
   # Create data and log directories
-  mkdir 'data'
-  mkdir 'log'
+  mkdir "data", "log", ".cache"
 
   # Workaround for https://www.virtualbox.org/ticket/12879
   # (missing symlink in guest additions package)
