@@ -203,7 +203,7 @@ gensim_install:
 
 run_tests:
     cmd.run:
-        - name: /root/bin/run_tests python{{ pyver }} /srv/log/test_output {{ grains['num_cpus'] }}
+        - name: /root/bin/run_tests python{{ pyver }} /srv/log/test_output
 
 {% endif %}
 
