@@ -6,6 +6,7 @@ apt_pkgs:
     - g++: 4:4.6.3-1ubuntu5
     - gfortran: 4:4.6.3-1ubuntu5
     - git: 1:1.7.9.5-1
+    - htop: 1.0.1-1
     - libatlas-base-dev: 3.8.4-3build1
     - libatlas-dev: 3.8.4-3build1
     - libatlas3gf-base: 3.8.4-3build1
@@ -102,7 +103,7 @@ pip_pkgs:
       rev:    84a701a82b33896a4d6997743c2131ab0a40c588
     - name:   joblib
       git:    https://github.com/joblib/joblib.git
-      rev:    6c4abdb0461e65857ef3b9dd5247a6d8911ce54e
+      rev:    f76129c888394a6b32aab8e6436c74c0b2ee842c
     - name:   rpy2
       ver:    ==2.3.10
     - name:   pyyaml

@@ -3,15 +3,24 @@
 import urllib.request
 from sys import argv
 
-{% for pkg in pillar['pip_pkgs'] %}
+{% set pkgs = pillar['pip_pkgs'] %}
+{# FIXME #}
+{% do pkgs.append({'name': 'gensim'}) %}
+{% for pkg in pkgs %}
+
 {% if pkg['import'] is defined %}
-print("Checking {{ pkg['import'] }} is intact...")
-import {{ pkg['import'] }}
+    {% set name = pkg['import'] %}
 {% else %}
-print("Checking {{ pkg['name']|lower }} is intact...")
-import {{ pkg['name']|lower }}
+    {% set name = pkg['name']|lower %}
 {% endif %}
-print("OK")
+
+print("Checking {{ name }} is intact...")
+import {{ name }}
+try:
+    print("Imported {{ name }} %s OK" % {{ name }}.__version__)
+except AttributeError:
+    print("Imported {{ name }} %s OK")
+
 {% endfor %}
 
 req = urllib.request.Request('{{ nb_url }}')
