@@ -132,10 +132,18 @@ pip:
         - mode: 655
     {% endif %}
 
-# Build and install from local working copy
+    {% if pkg['setup'] is defined %}
+# Non-pip custom installation is required
+{{ name }}_install:
+    cmd.run:
+        - name: {{ pkg['setup'] }} >> "{{ piplog }}" 2>&1
+        - cwd: {{ src }}
+    {% else %}
+# Build and install from local working copy via pip
 {{ name }}_install:
     cmd.run:
         - name: {{ pip }} install --log "{{ piplog }}" "{{ src }}"
+    {% endif %}
 
 {% else %}
 
@@ -188,20 +196,6 @@ nltk_data:
         - group: vagrant
 
 {% endif %}
-
-# gensim pip installation appears to be broken -- temp workaround
-
-{% set src = gitcache ~ '/gensim' %}
-
-https://github.com/piskvorky/gensim.git:
-    git.latest:
-        - rev: d1c6d58b9acfec97e6c5d677c652293ae2119276
-        - target: {{ src }}
-        - force_checkout: true
-
-gensim_install:
-    cmd.run:
-        - name: cd {{ src }} && python{{ pyver }} setup.py install
 
 {% if pillar.get('run_tests', false) %}
 
