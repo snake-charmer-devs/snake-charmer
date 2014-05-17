@@ -167,9 +167,15 @@ local_mathjax:
     file.symlink:
         - target: /root/bin/ipynb.upstart
 
-ipynb:
-    service.running:
-        - enable: True
+ipynb_enable:
+    module.run:
+        - name: upstart.enable
+        - m_name: ipynb
+
+ipynb_start:
+    module.run:
+        - name: upstart.start
+        - m_name: ipynb
 
 {% if not pillar.get('slimline', false) %}
 
