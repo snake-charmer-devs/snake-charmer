@@ -175,6 +175,10 @@ local_mathjax:
     file.symlink:
         - target: /root/bin/ipynb.upstart
 
+# Why is this even necessary dammit!
+initctl reload-configuration:
+    cmd.run
+
 ipynb:
     service.running:
         - enable: True
