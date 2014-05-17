@@ -151,47 +151,47 @@ the following modules installed.
 *N.B. package version numbers will be frozen and listed here, when first Snake Charmer stable version is released.*
 
 * Data handling and processing:
-    * [IPython](http://ipython.org/)
-        * [runipy](https://pypi.python.org/pypi/runipy)
-    * [Pandas](http://pandas.pydata.org/)
-    * [PyTables](http://www.pytables.org/moin)
-    * [lxml](http://lxml.de/lxmlhtml.html)
-    * [Psycopg](http://initd.org/psycopg/)
-    * [joblib](https://pythonhosted.org/joblib/)
+    * [IPython](http://ipython.org/) 2.0.0
+        * [runipy](https://pypi.python.org/pypi/runipy) 0.0.8
+    * [Pandas](http://pandas.pydata.org/) 0.13.1
+    * [PyTables](http://www.pytables.org/moin) 3.1.1
+    * [lxml](http://lxml.de/lxmlhtml.html) 3.3.5
+    * [Psycopg](http://initd.org/psycopg/) 2.5.2
+    * [joblib](https://pythonhosted.org/joblib/) 0.8.0 alpha 3
 
 * Graphics and visualization:
-    * [Matplotlib](http://matplotlib.org/)
-    * [prettyplotlib](http://olgabot.github.io/prettyplotlib/)
-    * [brewer2mpl](https://github.com/jiffyclub/brewer2mpl)
-    * [Seaborn](http://www.stanford.edu/~mwaskom/software/seaborn/)
-    * [Pillow](http://python-imaging.github.io/)
+    * [Matplotlib](http://matplotlib.org/) 1.3.1
+    * [prettyplotlib](http://olgabot.github.io/prettyplotlib/) 0.1.7
+    * [brewer2mpl](https://github.com/jiffyclub/brewer2mpl) 1.4
+    * [Seaborn](http://www.stanford.edu/~mwaskom/software/seaborn/) 0.3.1
+    * [Pillow](http://python-imaging.github.io/) 2.4.0
 
 * Machine learning and inference:
-    * [scikit-learn](http://scikit-learn.org/)
-    * [PyMC3](http://pymc-devs.github.io/pymc/) Alpha (warning: experimental!)
-    * [DEAP](https://code.google.com/p/deap/)
-    * [fastcluster](http://danifold.net/fastcluster.html)
+    * [scikit-learn](http://scikit-learn.org/) 0.15 dev
+    * [PyMC](http://pymc-devs.github.io/pymc/) 3.0 alpha
+    * [DEAP](https://code.google.com/p/deap/) 1.0.1
+    * [fastcluster](http://danifold.net/fastcluster.html) 1.1.13
 
 * Natural language processing and text mining:
-    * [gensim](http://radimrehurek.com/gensim)
-    * [NLTK](http://www.nltk.org/nltk3-alpha/) 3.0 Alpha (warning: experimental!)
+    * [gensim](http://radimrehurek.com/gensim) 0.9.1
+    * [NLTK](http://www.nltk.org/nltk3-alpha/) 3.0 alpha 3
 
 * Numeric and statistical computing:
-    * [NumPy](http://www.numpy.org/)
-    * [SciPy](http://www.scipy.org/)
-    * [Bottleneck](http://berkeleyanalytics.com/bottleneck/)
-    * [Statsmodels](http://statsmodels.sourceforge.net/)
-    * [Patsy](http://patsy.readthedocs.org/en/latest/)
-    * [Theano](http://deeplearning.net/software/theano/)
-    * [numexpr](https://github.com/pydata/numexpr)
-    * [SymPy](http://sympy.org/)
-    * [Cython](http://cython.org/)
+    * [NumPy](http://www.numpy.org/) 1.8.1
+    * [SciPy](http://www.scipy.org/) 0.13.3
+    * [Bottleneck](http://berkeleyanalytics.com/bottleneck/) 0.8.0
+    * [Statsmodels](http://statsmodels.sourceforge.net/) 0.6.0 dev
+    * [Patsy](http://patsy.readthedocs.org/en/latest/) 0.2.1
+    * [Theano](http://deeplearning.net/software/theano/) 0.6.0 dev
+    * [numexpr](https://github.com/pydata/numexpr) 2.4
+    * [SymPy](http://sympy.org/) 0.7.5
+    * [Cython](http://cython.org/) 0.21 dev
 
 * Non-Python tools:
-    * [GNU Parallel](http://www.gnu.org/software/parallel/)
-    * [R](http://www.r-project.org/)
+    * [GNU Parallel](http://www.gnu.org/software/parallel/) 20121122
+    * [R](http://www.r-project.org/) 2.14.1
         * [r-base-dev and r-recommended](http://cran.r-project.org/bin/linux/ubuntu/) packages
-        * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) for Python integration
+        * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) 2.3.10 for Python integration
 
 Coming soon: Other Python versions. Ubuntu 14.04 LTS.
 
