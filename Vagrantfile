@@ -130,7 +130,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Write top of git log into data so we can show it in Hello World notebook
-  system "git log -n 1 > data/last_commit.txt"
+  system "(git log -n 1 || echo 'commit not found') > data/last_commit.txt 2>/dev/null"
 
 end
 
