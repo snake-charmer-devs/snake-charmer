@@ -145,18 +145,21 @@ visualization.
 
 It is designed to be used primarily via IPython Notebook.
 
-The environment is based on Ubuntu 12.04 and Python 3.4, with
-the following modules installed.
+The environment is based on Ubuntu 12.04 and Python 3.4, with the following
+data science tools included. You are of course free to install any other Python
+or Ubuntu packages -- or anything else that fits your need.
 
 Packages marked 'alpha' or 'dev' should be considered experimental, although
 in many cases they are largely problem-free. We will endeavour to discover and
 document any known issues [here](https://github.com/andrewclegg/snake-charmer/issues).
 
-* Data handling and processing:
+* Data handling tools, libraries and misc:
     * [IPython](http://ipython.org/) 2.0.0
         * [runipy](https://pypi.python.org/pypi/runipy) 0.0.8
     * [Pandas](http://pandas.pydata.org/) 0.13.1
     * [PyTables](http://www.pytables.org/moin) 3.1.1
+    * [Cython](http://cython.org/) 0.21 dev
+    * [Numba](https://github.com/numba/numba/) 0.13.1
     * [lxml](http://lxml.de/lxmlhtml.html) 3.3.5
     * [Psycopg](http://initd.org/psycopg/) 2.5.2
     * [joblib](https://pythonhosted.org/joblib/) 0.8.0 alpha 3
@@ -187,7 +190,6 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [Theano](http://deeplearning.net/software/theano/) 0.6.0
     * [numexpr](https://github.com/pydata/numexpr) 2.4
     * [SymPy](http://sympy.org/) 0.7.5
-    * [Cython](http://cython.org/) 0.21 dev
 
 * Non-Python tools:
     * [GNU Parallel](http://www.gnu.org/software/parallel/) 20121122
