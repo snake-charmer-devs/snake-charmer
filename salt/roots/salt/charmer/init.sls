@@ -201,12 +201,9 @@ gensim_install:
 
 # Run full test suite
 
-{% set theano_threads = grains['num_cpus'] // 2 %}
-{% set parallel_threads = grains['num_cpus'] - theano_threads %}
-
 run_tests:
     cmd.run:
-        - name: /root/bin/run_tests python{{ pyver }} /srv/log/test_output {{ theano_threads }} {{ parallel_threads }}
+        - name: /root/bin/run_tests python{{ pyver }} /srv/log/test_output {{ grains['num_cpus'] }}
 
 {% endif %}
 
