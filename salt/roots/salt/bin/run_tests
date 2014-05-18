@@ -5,11 +5,16 @@ DIR=$2
 
 rm -rf $DIR
 mkdir $DIR
-cd $DIR # bash inherits CWD by default
+cd $DIR # child processes inherit CWD by default
+
+
+# PyTables, SymPy and PyMC are currently slowest -- and Theano too if we take
+# it off FAST_COMPILE.
 
 
 # Put nicely-behaved well-distributed tests that use all cores evenly first --
 # just coincidence that both of these need root
+
 
 # Numba
 
@@ -21,6 +26,7 @@ sudo $PYTHON `which iptest3` --all show parallel > ipython.parallel.out 2>&1
 
 
 # Then just bring the others in slowly, with progressively lower priority
+
 
 # PyTables
 
@@ -34,16 +40,11 @@ sleep 30
 nice -n -13 nosetests --exe sympy > sympy.out 2>&1 &
 
 
-# IPython
-
-nice -n -12 $PYTHON `which iptest3` --all show html kernel.inprocess autoreload terminal core kernel lib qt nbformat testing nbconvert config extensions utils > ipython.OTHERS.out 2>&1 &
-
-
 # PyMC
 
 sleep 30
 
-nice -n -11 $PYTHON -c "import pymc; pymc.test('full')" > pymc.out 2>&1 &
+nice -n -12 $PYTHON -c "import pymc; pymc.test('full')" > pymc.out 2>&1 &
 
 
 # Theano
@@ -54,9 +55,16 @@ export OLDFLAGS=$THEANO_FLAGS
 
 export THEANO_FLAGS='mode=FAST_COMPILE' # Although maybe it's a better test with full optimizations included?
 
-nice -n -10 $PYTHON `which theano-nose` --batch=100 --theano > theano.out 2>&1 &
+nice -n -11 $PYTHON `which theano-nose` --batch=100 --theano > theano.out 2>&1 &
 
 export THEANO_FLAGS=$OLDFLAGS
+
+
+# Matpotlib
+
+sleep 30
+
+nice -n -10 $PYTHON -c "import matplotlib; matplotlib.test()" > matplotlib.out 2>&1 &
 
 
 # NumPy
@@ -73,11 +81,9 @@ sleep 30
 nice -n -8 $PYTHON -c "import scipy; scipy.test('full')" > scipy.out 2>&1 &
 
 
-# Matpotlib
+# IPython
 
-sleep 30
-
-nice -n -7 $PYTHON -c "import matplotlib; matplotlib.test()" > matplotlib.out 2>&1 &
+nice -n -7 $PYTHON `which iptest3` --all show html kernel.inprocess autoreload terminal core kernel lib qt nbformat testing nbconvert config extensions utils > ipython.OTHERS.out 2>&1 &
 
 
 # Pandas
@@ -155,9 +161,6 @@ nice -n 3 $PYTHON /usr/local/bin/nosetests numexpr > numexpr.out 2>&1 &
 sleep 30
 
 nice -n 4 $PYTHON /usr/local/bin/nosetests patsy > patsy.out 2>&1 &
-
-
-
 
 
 wait
