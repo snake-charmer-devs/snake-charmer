@@ -206,7 +206,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 
 Coming soon: Other Python versions. Ubuntu 14.04 LTS.
 
-Potential future additions include: pattern, CrossCat, BayesDB, Bokeh, Blaze,
+Potential future additions include: Parakeet, pattern, CrossCat, BayesDB, Bokeh, Blaze,
 numdifftools, PuLP, numdifftools, CVXPY, SysCorr, bayesian, PEBL, libpgm,
 BayesPy, STAN, BayesOpt, mpld3, Pylearn2, nimfa, py-earth, Orange, NeuroLab,
 PyBrain, scikits-sparse, other scikits, annoy, Zipline, Quandl, BNFinder,
