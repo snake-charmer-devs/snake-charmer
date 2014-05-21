@@ -153,15 +153,11 @@ Packages marked 'alpha' or 'dev' should be considered experimental, although
 in many cases they are largely problem-free. We will endeavour to discover and
 document any known issues [here](https://github.com/andrewclegg/snake-charmer/issues).
 
-* Data handling tools, libraries and misc:
+* Data handling and processing tools:
     * [IPython](http://ipython.org/) 2.0.0
         * [runipy](https://pypi.python.org/pypi/runipy) 0.0.8
     * [Pandas](http://pandas.pydata.org/) 0.13.1
     * [PyTables](http://www.pytables.org/moin) 3.1.1
-    * [Cython](http://cython.org/) 0.21 dev
-    * [Numba](https://github.com/numba/numba/) 0.13.1
-    * [lxml](http://lxml.de/lxmlhtml.html) 3.3.5
-    * [Psycopg](http://initd.org/psycopg/) 2.5.2
     * [joblib](https://pythonhosted.org/joblib/) 0.8.0 alpha 3
 
 * Graphics and visualization:
@@ -191,15 +187,26 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [numexpr](https://github.com/pydata/numexpr) 2.4
     * [SymPy](http://sympy.org/) 0.7.5
 
+* Performance optimization:
+    * [Cython](http://cython.org/) 0.21 dev
+    * [Numba](https://github.com/numba/numba/) 0.13.1
+
+* Connectivity and interoperability:
+    * [lxml](http://lxml.de/lxmlhtml.html) 3.3.5
+    * [Psycopg](http://initd.org/psycopg/) 2.5.2
+
 * Non-Python tools:
-    * [GNU Parallel](http://www.gnu.org/software/parallel/) 20121122
+    * [Parallel](http://www.gnu.org/software/parallel/) 20121122
     * [R](http://www.r-project.org/) 2.14.1
         * [r-base-dev and r-recommended](http://cran.r-project.org/bin/linux/ubuntu/) packages
         * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) 2.3.10 for Python integration
+    * [Octave](http://www.gnu.org/software/octave/) 3.2.4
+        * [oct2py](https://pypi.python.org/pypi/oct2py) and [octavemagic](http://nbviewer.ipython.org/github/blink1073/oct2py/blob/master/example/octavemagic_extension.ipynb) 1.3.0 for iPython integration
+
 
 Coming soon: Other Python versions. Ubuntu 14.04 LTS.
 
-Potential future additions include: Numba, CrossCat, BayesDB, Bokeh, Blaze,
+Potential future additions include: pattern, CrossCat, BayesDB, Bokeh, Blaze,
 numdifftools, PuLP, numdifftools, CVXPY, SysCorr, bayesian, PEBL, libpgm,
 BayesPy, STAN, BayesOpt, mpld3, Pylearn2, nimfa, py-earth, Orange, NeuroLab,
 PyBrain, scikits-sparse, other scikits, annoy, Zipline, Quandl, BNFinder,

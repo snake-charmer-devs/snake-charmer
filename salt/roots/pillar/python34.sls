@@ -25,6 +25,7 @@ apt_pkgs:
     - libxslt1-dev: 1.1.26-8ubuntu1.3
     - libzmq-dev: 2.1.11-1ubuntu1
     - llvm-3.3-dev: 1:3.3-5ubuntu4~precise1
+    - octave3.2: 3.2.4-12
     - parallel: 20121122-0ubuntu1~ubuntu12.04.1
     - pandoc: 1.9.1.1-1
     - python-software-properties: 0.82.7.7
@@ -105,8 +106,12 @@ pip_pkgs:
     - name:   joblib
       git:    https://github.com/joblib/joblib.git
       rev:    f76129c888394a6b32aab8e6436c74c0b2ee842c
+    - name:   pexpect
+      ver:    ==3.2
     - name:   rpy2
       ver:    ==2.3.10
+    - name:   oct2py
+      ver:    ==1.3.0
     - name:   pyyaml
       import: yaml
       ver:    ==3.11
