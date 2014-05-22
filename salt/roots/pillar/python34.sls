@@ -71,7 +71,8 @@ pip_pkgs:
     - name:   fastcluster
       ver:    ==1.1.13
     - name:   sympy
-      ver:    ==0.7.5
+      git:    https://github.com/sympy/sympy.git
+      rev:    254d99c1c2bfbd4f634f61cd5a444c8a3e79450b
     - name:   pandas
       ver:    ==0.13.1
     - name:   nose
