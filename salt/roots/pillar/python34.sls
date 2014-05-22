@@ -87,7 +87,8 @@ pip_pkgs:
     - name:   brewer2mpl
       ver:    ==1.4
     - name:   prettyplotlib
-      ver:    ==0.1.7
+      git:    https://github.com/olgabot/prettyplotlib.git
+      rev:    fc04d6e4f5edf1d402f51abeacc0dfd5132f60be
     - name:   seaborn
       ver:    ==0.3.1
     - name:   ipython[all]
