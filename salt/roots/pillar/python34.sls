@@ -51,7 +51,8 @@ pip_pkgs:
     - name:   Bottleneck
       ver:    ==0.8.0
     - name:   matplotlib
-      ver:    ==1.3.1
+      git:    https://github.com/matplotlib/matplotlib.git
+      rev:    4b1bd6301d69f856deca9c614af563f5fb4d1e90
     - name:   patsy
       ver:    ==0.2.1
     - name:   numexpr
@@ -74,12 +75,13 @@ pip_pkgs:
       git:    https://github.com/sympy/sympy.git
       rev:    254d99c1c2bfbd4f634f61cd5a444c8a3e79450b
     - name:   pandas
-      ver:    ==0.13.1
+      git:    https://github.com/pydata/pandas.git
+      rev:    bfd5348d824a721dd0d896bb06e63e4ad801ba51
     - name:   nose
       ver:    ==1.3.3
     - name:   statsmodels
       git:    https://github.com/statsmodels/statsmodels.git
-      rev:    d7ff1828cbd7c869f93aa86ea7dcd937fa90f5ff
+      rev:    3adaa1a0738131bd2441eb45b1c090a4777d7068
     - name:   pymc
       git:    https://github.com/andrewclegg/pymc
       rev:    66c3f3743de9c39643ba4fb3ef14f79e4845e8f3

@@ -76,6 +76,7 @@ python_pkgs:
             - python{{ pyver }}
             - python{{ pyver }}-dev
             - python{{ pyver }}-doc
+            - python{{ pyver }}-tk
 
 {% set easy_install = 'easy_install-' ~ pyver %}
 {% set pip = 'pip' ~ pyver %}
