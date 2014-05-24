@@ -241,4 +241,16 @@ This will be covered in detail in a later release.
 ### Running the test suites
 
 We supply a notebook called "Snake Charmer QA" which runs the test suites for
-the major components
+the major Python packages used. This is a big job -- we recommend using a
+server-grade VM with at least 12 vCPUS and 8GB of RAM, and even with that
+setup, the whole process will take more than four hours.
+
+So, we recommend you only do this if you've made a modification to one of the
+fundamental underlying components, for example NumPy. Unless you have server
+time to spare...
+
+However, it's easy to edit that notebook to run only specific tests of
+interest.  It's also straightforward to add new tests for packages you've added
+yourself.  Instructions are included within the notebook.
+
+
