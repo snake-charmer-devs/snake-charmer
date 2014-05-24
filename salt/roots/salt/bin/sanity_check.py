@@ -5,7 +5,6 @@ from sys import argv
 
 {% set pkgs = pillar['pip_pkgs'] %}
 {# FIXME #}
-{% do pkgs.append({'name': 'gensim'}) %}
 {% for pkg in pkgs %}
 
 {% if pkg['import'] is defined %}

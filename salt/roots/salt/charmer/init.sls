@@ -108,6 +108,7 @@ pip:
 {% if pkg['git'] is defined %}
     {% set url = pkg['git'] %}
     {% set src = gitcache ~ '/' ~ name %}
+    {% set dev_pkgs = '/home/vagrant/lib/dev-packages' %}
 
 # Checkout/refresh from github
 {{ url }}:
@@ -133,17 +134,29 @@ pip:
         - mode: 655
     {% endif %}
 
+    {% if pkg.get('export', false) %}
+        {% set install_from = dev_pkgs ~ '/' ~ name %}
+# Copy out of cache before installing
+{{ name }}_export:
+    cmd.run:
+        - name: git checkout-index -a -f --prefix={{ install_from }}/
+        - cwd: {{ src }}
+        - user: vagrant
+    {% else %}
+        {% set install_from = src %}
+    {% endif %}
+
     {% if pkg['setup'] is defined %}
 # Non-pip custom installation is required
 {{ name }}_install:
     cmd.run:
         - name: {{ pkg['setup'] }} >> "{{ piplog }}" 2>&1
-        - cwd: {{ src }}
+        - cwd: {{ install_from }}
     {% else %}
-# Build and install from local working copy via pip
+# Build and install from local copy via pip
 {{ name }}_install:
     cmd.run:
-        - name: {{ pip }} install --log "{{ piplog }}" "{{ src }}"
+        - name: {{ pip }} install --log "{{ piplog }}" "{{ install_from }}"
     {% endif %}
 
 {% else %}
