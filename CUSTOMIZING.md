@@ -28,18 +28,6 @@ If set to "true" this will disable downloading of some example data files after
 provisioning, to speed up VM creation. Currently this just disables the
 [NLTK downloader](http://www.nltk.org/data.html).
 
-* `CHARMER_TEST` (boolean; default "false")
-
-If set to "true" this will run test suites for the major packages supplied, at
-the end of provisioning. The results will be written into
-`log/<VM name>/test_output`.
-
-**This will take several hours even on a decent server.** Raise `CHARMER_CPUS`
-as high as you can (not more than your host machine's number of cores though)
-as tests are run in parallel where possible. Make sure you raise `CHARMER_RAM`
-high enough to avoid swapping or out-of-memory errors. We use 16 CPUs and 16GB
-RAM for testing.
-
 ### Editing the package list
 
 **TODO**
