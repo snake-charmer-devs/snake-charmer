@@ -47,7 +47,7 @@ can prevent runaway processes from rendering a machine unusable.
 ### What are the advantages of Snake Charmer over Anaconda, Canopy or Sage?
 
 Anaconda and Canopy are Scientific Python distributions providing free
-editions, but they are dependent on the support of a commercial organisation.
+editions, but they have licensing limitations and closed ecosystems.
 None of the advantages of VMs described above apply to these distros. Sage is
 open source, run by a non-profit, and available as a VM, but is quite academic
 and focused largely on pure maths.
