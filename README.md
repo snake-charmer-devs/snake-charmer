@@ -8,9 +8,9 @@ VirtualBox and Salt.
 ## Introduction
 
 Wouldn't it be great if you could magic up a local IPython Notebook server,
-complete with SciPy, Pandas, Matplotlib, PyMC, scikit-learn, R integration,
-and all the usual goodness, and running the latest version of Python, just
-by typing one line?
+complete with SciPy, Pandas, Matplotlib, PyMC, scikit-learn, R and Octave
+integration, and all the usual goodness, and running the latest version of
+Python, just by typing one line?
 
     vagrant up charmed34
 
@@ -26,116 +26,6 @@ If you are interested in being an early adopter, please keep a close eye on
 the commits and issues here -- I am finding and fixing bugs almost daily.
 
 Thanks! -- [Andrew](https://twitter.com/andrew_clegg).
-
-## Requirements
-
-Snake Charmer runs IPython and all the associated tools in a sandboxed virtual
-machine. It relies on [Vagrant](http://www.vagrantup.com/) for creating and
-managing these, and [VirtualBox](https://www.virtualbox.org/) for running them
--- so please go and install those now.
-
-*Experienced users of other virtualization platforms can edit the Vagrantfile
-to use one of these instead, if they prefer.*
-
-Everything else is installed automatically. See below for a
-[list of included packages](#what-is-included).
-
-## Getting started
-
-Check out this git repository:
-
-    git clone git@github.com:andrewclegg/snake-charmer.git
-    cd snake-charmer
-
-Start the VM:
-
-    vagrant up charmed34
-
-*If you're already a Vagrant user, be aware that Snake Charmer's Vagrantfile
-will attempt to install the [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest/)
-plugin automatically.*
-
-This command currently takes around an hour to download and install all the
-necessary software. When this completes, it will run some tests and then
-display a message like this:
-
-    Your VM is up and running: http://localhost:8834/tree
-
-This link will take you to a fully-kitted-out IPython Notebook server. Open the
-"Hello World" notebook to see a full list of installed packages and other
-system information. *N.B.* The notebook server is started with inline graphics
-enabled for matplotlib, but _not_ `--pylab`, as this is
-[considered harmful](http://carreau.github.io/posts/10-No-PyLab-Thanks.ipynb.html).
-
-On a VM that's already been fully configured, `vagrant up` will just restart
-it, without going through the full install process.
-
-You can log into the server via
-
-    vagrant ssh charmed34
-
-from the same directory, for full command-line control. It's an Ubuntu 12.04
-box, under the covers.
-
-Some more useful commands:
-
-    vagrant reload charmed34  # reboot the VM
-    vagrant halt charmed34    # shut down the VM, reclaim the memory it used
-    vagrant destroy charmed34 # wipe it completely, reclaiming disk space too
-    vagrant suspend charmed34 # 'hibernate' the machine, saving current state
-    vagrant resume charmed34  # 'unhibernate' the machine
-
-See the [Vagrant docs](http://docs.vagrantup.com/v2/cli/index.html) for more
-details.
-
-### Folder structure
-
-The notebook server runs from within the `notebooks` subdirectory of the
-current `snake-charmer` directory, and initially contains a single "Hello
-World" notebook.
-
-Snake Charmer uses IPython 2 so any subdirectories of `notebooks` will be
-visible and navigable as folders in the IPython web interface. However, you
-can't actually *create* directories from the web interface yet, so you'd need
-to log in via ssh, or just enter a shell command into IPython with `!`.
-
-Vagrant sets up a number of synced folders, which are directories visible to
-both the VM and the host (your computer). Files placed in these will be visible
-to both the VM and the host, so this is a good way to make data available to
-the VMs. If you create more than one VM (feature coming soon!), files in synced
-folders will be visible to all of them -- apart from `/srv/log` which is
-specific to one VM only.
-
-The paths in the left-hand column are relative to the `snake-charmer` install
-directory -- your local copy of this repo.
-
-    Folder on your computer   Folder within VM         Contents
-    ------------------------  -----------------------  --------
-    notebooks                 /home/vagrant/notebooks  Any notebooks
-    data                      /home/vagrant/data       Data you wish to share (initially empty)
-    .cache                    /srv/cache               Cache for downloaded files
-    log/charmed34             /srv/log                 Certain setup logs, useful for debugging only
-    salt/roots/salt           /srv/salt                Config management information (ignore this)
-    salt/roots/pillar         /srv/pillar              Config management information (ignore this)
-
-### Data persistence
-
-If you get your VM into a mess somehow, you can just type
-
-    vagrant destroy charmed34
-    vagrant up charmed34
-
-to build a new one. Files in synced folders will not be affected if you do
-this, so you won't lose any data or notebooks. However, any data stored on the
-VM but *outside* these synced folders will be lost.
-
-The virtual disk on each VM is configured with an 80GB limit -- it grows to
-take up real disk space on the host up to this limit, and then stops. But data
-stored in synced folders does not count towards this. So you will likely never
-reach the 80GB limit.
-
-If you want to make another folder available to the VM, see the
-[customization guide](CUSTOMIZING.md).
 
 ## What is included
 
@@ -203,11 +93,10 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [Octave](http://www.gnu.org/software/octave/) 3.2.4
         * [oct2py](https://pypi.python.org/pypi/oct2py) and [octavemagic](http://nbviewer.ipython.org/github/blink1073/oct2py/blob/master/example/octavemagic_extension.ipynb) 1.3.0 for iPython integration
 
-
 Coming soon: Other Python versions. Ubuntu 14.04 LTS.
 
-Potential future additions include: Parakeet, pattern, CrossCat, BayesDB, Bokeh, Blaze,
-numdifftools, PuLP, numdifftools, CVXPY, SysCorr, bayesian, PEBL, libpgm,
+Potential future additions include: Parakeet, pattern, CrossCat, BayesDB,
+Bokeh, Blaze, numdifftools, PuLP, CVXPY, SysCorr, bayesian, PEBL, libpgm,
 BayesPy, STAN, BayesOpt, mpld3, Pylearn2, nimfa, py-earth, Orange, NeuroLab,
 PyBrain, scikits-sparse, other scikits, annoy, Zipline, Quandl, BNFinder,
 Alchemy API, openpyxl, xlrd/xlwt, NetworkX, OpenCV, boto, gbq, SQLite, PyMongo,
@@ -216,82 +105,124 @@ mpi4py, PyCUDA, Jubatus, Vowpal Wabbit, and one or more Hadoop clients.
 If you have suggestions for any other packages to add, please submit them by
 raising an [issue](https://github.com/andrewclegg/snake-charmer/issues).
 
-## Under the covers
+## Requirements
 
-### Setup process in more detail
+Snake Charmer runs IPython and all the associated tools in a sandboxed virtual
+machine. It relies on [Vagrant](http://www.vagrantup.com/) for creating and
+managing these, and [VirtualBox](https://www.virtualbox.org/) for running them
+-- so please go and install those now.
 
-When you first perform a `vagrant up` command on a new VM, the following steps
-take place.
+*Experienced users of other virtualization platforms can edit the Vagrantfile
+to use one of these instead, if they prefer.*
 
-#### Vagrant
+Everything else is installed automatically.
 
-Firstly, Vagrant performs the following steps (slightly simplified).
+## Installation
 
-1. Test for the presence of the `vagrant-vbguest` plugin, and
-install it automatically if it's missing.
-1. Download a standard Ubuntu VM image from
-[Vagrant Cloud](https://vagrantcloud.com/), unless you have a local copy
-cached from a previous Vagrant run.
-1. Create a new VM from the image, with port forwarding and folder
-sharing configured as described earlier.
-1. Install the Salt minion (i.e. client) service on the VM.
-1. Tell the Salt minion to configure the new machine (see below).
-1. Stop the Salt minion service, and disable run-on-startup behaviour.
+Check out this git repository:
 
-Notes:
+    git clone git@github.com:andrewclegg/snake-charmer.git
+    cd snake-charmer
 
-* `vagrant-vbguest` is required in order to keep VirtualBox's guest extensions
-package on the VM version-synced with your VirtualBox package on the host.
-* The VM is set up to use NAT networking, so it can see the LAN and internet
-but will not appear as a distinct device on the network. It is therefore only
-accessible from the host, via port forwarding.
-  * The host's DNS configuration will be used to resolve hostname queries.
-  * If your host has more than one network interface available, you'll be
-  prompted by Vagrant to pick one.
-* Many aspects of the `Vagrantfile`, for example port numbers for forwarding,
-are parameterized by Python version. This is what the two digits on the end of
-the VM name (e.g. `charmed34`) refer to.
-* Having more than one VM using the same Python version, on the same host, is
-not currently supported. In principle it's possible, but it would require
-additional work to implement naming and port forwarding correctly.
+Start the VM:
 
-#### Salt
+    vagrant up charmed34
 
-The [Salt](http://www.saltstack.org)-based configuration procedure follows
-the following process -- once again, slightly simplified.
+*If you're already a Vagrant user, be aware that Snake Charmer's Vagrantfile
+will attempt to install the [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest/)
+plugin automatically.*
 
-1. Install a number of required packages on the VM from standard Ubuntu
-apt repositories.
-1. Enable the third-party [deadsnakes](https://launchpad.net/~fkrull/+archive/deadsnakes)
-repo, and install the appropriate Python version from there.
-1. Install `distribute` directly from
-[pypi](http://pypi.python.org/packages/source/d/distribute/) in order to provide Pip.
-1. One by one, install the required Python packages via Pip, caching them
-locally outside the VM to save time later if they are needed again.
-selected to work with the Python version requested (e.g. 3.4 for `charmed34`).
-1. Install the IPython Notebook process as a Unix service, start it, and set it
-to start automatically when the VM boots.
+This command currently takes around an hour to download and install all the
+necessary software. When this completes, it will run some tests and then
+display a message like this:
 
-Notes:
+    Your VM is up and running: http://localhost:8834/tree
 
-* The files used by Salt to configure the VM are in the `salt/roots/salt`
-subdirectory of your Snake Charmer installation directory. Most of the action
-happens in `init.sls`.
-* Many aspects of these config files, e.g. package version numbers,
-are parameterized by Python version. This is what the two digits on the end of
-the VM name (e.g. `charmed34`) refer to.
-* The Salt log is `log/<VM name>/minion` on the host, in case you need it for
-debugging.
-* The Pip log -- which is likely to be much more useful if you do need to
-debug a failed package install -- is in `log/<VM name>/pip.log` on the host.
-* The cached packages are stored in the `.cache` directory within the Snake
-Charmer install directory -- or `/srv/cache` within the VM. It's safe
-to delete this cache any time, except while you're actually performing a
-provisioning operation in Vagrant.
+### Testing your installation
 
-### Boot process in more detail
+The link above will take you to a fully-kitted-out IPython Notebook server.
+Open the "Hello World" notebook to see a full list of installed packages and
+other system information. **N.B.** The notebook server is started with inline
+graphics enabled for matplotlib, but _not_ the `--pylab` option, as this is
+[considered harmful](http://carreau.github.io/posts/10-No-PyLab-Thanks.ipynb.html).
 
-**TODO**
+There is also a "Snake Charmer QA" notebook supplied. This allows you to run
+the test suites of the major components, but **don't** run this now! It's a
+slow process and only needs to be performed if you've customized your VM. See
+the [customization guide](CUSTOMIZING.md) for more information.
+
+## Vagrant essentials
+
+On a VM that's already been fully configured, `vagrant up` will just restart
+it, without going through the full install process.
+
+You can log into the server via
+
+    vagrant ssh charmed34
+
+from the same directory, for full command-line control. It's an Ubuntu 12.04
+box, under the covers. But you can do most things through the IPython Notebook
+anyway, so this is rarely essential.
+
+Some more useful commands:
+
+    vagrant reload charmed34  # reboot the VM (same as "vagrant up" if it's not running)
+    vagrant halt charmed34    # shut down the VM, reclaim the memory it used
+    vagrant destroy charmed34 # wipe it completely, reclaiming disk space too
+    vagrant suspend charmed34 # 'hibernate' the machine, saving current state
+    vagrant resume charmed34  # 'unhibernate' the machine
+
+See the [Vagrant docs](http://docs.vagrantup.com/v2/cli/index.html) for more
+details.
+
+## Folder structure
+
+The notebook server runs from within the `notebooks` subdirectory of the
+current `snake-charmer` directory, and initially contains a single "Hello
+World" notebook.
+
+Snake Charmer uses IPython 2 so any subdirectories of `notebooks` will be
+visible and navigable as folders in the IPython web interface. However, you
+can't actually *create* directories from the web interface yet, so you'd need
+to log in via ssh, or just enter a shell command into IPython with `!`.
+
+Vagrant sets up a number of synced folders, which are directories visible to
+both the VM and the host (your computer). Files placed in these will be visible
+to both the VM and the host, so this is a good way to make data available to
+the VMs. If you create more than one VM (feature coming soon!), files in synced
+folders will be visible to all of them -- apart from `/srv/log` which is
+specific to one VM only.
+
+The paths in the left-hand column are relative to the `snake-charmer` install
+directory -- your local copy of this repo.
+
+    Folder on your computer   Folder within VM         Contents
+    ------------------------  -----------------------  --------
+    notebooks                 /home/vagrant/notebooks  Any notebooks
+    data                      /home/vagrant/data       Data you wish to share (initially empty)
+    .cache                    /srv/cache               Cache for downloaded files
+    log/charmed34             /srv/log                 Certain setup logs, useful for debugging only
+    salt/roots/salt           /srv/salt                Config management information (ignore this)
+    salt/roots/pillar         /srv/pillar              Config management information (ignore this)
+
+### Data persistence
+
+If you get your VM into a mess somehow, you can just type
+
+    vagrant destroy charmed34
+    vagrant up charmed34
+
+to build a new one. Files in synced folders will not be affected if you do
+this, so you won't lose any data or notebooks. However, any data stored on the
+VM but *outside* these synced folders will be lost.
+
+The virtual disk on each VM is configured with an 80GB limit -- it grows to
+take up real disk space on the host up to this limit, and then stops. But data
+stored in synced folders does not count towards this. So you will likely never
+reach the 80GB limit.
+
+If you want to make another folder available to the VM, see the
+[customization guide](CUSTOMIZING.md).
 
 ### Troubleshooting
 
