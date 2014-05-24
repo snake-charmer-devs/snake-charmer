@@ -200,9 +200,7 @@ nltk_data:
 
 # Run full test suite
 
-run_tests:
-    cmd.run:
-        - name: /root/bin/run_tests python{{ pyver }} /srv/log/test_output
+# TODO set up runipy; currently does nothing
 
 {% endif %}
 
