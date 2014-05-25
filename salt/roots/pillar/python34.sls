@@ -138,6 +138,6 @@ pip_pkgs:
       git:     https://github.com/numba/numba.git
       rev:     4b9a36e7b344823fa2d2bb85221a14ff9e0abb03
       export:  true
-      setup:   python3.4 setup.py develop 
+      setup:   pip3.4 install --install-option=build_ext --install-option="--inplace" -e . 
 
 
