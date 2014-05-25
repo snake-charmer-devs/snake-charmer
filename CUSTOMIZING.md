@@ -258,7 +258,7 @@ fundamental underlying components, for example NumPy. Unless you have server
 time to spare...
 
 However, it's easy to edit that notebook to run only specific tests of
-interest.  It's also straightforward to add new tests for packages you've added
-yourself.  Instructions are included within the notebook.
+interest. It's also straightforward to add new tests for packages you've added
+yourself. Instructions are included within the notebook.
 
 
