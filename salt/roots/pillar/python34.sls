@@ -98,8 +98,8 @@ pip_pkgs:
       import:  IPython
       ver:     ==2.0.0
     - name:    scikit-learn
-      git:     https://github.com/scikit-learn/scikit-learn.git
-      rev:     c3ab3baf85bb6abbfc3c4c3aa6dd099acc0c4815
+      git:     https://github.com/andrewclegg/scikit-learn.git
+      rev:     c217d10707a5292965e6c5bd518e81e77acbe3fe
       import:  sklearn
     - name:    runipy
       ver:     ==0.0.8
