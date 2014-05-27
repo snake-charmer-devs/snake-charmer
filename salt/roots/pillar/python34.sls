@@ -3,6 +3,7 @@ pyver: '3.4'
 # Deb packages (with optional versions) to install via apt -- order is not important
 
 apt_pkgs:
+    - freetds-dev: 0.91-1
     - g++: 4:4.6.3-1ubuntu5
     - gfortran: 4:4.6.3-1ubuntu5
     - git: 1:1.7.9.5-1
@@ -79,6 +80,8 @@ pip_pkgs:
       rev:     bfd5348d824a721dd0d896bb06e63e4ad801ba51
     - name:    nose
       ver:     ==1.3.3
+    - name:    mock
+      ver:     ==1.0.1
     - name:    statsmodels
       git:     https://github.com/statsmodels/statsmodels.git
       rev:     3adaa1a0738131bd2441eb45b1c090a4777d7068
@@ -87,6 +90,8 @@ pip_pkgs:
       rev:     66c3f3743de9c39643ba4fb3ef14f79e4845e8f3
     - name:    psycopg2
       ver:     ==2.5.2
+    - name:    pymssql
+      ver:     2.1.0
     - name:    brewer2mpl
       ver:     ==1.4
     - name:    prettyplotlib
