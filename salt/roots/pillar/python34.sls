@@ -91,7 +91,7 @@ pip_pkgs:
     - name:    psycopg2
       ver:     ==2.5.2
     - name:    pymssql
-      ver:     2.1.0
+      ver:     ==2.1.0
     - name:    brewer2mpl
       ver:     ==1.4
     - name:    prettyplotlib
