@@ -45,7 +45,7 @@ pip_pkgs:
       ver:     ==0.13.3
     - name:    Theano
       git:     https://github.com/Theano/Theano.git
-      rev:     46b19c24e3b04bbde3f2cf957824e07885916b9b
+      rev:     ba81e61d6545d5a82fbf9c85b9e6db2fd3c12ea3
     - name:    numpydoc
       git:     https://github.com/numpy/numpydoc.git
       rev:     56a1b39e8b16f2292f6b2b54ce26d259003fadad
