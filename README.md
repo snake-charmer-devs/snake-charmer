@@ -20,7 +20,7 @@ time?
 
 Well, read on.
 
-### *Work in progress - pre-release version*
+### *Work in progress -- pre-release version*
 
 If you are interested in being an early adopter, please keep a close eye on
 the commits and issues here -- I am finding and fixing bugs almost daily.
@@ -84,6 +84,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 * Connectivity and interoperability:
     * [lxml](http://lxml.de/lxmlhtml.html) 3.3.5
     * [Psycopg](http://initd.org/psycopg/) 2.5.2
+    * [pymssql](http://www.pymssql.org/) 2.1.0
 
 * Non-Python tools:
     * [Parallel](http://www.gnu.org/software/parallel/) 20121122
