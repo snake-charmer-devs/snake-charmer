@@ -1,0 +1,22 @@
+Standardize output file naming format -- name sympy and pytables tests the same way we do theano
+
+
+Check whether we need to use os.walk for sympy or pytables tests
+
+
+Install optional backends for matplotlib (latex etc.)
+
+
+.matplotlibrc to use Agg by default
+
+
+Set up ramdisk for theano cache during Salt provisioning:
+
+mount -t ramfs -o size=200m ramfs /home/vagrant/theano_ram_cache
+
+Then get Theano to use this during testing:
+
+THEANO_FLAGS="base_compiledir=/home/vagrant/theano_ram_cache" $PYTHON `which theano-nose` --theano
+
+* Should we cache Theano artifacts on the host?
+
