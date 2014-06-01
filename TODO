@@ -20,3 +20,6 @@ THEANO_FLAGS="base_compiledir=/home/vagrant/theano_ram_cache" $PYTHON `which the
 
 * Should we cache Theano artifacts on the host?
 
+
+Need to add documentation on clearing Theano cache
+
