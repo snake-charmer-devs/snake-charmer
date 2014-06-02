@@ -149,7 +149,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       msg = last_commit
     end
   end
-  File.open("data/last_commit.txt", "w") do |f|
+  File.open("notebooks/last_commit.txt", "w") do |f|
     f.write(last_commit)
   end
 

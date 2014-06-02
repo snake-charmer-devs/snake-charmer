@@ -2,4 +2,5 @@
 *.log
 log
 data
+notebooks/last_commit.txt
 
