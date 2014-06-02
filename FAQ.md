@@ -47,10 +47,11 @@ can prevent runaway processes from rendering a machine unusable.
 ### What are the advantages of Snake Charmer over Anaconda, Canopy or Sage?
 
 Anaconda and Canopy are Scientific Python distributions providing free
-editions, but they have licensing limitations and closed ecosystems.
-None of the advantages of VMs described above apply to these distros. Sage is
+editions, but they have licensing limitations and closed ecosystems. Sage is
 open source, run by a non-profit, and available as a VM, but is quite academic
 and focused largely on pure maths.
+
+None of the advantages of VMs described above apply to these distros.
 
 Also, Snake Charmer aims to provide more up-to-date software -- in fact, this
 is a key goal. At the time of writing, neither Sage nor Canopy support Python 3
@@ -166,6 +167,7 @@ Tightening security would be very useful indeed -- can you help?
 
 ### Can I run Snake Charmer on cloud services like AWS, or other virtualization platforms like VMWare?
 
-In theory, yes, although probably not without some considerable work. In the
-future, we'd like to be able to make that easy out-of-the-box.
+In theory, yes, although not without some work. You'll need to understand
+Vagrant and rewrite the Vagrantfile to support this. In the future, we'd like
+to be able to make that easy out-of-the-box.
 

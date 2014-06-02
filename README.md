@@ -278,11 +278,16 @@ in other places on a VM, they **will** be lost forever when you destroy it.
 
 ## Sharing your VMs
 
-**TODO**
+Snake Charmer VMs are Vagrant VMs, and Vagrant VMs can be published, shared
+and remotely accessed via various mechanisms. This is discussed in the
+[Snake Charmer F.A.Q.](FAQ.md).
 
 ## Customizing your VMs
 
-See the separate [customization guide](CUSTOMIZING.md).
+Even if you don't know much about VirtualBox, Vagrant or Salt, you can
+customize your VMs in several ways -- and if you want to tinker with the
+configuration for these programs directly, the sky's the limit. See the
+separate [customization guide](CUSTOMIZING.md).
 
 ## F.A.Q.
 
