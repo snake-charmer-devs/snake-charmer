@@ -206,6 +206,9 @@ directory -- your local copy of this repo.
     salt/roots/salt           /srv/salt                Config management information (ignore this)
     salt/roots/pillar         /srv/pillar              Config management information (ignore this)
 
+These are all configurable via environment variables -- see the
+[customization guide](CUSTOMIZING.md).
+
 ### Data persistence
 
 If you get your VM into a mess somehow, you can just type
@@ -222,8 +225,8 @@ take up real disk space on the host up to this limit, and then stops. But data
 stored in synced folders does not count towards this. So you will likely never
 reach the 80GB limit.
 
-If you want to make another folder available to the VM, see the
-[customization guide](CUSTOMIZING.md).
+If you want to make another folder available to the VM, for example if your
+datasets are stored on another disk, see the [customization guide](CUSTOMIZING.md).
 
 ### Troubleshooting
 
@@ -275,11 +278,16 @@ in other places on a VM, they **will** be lost forever when you destroy it.
 
 ## Sharing your VMs
 
-**TODO**
+Snake Charmer VMs are Vagrant VMs, and Vagrant VMs can be published, shared
+and remotely accessed via various mechanisms. This is discussed in the
+[Snake Charmer F.A.Q.](FAQ.md).
 
 ## Customizing your VMs
 
-See the separate [customization guide](CUSTOMIZING.md).
+Even if you don't know much about VirtualBox, Vagrant or Salt, you can
+customize your VMs in several ways -- and if you want to tinker with the
+configuration for these programs directly, the sky's the limit. See the
+separate [customization guide](CUSTOMIZING.md).
 
 ## F.A.Q.
 

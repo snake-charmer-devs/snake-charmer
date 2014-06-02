@@ -141,6 +141,49 @@ provisioning, to speed up VM creation. Currently this just disables the
 
 *This flag only has an effect during initial provisioning or reprovisioning.*
 
+* `CHARMER_NOTEBOOK_DIR` (string; default "notebooks")
+
+A custom location on the host to mount as `/home/vagrant/notebooks`, instead
+of the `notebooks` subdirectory of the `snake-charmer` directory.
+
+*This will take effect on next boot, regardless of whether the `--provision`
+flag is used.*
+
+* `CHARMER_DATA_DIR` (string; default "data")
+
+A custom location on the host to mount as `/home/vagrant/data`, instead
+of the `data` subdirectory of the `snake-charmer` directory.
+
+*This will take effect on next boot, regardless of whether the `--provision`
+flag is used.*
+
+* `CHARMER_CACHE_DIR` (string; default ".cache")
+
+A custom location on the host for cached packages and source code, instead of
+the `.cache` subdirectory of the `snake-charmer` directory. This is mounted as
+`/srv/cache` on the guest.
+
+*This will take effect on next boot, regardless of whether the `--provision`
+flag is used.*
+
+* `CHARMER_LOG_DIR` (string; default "log")
+
+A custom location on the host for cached packages and source code, instead of
+the `log` subdirectory of the `snake-charmer` directory. Within this directory,
+a subdirectory will be created which is named after the VM (e.g. `charmed34`).
+This is then mounted as `/srv/log` on the guest.
+
+*This will take effect on next boot, regardless of whether the `--provision`
+flag is used.*
+
+* `CHARMER_SALT_ROOT` (string; default "salt/roots/salt") and `CHARMER_PILLAR_ROOT` (string; default "salt/roots/pillar")
+
+Locations for Salt configuration files. Don't change these unless you're a
+Salt guru and you know what you're doing.
+
+*These will take effect on next boot, regardless of whether the `--provision`
+flag is used.*
+
 ### Editing the package lists
 
 The package lists are in `salt/roots/pillar/python<ver>.sls`. You are free to
