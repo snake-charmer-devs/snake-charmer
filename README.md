@@ -206,6 +206,9 @@ directory -- your local copy of this repo.
     salt/roots/salt           /srv/salt                Config management information (ignore this)
     salt/roots/pillar         /srv/pillar              Config management information (ignore this)
 
+These are all configurable via environment variables -- see the
+[customization guide](CUSTOMIZING.md).
+
 ### Data persistence
 
 If you get your VM into a mess somehow, you can just type
@@ -222,8 +225,8 @@ take up real disk space on the host up to this limit, and then stops. But data
 stored in synced folders does not count towards this. So you will likely never
 reach the 80GB limit.
 
-If you want to make another folder available to the VM, see the
-[customization guide](CUSTOMIZING.md).
+If you want to make another folder available to the VM, for example if your
+datasets are stored on another disk, see the [customization guide](CUSTOMIZING.md).
 
 ### Troubleshooting
 
