@@ -1,6 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+require 'vagrant/util/which'
+
+raise 'vagrant not found in path' unless vagrant_exe = Vagrant::Util::Which.which("vagrant")
+git_exe = Vagrant::Util::Which.which("git")
+
 require 'yaml'
 
 def get_env(key, default)
@@ -23,7 +28,7 @@ def install_plugins(*plugins)
   plugins.each do |plugin|
     unless Vagrant.has_plugin? plugin
       # Install vbguest via another vagrant process; wait for completion
-      cmd1 = ["vagrant", "plugin", "install", plugin]
+      cmd1 = [vagrant_exe, "plugin", "install", plugin]
       system *cmd1
       needs_restart = true
     end
@@ -32,7 +37,7 @@ def install_plugins(*plugins)
   if needs_restart
     # Restart vagrant with same args as current invocation
     cmd2 = ARGV
-    cmd2.unshift "vagrant"
+    cmd2.unshift vagrant_exe
     exec *cmd2
   end
 end
@@ -48,8 +53,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   install_plugins "vagrant-vbguest"
 
-  # Create some directories
-  mkdir "data", "log", ".cache", ".cache/apt", ".cache/apt/partial"
+  # Get working directories from environment, using defaults if not supplied,
+  # and create them if necessary
+  notebook_dir = get_env("CHARMER_NOTEBOOK_DIR", "notebooks")
+  data_dir = get_env("CHARMER_DATA_DIR", "data")
+  salt_root = get_env("CHARMER_SALT_ROOT", "salt/roots/salt")
+  pillar_root = get_env("CHARMER_PILLAR_ROOT", "salt/roots/pillar")
+  cache_dir = get_env("CHARMER_CACHE_DIR", ".cache")
+  log_dir = get_env("CHARMER_LOG_ROOT", "log")
+  mkdir notebook_dir, data_dir, cache_dir, cache_dir + "/apt", cache_dir + "/apt/partial", log_dir
 
   # Workaround for https://www.virtualbox.org/ticket/12879
   # (missing symlink in guest additions package)
@@ -75,18 +87,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   # These locations are shared between all VMs
-  # TODO -- make these read only where possible
-  config.vm.synced_folder "notebooks", "/home/vagrant/notebooks"
-  config.vm.synced_folder "data", "/home/vagrant/data"
-  config.vm.synced_folder "salt/roots/salt", "/srv/salt"
-  config.vm.synced_folder "salt/roots/pillar", "/srv/pillar"
-  config.vm.synced_folder ".cache", "/srv/cache"
+  config.vm.synced_folder notebook_dir, "/home/vagrant/notebooks"
+  config.vm.synced_folder data_dir, "/home/vagrant/data"
+  config.vm.synced_folder salt_root, "/srv/salt"
+  config.vm.synced_folder pillar_root, "/srv/pillar"
+  config.vm.synced_folder cache_dir, "/srv/cache"
 
   config.vm.define "charmed34" do |charmed34|
 
     # These locations are unique to each VM
-    mkdir "log/charmed34"
-    charmed34.vm.synced_folder "log/charmed34", "/srv/log"
+    my_log = log_dir + "/charmed34"
+    mkdir my_log
+    charmed34.vm.synced_folder my_log, "/srv/log"
     
     # Bound ports -- IPython Notebook and SSH
     charmed34.vm.network "forwarded_port", guest: 8834, host: 8834, host_ip: "127.0.0.1"
@@ -107,7 +119,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
       salt.pillar({
-        "run_tests" => get_env("CHARMER_TEST", false),
+        "run_tests" => get_env("CHARMER_TEST", false), # not currently used
         "slimline" => get_env("CHARMER_SLIM", false)
       })
     end
@@ -130,11 +142,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Write top of git log into data so we can show it in Hello World notebook
-  system "(git log -n 1 || echo 'commit not found') > data/last_commit.txt 2>/dev/null"
+  msg = "commit not found"
+  if git_exe
+    last_commit = `#{git_exe} log --no-merges -n 1`
+    if $?.success?
+      msg = last_commit
+    end
+  end
+  File.open("data/last_commit.txt", "w") do |f|
+    f.write(last_commit)
+  end
 
 end
 
 # TODO
+#
 # Loop through set of python versions and configure
 # a VM for each one, something like this:
 #     http://maci0.wordpress.com/2013/11/09/dynamic-multi-machine-vagrantfile/
