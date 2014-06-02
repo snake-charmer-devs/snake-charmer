@@ -23,3 +23,6 @@ THEANO_FLAGS="base_compiledir=/home/vagrant/theano_ram_cache" $PYTHON `which the
 
 Need to add documentation on clearing Theano cache
 
+
+Re-enable Theano typed_list tests when this feature is released (https://github.com/andrewclegg/snake-charmer/issues/17)
+
