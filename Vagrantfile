@@ -3,12 +3,6 @@
 
 require 'vagrant/util/which'
 
-vagrant_exe = Vagrant::Util::Which.which("vagrant")
-unless vagrant_exe
-  raise 'vagrant not found in path'
-end
-git_exe = Vagrant::Util::Which.which("git")
-
 require 'yaml'
 
 def get_env(key, default)
@@ -53,6 +47,12 @@ Vagrant.require_version ">= 1.5.2"
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  vagrant_exe = Vagrant::Util::Which.which("vagrant")
+  unless vagrant_exe
+    raise 'vagrant not found in path'
+  end
+  git_exe = Vagrant::Util::Which.which("git")
 
   install_plugins "vagrant-vbguest"
 
