@@ -19,7 +19,7 @@ def mkdir(*dirs)
   end
 end
 
-def install_plugins(*plugins)
+def install_plugins(vagrant_exe, *plugins)
   needs_restart = false
 
   plugins.each do |plugin|
@@ -54,7 +54,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   git_exe = Vagrant::Util::Which.which("git")
 
-  install_plugins "vagrant-vbguest"
+  install_plugins vagrant_exe, "vagrant-vbguest"
 
   # Get working directories from environment, using defaults if not supplied,
   # and create them if necessary
