@@ -3,7 +3,10 @@
 
 require 'vagrant/util/which'
 
-raise 'vagrant not found in path' unless vagrant_exe = Vagrant::Util::Which.which("vagrant")
+vagrant_exe = Vagrant::Util::Which.which("vagrant")
+unless vagrant_exe
+  raise 'vagrant not found in path'
+end
 git_exe = Vagrant::Util::Which.which("git")
 
 require 'yaml'
