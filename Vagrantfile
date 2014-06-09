@@ -39,9 +39,11 @@ def install_plugins(vagrant_exe, *plugins)
   end
 end
 
-
-Vagrant.require_version ">= 1.5.2"
-
+begin
+  Vagrant.require_version ">= 1.5.2"
+rescue NoMethodError
+  raise 'Snake Oil is only supported on Vagrant >= 1.5.2, please upgrade. Thanks.'
+end
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
