@@ -37,7 +37,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 * Data handling and processing tools:
     * [IPython](http://ipython.org/) 2.0.0
         * [runipy](https://pypi.python.org/pypi/runipy) 0.0.8
-    * [Pandas](http://pandas.pydata.org/) 0.13.1
+    * [Pandas](http://pandas.pydata.org/) 0.14.0
     * [PyTables](http://www.pytables.org/moin) 3.1.1
     * [joblib](https://pythonhosted.org/joblib/) 0.8.0 alpha 3
 
@@ -63,6 +63,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [SciPy](http://www.scipy.org/) 0.13.3
     * [Bottleneck](http://berkeleyanalytics.com/bottleneck/) 0.8.0
     * [Statsmodels](http://statsmodels.sourceforge.net/) 0.6.0 dev
+    * [lifelines](https://github.com/CamDavidsonPilon/lifelines/) 0.4.0.0
     * [Patsy](http://patsy.readthedocs.org/en/latest/) 0.2.1
     * [Theano](http://deeplearning.net/software/theano/) 0.6.0
     * [numexpr](https://github.com/pydata/numexpr) 2.4
