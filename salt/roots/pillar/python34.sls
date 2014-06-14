@@ -149,4 +149,3 @@ pip_pkgs:
     - name:    pystan
       ver:     ==2.2.0.1
 
-
