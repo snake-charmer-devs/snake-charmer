@@ -3,9 +3,6 @@
 
 require 'vagrant/util/which'
 
-raise 'vagrant not found in path' unless vagrant_exe = Vagrant::Util::Which.which("vagrant")
-git_exe = Vagrant::Util::Which.which("git")
-
 require 'yaml'
 
 def get_env(key, default)
@@ -22,7 +19,7 @@ def mkdir(*dirs)
   end
 end
 
-def install_plugins(*plugins)
+def install_plugins(vagrant_exe, *plugins)
   needs_restart = false
 
   plugins.each do |plugin|
@@ -42,16 +39,24 @@ def install_plugins(*plugins)
   end
 end
 
-
-Vagrant.require_version ">= 1.5.2"
-
+begin
+  Vagrant.require_version ">= 1.5.2"
+rescue NoMethodError
+  raise 'Snake Oil is only supported on Vagrant >= 1.5.2, please upgrade. Thanks.'
+end
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  install_plugins "vagrant-vbguest"
+  vagrant_exe = Vagrant::Util::Which.which("vagrant")
+  unless vagrant_exe
+    raise 'vagrant not found in path'
+  end
+  git_exe = Vagrant::Util::Which.which("git")
+
+  install_plugins vagrant_exe, "vagrant-vbguest"
 
   # Get working directories from environment, using defaults if not supplied,
   # and create them if necessary

@@ -294,7 +294,7 @@ This will be covered in detail in a later release.
 We supply a notebook called "Snake Charmer QA" which runs the test suites for
 the major Python packages used. This is a big job -- we recommend using a
 server-grade VM with at least 12 vCPUS and 8GB of RAM, and even with that
-setup, the whole process will take more than four hours.
+setup, the whole process will take over an hour.
 
 So, we recommend you only do this if you've made a modification to one of the
 fundamental underlying components, for example NumPy. Unless you have server

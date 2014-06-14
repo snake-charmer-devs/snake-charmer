@@ -161,9 +161,10 @@ there [may still be ways](http://blog.ontoillogical.com/blog/2012/10/31/breaking
 to get access to the host from the guest. (We have closed that particular
 loophole but can't guarantee there aren't others.)
 
-In short, only use Snake Charmer on trusted networks.
+In short, don't use it to provision publicly accessible servers or anything
+like that. You can always reuse the Salt config files on 'real' servers.
 
-Tightening security would be very useful indeed -- can you help?
+Tightening security would be very useful, though -- can you help?
 
 ### Can I run Snake Charmer on cloud services like AWS, or other virtualization platforms like VMWare?
 

@@ -147,5 +147,8 @@ pip_pkgs:
       rev:     4b9a36e7b344823fa2d2bb85221a14ff9e0abb03
       export:  true
       setup:   pip3.4 install --install-option=build_ext --install-option="--inplace" -e . 
-
+    - name:    emcee
+      ver:     ==2.1.0
+    - name:    pystan
+      ver:     ==2.2.0.1
 
