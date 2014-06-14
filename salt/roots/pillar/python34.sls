@@ -22,7 +22,7 @@ apt_pkgs:
     - libpq-dev: 9.1.13-0ubuntu0.12.04
     - libtiff4-dev: 3.9.5-2ubuntu1.6
     - libwebp-dev: 0.1.3-2.1ubuntu1
-    - libxml2-dev: 2.7.8.dfsg-5.1ubuntu4.7
+    - libxml2-dev: 2.7.8.dfsg-5.1ubuntu4.8
     - libxslt1-dev: 1.1.26-8ubuntu1.3
     - libzmq-dev: 2.1.11-1ubuntu1
     - llvm-3.3-dev: 1:3.3-5ubuntu4~precise1
@@ -39,6 +39,8 @@ apt_pkgs:
 # Python packages to install via pip -- a list of dicts, so order is maintained
 
 pip_pkgs:
+    - name:    openpyxl
+      ver:     ==1.8.5
     - name:    numpy
       ver:     ==1.8.1
     - name:    scipy
@@ -76,8 +78,9 @@ pip_pkgs:
       git:     https://github.com/sympy/sympy.git
       rev:     254d99c1c2bfbd4f634f61cd5a444c8a3e79450b
     - name:    pandas
-      git:     https://github.com/pydata/pandas.git
-      rev:     bfd5348d824a721dd0d896bb06e63e4ad801ba51
+      ver:     ==0.14
+    - name:    lifelines
+      ver:     ==0.4.0.0
     - name:    nose
       ver:     ==1.3.3
     - name:    mock
