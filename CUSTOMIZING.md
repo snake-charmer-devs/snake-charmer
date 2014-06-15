@@ -135,9 +135,11 @@ flag is used.*
 
 * `CHARMER_SLIM` (boolean; default "false")
 
-If set to "true" this will disable downloading of some example data files after
-provisioning, to speed up VM creation. Currently this just disables the
-[NLTK downloader](http://www.nltk.org/data.html).
+If set to "true" this will disable downloading of some optional packages and
+example data files after provisioning, to speed up VM creation. Currently this
+disables the [NLTK downloader](http://www.nltk.org/data.html) and the Ubuntu
+package dependencies for OpenCV (OpenCV installation is not yet fully
+implemented).
 
 *This flag only has an effect during initial provisioning or reprovisioning.*
 

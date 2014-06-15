@@ -183,6 +183,16 @@ local_mathjax:
 
 {% endfor %}
 
+# Matplotlib config for use without a GUI
+
+/home/vagrant/.config/matplotlib/matplotlibrc:
+    file.managed:
+        - source: salt://etc/matplotlibrc
+        - makedirs: true
+        - user: vagrant
+        - group: vagrant
+        - mode: 655
+
 # Upstart service configuration -- start on boot
 
 /etc/init/ipynb.conf:
@@ -206,6 +216,13 @@ nltk_data:
         - name: python{{ pyver }} -m nltk.downloader all
         - user: vagrant
         - group: vagrant
+
+# Install dependencies for OpenCV
+
+opencv_deps:
+    pkg.installed:
+        - pkgs: 
+            {{ pillar['opencv_deps'] }}
 
 {% endif %}
 
