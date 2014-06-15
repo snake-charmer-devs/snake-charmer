@@ -9,6 +9,29 @@ as in snake charmers.
 
 The plan is to offer a number of different VMs with different Python versions.
 
+### Is there a binary distribution? Building everything from source each time sucks.
+
+My plan ultimately is to release a binary image that you can download and run
+via Vagrant Cloud -- this should be as easy as the current install but much
+quicker. However this needs two things:
+
+1. A thorough check of all the licenses of all the components to make sure
+there's nothing preventing us from doing that. (If there are, a 2-stage install
+might be the answer -- binary first, then optional extras.)
+
+2. Somewhere to host the disk images. I don't have any funding for that yet.
+Volunteers welcome :-)
+
+### Are there any ways I can speed up the install?
+
+Not the first time, but when it's up and running you can use VirtualBox's
+admin app to [take a snapshot](http://www.howtogeek.com/150258/how-to-save-time-by-using-snapshots-in-virtualbox/)
+of the machine. Then you can always restore to that, rather than having to
+build a new one.
+
+Snake Charmer also caches as many downloaded packages as possible, in the
+`.cache` subdirectory, which can help speed up future rebuilds.
+
 ### Can I share and distribute my Snake Charmer VMs via Vagrant Cloud?
 
 Absolutely! We think this would be a great way to share experimental results
