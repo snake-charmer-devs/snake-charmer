@@ -44,6 +44,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 
 * Graphics and visualization:
     * [Matplotlib](http://matplotlib.org/) 1.3.1
+    * [MPLD3](http://mpld3.github.io/) 0.2
     * [prettyplotlib](http://olgabot.github.io/prettyplotlib/) 0.1.7
     * [brewer2mpl](https://github.com/jiffyclub/brewer2mpl) 1.4
     * [Seaborn](http://www.stanford.edu/~mwaskom/software/seaborn/) 0.3.1
