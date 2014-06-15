@@ -58,6 +58,8 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [Theano](http://deeplearning.net/software/theano/) 0.6.0
     * [DEAP](https://code.google.com/p/deap/) 1.0.1
     * [fastcluster](http://danifold.net/fastcluster.html) 1.1.13
+    * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki) 7.6.1 &Dagger;
+        * [Wabbit Wappa](https://github.com/andrewclegg/wabbit_wappa) 0.2.0-p3 dev
 
 * Natural language processing and text mining:
     * [gensim](http://radimrehurek.com/gensim) 0.9.1
@@ -92,9 +94,9 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 
 *&Dagger; Non-Python tools usable via Python wrapper packages*
 
-You are, of course, free to remove or upgrade these packages via Pip as usual,
-or experiment with additional ones. Please feel free to send pull requests when
-you get another package working.
+You are, of course, free to remove or upgrade these packages via `pip` or
+`apt-get` as usual, or experiment with additional ones. Please feel free to
+send pull requests when you get another package working.
 
 Coming soon: Other Python versions. Ubuntu 14.04 LTS.
 
@@ -102,7 +104,7 @@ Potential future additions include: Parakeet, pattern, CrossCat, BayesDB,
 ggplot, Bokeh, Blaze, numdifftools, PuLP, CVXPY, SysCorr, bayesian, PEBL,
 libpgm, BayesPy, BayesOpt, mpld3, Pylearn2, nimfa, py-earth, Orange, NeuroLab,
 PyBrain, annoy, Zipline, Quandl, BNFinder, Alchemy API, xlrd/xlwt, NetworkX,
-OpenCV, boto, gbq, SQLite, PyMongo, mpi4py, Jubatus, Vowpal Wabbit, and one or
+OpenCV, boto, gbq, SQLite, PyMongo, mpi4py, Jubatus, and one or
 more Hadoop clients.
 
 If you have suggestions for any other packages to add, please submit them by
