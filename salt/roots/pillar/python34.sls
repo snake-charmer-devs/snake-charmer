@@ -147,5 +147,6 @@ pip_pkgs:
     - name:    emcee
       ver:     ==2.1.0
     - name:    pystan
-      ver:     ==2.2.0.1
+      git:     https://github.com/stan-dev/pystan.git
+      rev:     15ce22cfc4714ccb0f3b1f256d4704d81ac6ff81
 
