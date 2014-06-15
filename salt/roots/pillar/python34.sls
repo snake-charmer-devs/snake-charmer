@@ -186,4 +186,6 @@ pip_pkgs:
     - name:    pystan
       git:     https://github.com/stan-dev/pystan.git
       rev:     15ce22cfc4714ccb0f3b1f256d4704d81ac6ff81
+    - name:    mpld3
+      ver:     ==0.2
 
