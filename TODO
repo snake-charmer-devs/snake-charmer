@@ -29,3 +29,6 @@ Need to add documentation on clearing Theano cache
 
 Re-enable Theano typed_list tests when this feature is released (https://github.com/andrewclegg/snake-charmer/issues/17)
 
+
+Add tests for lifelines
+
