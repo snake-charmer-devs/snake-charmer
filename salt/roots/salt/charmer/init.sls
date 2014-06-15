@@ -232,10 +232,12 @@ nltk_data:
 
 # Install dependencies for OpenCV
 
-opencv_deps:
-    pkg.installed:
-        - pkgs: 
-            {{ pillar['opencv_deps'] }}
+# Commented out for now, as it's extra bloat unless we actually need it
+
+#opencv_deps:
+#    pkg.installed:
+#        - pkgs: 
+#            {{ pillar['opencv_deps'] }}
 
 {% endif %}
 

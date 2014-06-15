@@ -78,8 +78,9 @@ None of the advantages of VMs described above apply to these distros.
 
 Also, Snake Charmer aims to provide more up-to-date software -- in fact, this
 is a key goal. At the time of writing, neither Sage nor Canopy support Python 3
-at all, and Anaconda doesn't support 3.4. Package versions are similarly
-limited.
+at all, and Anaconda upgraded to Python 3.4 after Snake Charmer did. Snake
+Charmer also uses packages from the standard Python Package Index (PyPI) rather
+than a proprietary package management solution.
 
 ### Are Snake Charmer VMs slow?
 
