@@ -189,6 +189,9 @@ pip_pkgs:
       rev:     15ce22cfc4714ccb0f3b1f256d4704d81ac6ff81
     - name:    mpld3
       ver:     ==0.2
+    - name:    wabbit_wappa
+      git:     https://github.com/andrewclegg/wabbit_wappa.git
+      rev:     a9f7a4d34d44ff6f6000850558d833efe07bbb95
 
 # Misc stuff not installed through usual channels
 

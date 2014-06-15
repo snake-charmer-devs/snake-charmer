@@ -1,3 +1,6 @@
+Add tests for lifelines, wabbit_wappa, vw itself
+
+
 Add link to this doc http://nbviewer.ipython.org/github/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/ipynb/_Appendix%20C%20-%20Python%20%26%20IPython%20Notebook%20Tips.ipynb
 
 
@@ -28,9 +31,6 @@ Need to add documentation on clearing Theano cache
 
 
 Re-enable Theano typed_list tests when this feature is released (https://github.com/andrewclegg/snake-charmer/issues/17)
-
-
-Add tests for lifelines
 
 
 Build ATLAS from source, for speed

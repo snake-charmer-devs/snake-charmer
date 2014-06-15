@@ -194,7 +194,12 @@ git://github.com/JohnLangford/vowpal_wabbit.git:
 vw:
     cmd.run:
         - cwd: {{ gitcache }}/vowpal_wabbit
-        - name: make && make test
+        - name: make
+
+/usr/local/bin/vw:
+    file.copy:
+        - source: {{ gitcache }}/vowpal_wabbit/vowpalwabbit/vw
+        - force: true
 
 # Matplotlib config for use without a GUI
 
