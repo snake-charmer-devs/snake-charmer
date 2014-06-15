@@ -40,6 +40,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [Pandas](http://pandas.pydata.org/) 0.13.1
     * [PyTables](http://www.pytables.org/moin) 3.1.1
     * [joblib](https://pythonhosted.org/joblib/) 0.8.0 alpha 3
+    * [GNU Parallel](http://www.gnu.org/software/parallel/) 20121122 &dagger;
 
 * Graphics and visualization:
     * [Matplotlib](http://matplotlib.org/) 1.3.1
@@ -52,7 +53,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [scikit-learn](http://scikit-learn.org/) 0.15 dev
     * [PyMC](http://pymc-devs.github.io/pymc/) 3.0 alpha
     * [emcee](http://dan.iel.fm/emcee/current/) 2.1.0
-    * [Stan/PyStan](http://mc-stan.org/) 2.2.0.1
+    * [Stan/PyStan](http://mc-stan.org/) 2.2.0.1 &Dagger;
     * [Theano](http://deeplearning.net/software/theano/) 0.6.0
     * [DEAP](https://code.google.com/p/deap/) 1.0.1
     * [fastcluster](http://danifold.net/fastcluster.html) 1.1.13
@@ -70,6 +71,11 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [Theano](http://deeplearning.net/software/theano/) 0.6.0
     * [numexpr](https://github.com/pydata/numexpr) 2.4
     * [SymPy](http://sympy.org/) 0.7.5
+    * [R](http://www.r-project.org/) 2.14.1 &Dagger;
+        * [r-base-dev and r-recommended](http://cran.r-project.org/bin/linux/ubuntu/) packages
+        * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) 2.3.10
+    * [Octave](http://www.gnu.org/software/octave/) 3.2.4 &Dagger;
+        * [oct2py](https://pypi.python.org/pypi/oct2py) and [octavemagic](http://nbviewer.ipython.org/github/blink1073/oct2py/blob/master/example/octavemagic_extension.ipynb) 1.3.0
 
 * Performance optimization:
     * [Cython](http://cython.org/) 0.21 dev
@@ -80,13 +86,9 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [Psycopg](http://initd.org/psycopg/) 2.5.2
     * [pymssql](http://www.pymssql.org/) 2.1.0
 
-* Non-Python tools:
-    * [Parallel](http://www.gnu.org/software/parallel/) 20121122
-    * [R](http://www.r-project.org/) 2.14.1
-        * [r-base-dev and r-recommended](http://cran.r-project.org/bin/linux/ubuntu/) packages
-        * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) 2.3.10 for Python integration
-    * [Octave](http://www.gnu.org/software/octave/) 3.2.4
-        * [oct2py](https://pypi.python.org/pypi/oct2py) and [octavemagic](http://nbviewer.ipython.org/github/blink1073/oct2py/blob/master/example/octavemagic_extension.ipynb) 1.3.0 for iPython integration
+*&dagger; Non-Python tools*
+
+*&Dagger; Non-Python tools usable via Python wrapper packages*
 
 You are, of course, free to remove or upgrade these packages via Pip as usual,
 or experiment with additional ones. Please feel free to send pull requests when

@@ -36,6 +36,40 @@ apt_pkgs:
     - tk8.5-dev: 8.5.11-1
     - zlib1g-dev: 1:1.2.3.4.dfsg-3ubuntu4
 
+# Additional debs for (optional) OpenCV -- work in progress!
+
+opencv_deps:
+   - libopencv-dev
+   - checkinstall
+   - cmake
+   - pkg-config
+   - yasm
+   - libjpeg-dev
+   - libjasper-dev
+   - libavcodec-dev
+   - libavformat-dev
+   - libswscale-dev
+   - libdc1394-22-dev
+   - libxine-dev
+   - libgstreamer0.10-dev
+   - libgstreamer-plugins-base0.10-dev
+   - libv4l-dev
+   - python-dev
+   - python-numpy
+   - libtbb-dev
+   - libqt4-dev
+   - libgtk2.0-dev
+   - libfaac-dev
+   - libmp3lame-dev
+   - libopencore-amrnb-dev
+   - libopencore-amrwb-dev
+   - libtheora-dev
+   - libvorbis-dev
+   - libxvidcore-dev
+   - x264
+   - v4l-utils
+   - ffmpeg
+
 # Python packages to install via pip -- a list of dicts, so order is maintained
 
 pip_pkgs:
