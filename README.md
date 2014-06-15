@@ -51,6 +51,9 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 * Machine learning and inference:
     * [scikit-learn](http://scikit-learn.org/) 0.15 dev
     * [PyMC](http://pymc-devs.github.io/pymc/) 3.0 alpha
+    * [emcee](http://dan.iel.fm/emcee/current/) 2.1.0
+    * [Stan/PyStan](http://mc-stan.org/) 2.2.0.1
+    * [Theano](http://deeplearning.net/software/theano/) 0.6.0
     * [DEAP](https://code.google.com/p/deap/) 1.0.1
     * [fastcluster](http://danifold.net/fastcluster.html) 1.1.13
 
@@ -85,14 +88,18 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [Octave](http://www.gnu.org/software/octave/) 3.2.4
         * [oct2py](https://pypi.python.org/pypi/oct2py) and [octavemagic](http://nbviewer.ipython.org/github/blink1073/oct2py/blob/master/example/octavemagic_extension.ipynb) 1.3.0 for iPython integration
 
+You are, of course, free to remove or upgrade these packages via Pip as usual,
+or experiment with additional ones. Please feel free to send pull requests when
+you get another package working.
+
 Coming soon: Other Python versions. Ubuntu 14.04 LTS.
 
 Potential future additions include: Parakeet, pattern, CrossCat, BayesDB,
-Bokeh, Blaze, numdifftools, PuLP, CVXPY, SysCorr, bayesian, PEBL, libpgm,
-BayesPy, STAN, BayesOpt, mpld3, Pylearn2, nimfa, py-earth, Orange, NeuroLab,
-PyBrain, scikits-sparse, other scikits, annoy, Zipline, Quandl, BNFinder,
-Alchemy API, openpyxl, xlrd/xlwt, NetworkX, OpenCV, boto, gbq, SQLite, PyMongo,
-mpi4py, PyCUDA, Jubatus, Vowpal Wabbit, and one or more Hadoop clients.
+ggplot, Bokeh, Blaze, numdifftools, PuLP, CVXPY, SysCorr, bayesian, PEBL,
+libpgm, BayesPy, BayesOpt, mpld3, Pylearn2, nimfa, py-earth, Orange, NeuroLab,
+PyBrain, annoy, Zipline, Quandl, BNFinder, Alchemy API, xlrd/xlwt, NetworkX,
+OpenCV, boto, gbq, SQLite, PyMongo, mpi4py, Jubatus, Vowpal Wabbit, and one or
+more Hadoop clients.
 
 If you have suggestions for any other packages to add, please submit them by
 raising an [issue](https://github.com/andrewclegg/snake-charmer/issues).
