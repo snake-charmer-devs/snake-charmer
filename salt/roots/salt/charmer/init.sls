@@ -183,6 +183,19 @@ local_mathjax:
 
 {% endfor %}
 
+# Vowpal Wabbit
+
+git://github.com/JohnLangford/vowpal_wabbit.git:
+    git.latest:
+        - rev: {{ pillar['vw_rev'] }}
+        - target: {{ gitcache }}/vowpal_wabbit
+        - force_checkout: true
+
+vw:
+    cmd.run:
+        - cwd: {{ gitcache }}/vowpal_wabbit
+        - name: make && make test
+
 # Matplotlib config for use without a GUI
 
 /home/vagrant/.config/matplotlib/matplotlibrc:

@@ -11,6 +11,7 @@ apt_pkgs:
     - libatlas-base-dev: 3.8.4-3build1
     - libatlas-dev: 3.8.4-3build1
     - libatlas3gf-base: 3.8.4-3build1
+    - libboost-program-options-dev: 1.48.0.2
     - libfreetype6-dev: 2.4.8-1ubuntu2.1
     - libhdf5-serial-dev: 1.8.4-patch1-3ubuntu2
     - libjpeg8-dev: 8c-2ubuntu7
@@ -188,4 +189,8 @@ pip_pkgs:
       rev:     15ce22cfc4714ccb0f3b1f256d4704d81ac6ff81
     - name:    mpld3
       ver:     ==0.2
+
+# Misc stuff not installed through usual channels
+
+vw_rev: 0c8da21c979951a36373ca0cb601d4c5bd056038
 
