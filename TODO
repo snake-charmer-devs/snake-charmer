@@ -32,3 +32,16 @@ Re-enable Theano typed_list tests when this feature is released (https://github.
 
 Add tests for lifelines
 
+
+Build ATLAS from source, for speed
+
+
+OpenCV looks like a big project:
+
+https://help.ubuntu.com/community/OpenCV
+
+http://opencvlover.blogspot.co.uk/2014/01/installing-opencv-on-ubuntu.html
+
+http://stackoverflow.com/questions/20953273/install-opencv-for-python-3-3/21212023#21212023
+
+
