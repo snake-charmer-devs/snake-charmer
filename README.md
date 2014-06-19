@@ -104,7 +104,7 @@ Potential future additions include: Parakeet, pattern, CrossCat, BayesDB,
 ggplot, Bokeh, Blaze, numdifftools, PuLP, CVXPY, SysCorr, bayesian, PEBL,
 libpgm, BayesPy, BayesOpt, mpld3, Pylearn2, nimfa, py-earth, Orange, NeuroLab,
 PyBrain, annoy, Zipline, Quandl, BNFinder, Alchemy API, xlrd/xlwt, NetworkX,
-OpenCV, boto, gbq, SQLite, PyMongo, mpi4py, Jubatus, and one or
+PyMVPA, OpenCV, boto, gbq, SQLite, PyMongo, mpi4py, Jubatus, and one or
 more Hadoop clients.
 
 If you have suggestions for any other packages to add, please submit them by
