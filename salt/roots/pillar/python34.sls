@@ -4,7 +4,7 @@ pyver: '3.4'
 
 apt_pkgs:
     - freetds-dev: 0.91-1
-    - g++-4.6: 4:4.6.3-1ubuntu5
+    - g++-4.6: 4.6.3-1ubuntu5
     - gfortran: 4:4.6.3-1ubuntu5
     - git: 1:1.7.9.5-1
     - htop: 1.0.1-1
@@ -23,7 +23,7 @@ apt_pkgs:
     - libpq-dev: 9.1.13-0ubuntu0.12.04
     - libtiff4-dev: 3.9.5-2ubuntu1.6
     - libwebp-dev: 0.1.3-2.1ubuntu1
-    - libxml2-dev: 2.7.8.dfsg-5.1ubuntu4.8
+    - libxml2-dev: 2.7.8.dfsg-5.1ubuntu4.9
     - libxslt1-dev: 1.1.26-8ubuntu1.3
     - libzmq-dev: 2.1.11-1ubuntu1
     - llvm-3.3-dev: 1:3.3-5ubuntu4~precise1
