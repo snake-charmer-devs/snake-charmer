@@ -4,7 +4,7 @@ pyver: '3.4'
 
 apt_pkgs:
     - freetds-dev: 0.91-1
-    - g++: 4:4.6.3-1ubuntu5
+    - g++-4.6: 4:4.6.3-1ubuntu5
     - gfortran: 4:4.6.3-1ubuntu5
     - git: 1:1.7.9.5-1
     - htop: 1.0.1-1
