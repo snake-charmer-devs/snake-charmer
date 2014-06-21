@@ -265,6 +265,14 @@ If this doesn't fix the problem, then delete it completely, and recreate it:
     vagrant destroy charmed34
     vagrant up charmed34
 
+Finally, you could try deleting your VirtualBox machines and Vagrant configuration
+files:
+
+    VBoxManage controlvm charmed34 poweroff
+    VBoxManage unregistervm charmed34 --delete
+    vagrant box remove charmed34
+    vagrant up charmed34
+
 If this still doesn't fix it, you may have found a bug. Please open a
 [Github issue](https://github.com/andrewclegg/snake-charmer/issues)
 describing it in as much detail as possible, preferably with
