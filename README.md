@@ -18,9 +18,8 @@ Python, just by typing one line?
 
     vagrant up charmed34
 
-And wouldn't it be great if you could do that from pretty much any Windows, Mac
-or Linux machine, and know that you'd get the exact same environment every
-time?
+And wouldn't it be great if you could do that from pretty any machine, and
+know that you'd get the exact same environment every time?
 
 Well, read on.
 
