@@ -122,7 +122,7 @@ pip_pkgs:
       ver:     ==1.0.1
     - name:    statsmodels
       git:     https://github.com/statsmodels/statsmodels.git
-      rev:     3adaa1a0738131bd2441eb45b1c090a4777d7068
+      rev:     74b4dc920456a82e11d4ebd865bb698769b0b767
     - name:    pymc
       git:     https://github.com/andrewclegg/pymc
       rev:     66c3f3743de9c39643ba4fb3ef14f79e4845e8f3
