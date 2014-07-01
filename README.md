@@ -131,7 +131,12 @@ Everything else is installed automatically.
 
 Check out this git repository:
 
+    # Either via ssh...
     git clone git@github.com:andrewclegg/snake-charmer.git
+    # Or via https...
+    git clone https://github.com/andrewclegg/snake-charmer.git
+    
+    # Then change into your new Snake Charmer directory...
     cd snake-charmer
 
 Start the VM:
