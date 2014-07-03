@@ -194,7 +194,7 @@ local_mathjax:
 
 # Vowpal Wabbit
 
-git://github.com/JohnLangford/vowpal_wabbit.git:
+https://github.com/JohnLangford/vowpal_wabbit.git:
     git.latest:
         - rev: {{ pillar['vw_rev'] }}
         - target: {{ gitcache }}/vowpal_wabbit
