@@ -6,6 +6,15 @@
 {% set theanover = pillar['theanover'] %}
 {% set pyver_ints = pyver|replace('.', '') %}
 
+# Fix Grub boot issue: http://serverfault.com/a/482020
+
+/etc/default/grub:
+    file.append:
+        - text: GRUB_RECORDFAIL_TIMEOUT=2
+
+update-grub:
+    cmd.run
+
 # Some scripts we'll need
 
 /root/bin:
@@ -185,7 +194,7 @@ local_mathjax:
 
 # Vowpal Wabbit
 
-git://github.com/JohnLangford/vowpal_wabbit.git:
+https://github.com/JohnLangford/vowpal_wabbit.git:
     git.latest:
         - rev: {{ pillar['vw_rev'] }}
         - target: {{ gitcache }}/vowpal_wabbit
