@@ -124,6 +124,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
       salt.pillar({
+        "blas_threads" => get_env("CHARMER_BLAS_THREADS", 1),
         "run_tests" => get_env("CHARMER_TEST", false), # not currently used
         "slimline" => get_env("CHARMER_SLIM", false)
       })

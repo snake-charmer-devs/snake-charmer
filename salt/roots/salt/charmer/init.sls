@@ -5,6 +5,9 @@
 {% set pyver = pillar['pyver'] %}
 {% set theanover = pillar['theanover'] %}
 {% set pyver_ints = pyver|replace('.', '') %}
+{% set piplog = '/srv/log/pip.log' %}
+{% set pipcache = '/srv/cache/pip' %}
+{% set gitcache = '/srv/cache/src' %}
 
 # Fix Grub boot issue: http://serverfault.com/a/482020
 
@@ -40,6 +43,26 @@ apt_pkgs:
     pkg.installed:
         - pkgs: 
             {{ pillar['apt_pkgs'] }}
+
+# OpenBLAS
+
+https://github.com/xianyi/OpenBLAS.git:
+    git.latest:
+        - rev: {{ pillar['openblas_rev'] }}
+        - target: {{ gitcache }}/OpenBLAS
+        - force_checkout: true
+
+openblas:
+    cmd.run:
+        - name: make FC=gfortran && make PREFIX=/usr/local/ install
+        - cwd: {{ gitcache }}/OpenBLAS
+
+/home/vagrant/.numpy-site.cfg:
+    file.managed:
+        - source: salt://etc/numpy-site.cfg
+        - user: vagrant
+        - group: vagrant
+        - mode: 655
 
 # scipy won't build when this is enabled, but we may not need it
 # libsuitesparse-dev:
@@ -99,10 +122,6 @@ pip:
     cmd.run:
         - name: {{ easy_install }} pip
         - unless: which {{ pip }}
-
-{% set piplog = '/srv/log/pip.log' %}
-{% set pipcache = '/srv/cache/pip' %}
-{% set gitcache = '/srv/cache/src' %}
 
 {{ piplog }}:
     file.absent
