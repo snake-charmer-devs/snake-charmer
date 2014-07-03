@@ -11,7 +11,7 @@ limit nofile 100000 100000
 {% set pyver = pillar['pyver'] %}
 {% set pyver_ints = pyver|replace('.', '') %}
 {% set blas_threads = pillar['blas_threads'] %}
-{% if blas_thread == 1 %}
+{% if blas_threads == 1 %}
     {% set affinity = 'OPENBLAS_MAIN_FREE=1' %}
 {% else %}
     {% set affinity = '' %}
