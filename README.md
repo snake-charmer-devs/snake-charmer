@@ -3,6 +3,12 @@
 A portable Python workbench for data science, built with Vagrant,
 VirtualBox and Salt.
 
+**Tested on 64-bit Mac OS X and Linux machines.** If you can help us test
+on Windows machines and/or 32-bit machines, please
+[let us know](https://github.com/andrewclegg/snake-charmer/issues/24).
+In principle it should work, in practice we don't have the resources to
+check yet.
+
 ## Introduction
 
 Wouldn't it be great if you could magic up a local IPython Notebook server,
@@ -12,9 +18,8 @@ Python, just by typing one line?
 
     vagrant up charmed34
 
-And wouldn't it be great if you could do that from pretty much any Windows, Mac
-or Linux machine, and know that you'd get the exact same environment every
-time?
+And wouldn't it be great if you could do that from pretty any machine, and
+know that you'd get the exact same environment every time?
 
 Well, read on.
 
@@ -126,7 +131,12 @@ Everything else is installed automatically.
 
 Check out this git repository:
 
+    # Either via ssh...
     git clone git@github.com:andrewclegg/snake-charmer.git
+    # Or via https...
+    git clone https://github.com/andrewclegg/snake-charmer.git
+    
+    # Then change into your new Snake Charmer directory...
     cd snake-charmer
 
 Start the VM:
@@ -263,6 +273,14 @@ Then reboot and reprovision:
 If this doesn't fix the problem, then delete it completely, and recreate it:
 
     vagrant destroy charmed34
+    vagrant up charmed34
+
+Finally, you could try deleting your VirtualBox machines and Vagrant configuration
+files:
+
+    VBoxManage controlvm charmed34 poweroff
+    VBoxManage unregistervm charmed34 --delete
+    vagrant box remove charmed34
     vagrant up charmed34
 
 If this still doesn't fix it, you may have found a bug. Please open a
