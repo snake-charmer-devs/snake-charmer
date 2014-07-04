@@ -77,7 +77,7 @@ pip_pkgs:
       setup:   (export BLAS=/usr/local/lib/libopenblas.a ; export LAPACK=/usr/local/lib/libopenblas.a ; export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/ ; python3.4 setup.py install)
     - name:    scipy
       git:     https://github.com/scipy/scipy.git
-      ver:     v0.13.3
+      ver:     v0.14.0
       setup:   (export BLAS=/usr/local/lib/libopenblas.a ; export LAPACK=/usr/local/lib/libopenblas.a ; export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/ ; python3.4 setup.py install)
     - name:    Theano
       git:     https://github.com/Theano/Theano.git
