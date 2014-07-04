@@ -72,7 +72,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 
 * Numeric and statistical computing:
     * [NumPy](http://www.numpy.org/) 1.8.1
-    * [SciPy](http://www.scipy.org/) 0.13.3
+    * [SciPy](http://www.scipy.org/) 0.14.0
     * [Bottleneck](http://berkeleyanalytics.com/bottleneck/) 0.8.0
     * [Statsmodels](http://statsmodels.sourceforge.net/) 0.6.0 dev
     * [lifelines](https://github.com/CamDavidsonPilon/lifelines/) 0.4.0.0
@@ -80,6 +80,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [Theano](http://deeplearning.net/software/theano/) 0.6.0
     * [numexpr](https://github.com/pydata/numexpr) 2.4
     * [SymPy](http://sympy.org/) 0.7.5
+    * [OpenBLAS](http://www.openblas.net/) 
     * [R](http://www.r-project.org/) 2.14.1 &Dagger;
         * [r-base-dev and r-recommended](http://cran.r-project.org/bin/linux/ubuntu/) packages
         * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) 2.3.10

@@ -195,5 +195,5 @@ pip_pkgs:
 # Misc stuff not installed through usual channels
 
 vw_rev: 0c8da21c979951a36373ca0cb601d4c5bd056038
-openblas_rev: 1127f5a2d7afb83cd30e29431634b7475dc3d372
+openblas_rev: v0.2.9
 
