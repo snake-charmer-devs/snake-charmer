@@ -49,6 +49,9 @@ end
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  
+  # Workaround for update check when offline
+  config.vm.box_check_update = false
 
   vagrant_exe = Vagrant::Util::Which.which("vagrant")
   unless vagrant_exe
