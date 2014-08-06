@@ -3,12 +3,6 @@
 A portable Python workbench for data science, built with Vagrant,
 VirtualBox and Salt.
 
-**Tested on 64-bit Mac OS X and Linux machines.** If you can help us test
-on Windows machines and/or 32-bit machines, please
-[let us know](https://github.com/andrewclegg/snake-charmer/issues/24).
-In principle it should work, in practice we don't have the resources to
-check yet.
-
 ## Introduction
 
 Wouldn't it be great if you could magic up a local IPython Notebook server,
@@ -124,6 +118,12 @@ managing these, and [VirtualBox](https://www.virtualbox.org/) for running them
 
 *Experienced users of other virtualization platforms can edit the Vagrantfile
 to use one of these instead, if they prefer.*
+
+**Windows users:** you  may also need to install an
+[ssh client](https://www.google.co.uk/search?q=ssh+windows+command+line+client)
+if you don't already have one on your system. Also, one Windows user
+[reports](https://github.com/snake-charmer-devs/snake-charmer/issues/24#issuecomment-48858182)
+that you might need to move `git` out of your path if Vagrant does not run correctly.
 
 Everything else is installed automatically.
 
