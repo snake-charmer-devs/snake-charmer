@@ -192,6 +192,8 @@ pip_pkgs:
     - name:    wabbit_wappa
       git:     https://github.com/andrewclegg/wabbit_wappa.git
       rev:     a9f7a4d34d44ff6f6000850558d833efe07bbb95
+    - name:    requests
+      ver:     ==2.3.0
 
 # Misc stuff not installed through usual channels
 
