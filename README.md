@@ -41,6 +41,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [joblib](https://pythonhosted.org/joblib/) 0.8.0 alpha 3
     * [GNU Parallel](http://www.gnu.org/software/parallel/) 20121122 &dagger;
 
+
 * Graphics and visualization:
     * [Matplotlib](http://matplotlib.org/) 1.3.1
     * [MPLD3](http://mpld3.github.io/) 0.2
@@ -48,6 +49,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [brewer2mpl](https://github.com/jiffyclub/brewer2mpl) 1.4
     * [Seaborn](http://www.stanford.edu/~mwaskom/software/seaborn/) 0.3.1
     * [Pillow](http://python-imaging.github.io/) 2.4.0
+
 
 * Machine learning and inference:
     * [scikit-learn](http://scikit-learn.org/) 0.15 dev
@@ -60,9 +62,11 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki) 7.6.1 &Dagger;
         * [Wabbit Wappa](https://github.com/andrewclegg/wabbit_wappa) 0.2.0-p3 dev
 
+
 * Natural language processing and text mining:
     * [gensim](http://radimrehurek.com/gensim) 0.9.1
     * [NLTK](http://www.nltk.org/nltk3-alpha/) 3.0 alpha 3 (very experimental)
+
 
 * Numeric and statistical computing:
     * [NumPy](http://www.numpy.org/) 1.8.1
@@ -80,14 +84,17 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
     * [Octave](http://www.gnu.org/software/octave/) 3.2.4 &Dagger;
         * [oct2py](https://pypi.python.org/pypi/oct2py) and [octavemagic](http://nbviewer.ipython.org/github/blink1073/oct2py/blob/master/example/octavemagic_extension.ipynb) 1.3.0
 
+
 * Performance optimization:
     * [Cython](http://cython.org/) 0.21 dev
     * [Numba](https://github.com/numba/numba/) 0.13.1
+
 
 * Connectivity and interoperability:
     * [lxml](http://lxml.de/lxmlhtml.html) 3.3.5
     * [Psycopg](http://initd.org/psycopg/) 2.5.2
     * [pymssql](http://www.pymssql.org/) 2.1.0
+
 
 *&dagger; Non-Python tools*
 
