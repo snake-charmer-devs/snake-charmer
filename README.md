@@ -33,68 +33,69 @@ Packages marked 'alpha' or 'dev' should be considered experimental, although
 in many cases they are largely problem-free. We will endeavour to discover and
 document any known issues [here](https://github.com/andrewclegg/snake-charmer/issues).
 
-* Data handling and processing tools:
-    * [IPython](http://ipython.org/) 2.0.0
-        * [runipy](https://pypi.python.org/pypi/runipy) 0.0.8
-    * [Pandas](http://pandas.pydata.org/) 0.14.0
-    * [PyTables](http://www.pytables.org/moin) 3.1.1
-    * [joblib](https://pythonhosted.org/joblib/) 0.8.0 alpha 3
-    * [GNU Parallel](http://www.gnu.org/software/parallel/) 20121122 &dagger;
+### Data handling and processing tools
+
+* [IPython](http://ipython.org/) 2.0.0
+    * [runipy](https://pypi.python.org/pypi/runipy) 0.0.8
+* [Pandas](http://pandas.pydata.org/) 0.14.0
+* [PyTables](http://www.pytables.org/moin) 3.1.1
+* [joblib](https://pythonhosted.org/joblib/) 0.8.0 alpha 3
+* [GNU Parallel](http://www.gnu.org/software/parallel/) 20121122 &dagger;
+
+### Graphics and visualization
+
+* [Matplotlib](http://matplotlib.org/) 1.3.1
+* [MPLD3](http://mpld3.github.io/) 0.2
+* [prettyplotlib](http://olgabot.github.io/prettyplotlib/) 0.1.7
+* [brewer2mpl](https://github.com/jiffyclub/brewer2mpl) 1.4
+* [Seaborn](http://www.stanford.edu/~mwaskom/software/seaborn/) 0.3.1
+* [Pillow](http://python-imaging.github.io/) 2.4.0
+
+### Machine learning and inference
+
+* [scikit-learn](http://scikit-learn.org/) 0.15 dev
+* [PyMC](http://pymc-devs.github.io/pymc/) 3.0 alpha
+* [emcee](http://dan.iel.fm/emcee/current/) 2.1.0
+* [Stan/PyStan](http://mc-stan.org/) 2.2.0.2 &Dagger;
+* [Theano](http://deeplearning.net/software/theano/) 0.6.0
+* [DEAP](https://code.google.com/p/deap/) 1.0.1
+* [fastcluster](http://danifold.net/fastcluster.html) 1.1.13
+* [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki) 7.6.1 &Dagger;
+    * [Wabbit Wappa](https://github.com/andrewclegg/wabbit_wappa) 0.2.0-p3 dev
+
+### Natural language processing and text mining
+
+* [gensim](http://radimrehurek.com/gensim) 0.9.1
+* [NLTK](http://www.nltk.org/nltk3-alpha/) 3.0 alpha 3 (very experimental)
+
+### Numeric and statistical computing
+
+* [NumPy](http://www.numpy.org/) 1.8.1
+* [SciPy](http://www.scipy.org/) 0.13.3
+* [Bottleneck](http://berkeleyanalytics.com/bottleneck/) 0.8.0
+* [Statsmodels](http://statsmodels.sourceforge.net/) 0.6.0 dev
+* [lifelines](https://github.com/CamDavidsonPilon/lifelines/) 0.4.0.0
+* [Patsy](http://patsy.readthedocs.org/en/latest/) 0.2.1
+* [Theano](http://deeplearning.net/software/theano/) 0.6.0
+* [numexpr](https://github.com/pydata/numexpr) 2.4
+* [SymPy](http://sympy.org/) 0.7.5
+* [R](http://www.r-project.org/) 2.14.1 &Dagger;
+    * [r-base-dev and r-recommended](http://cran.r-project.org/bin/linux/ubuntu/) packages
+    * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) 2.3.10
+* [Octave](http://www.gnu.org/software/octave/) 3.2.4 &Dagger;
+    * [oct2py](https://pypi.python.org/pypi/oct2py) and [octavemagic](http://nbviewer.ipython.org/github/blink1073/oct2py/blob/master/example/octavemagic_extension.ipynb) 1.3.0
 
 
-* Graphics and visualization:
-    * [Matplotlib](http://matplotlib.org/) 1.3.1
-    * [MPLD3](http://mpld3.github.io/) 0.2
-    * [prettyplotlib](http://olgabot.github.io/prettyplotlib/) 0.1.7
-    * [brewer2mpl](https://github.com/jiffyclub/brewer2mpl) 1.4
-    * [Seaborn](http://www.stanford.edu/~mwaskom/software/seaborn/) 0.3.1
-    * [Pillow](http://python-imaging.github.io/) 2.4.0
+### Performance optimization
 
+* [Cython](http://cython.org/) 0.21 dev
+* [Numba](https://github.com/numba/numba/) 0.13.1
 
-* Machine learning and inference:
-    * [scikit-learn](http://scikit-learn.org/) 0.15 dev
-    * [PyMC](http://pymc-devs.github.io/pymc/) 3.0 alpha
-    * [emcee](http://dan.iel.fm/emcee/current/) 2.1.0
-    * [Stan/PyStan](http://mc-stan.org/) 2.2.0.2 &Dagger;
-    * [Theano](http://deeplearning.net/software/theano/) 0.6.0
-    * [DEAP](https://code.google.com/p/deap/) 1.0.1
-    * [fastcluster](http://danifold.net/fastcluster.html) 1.1.13
-    * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki) 7.6.1 &Dagger;
-        * [Wabbit Wappa](https://github.com/andrewclegg/wabbit_wappa) 0.2.0-p3 dev
+### Connectivity and interoperability
 
-
-* Natural language processing and text mining:
-    * [gensim](http://radimrehurek.com/gensim) 0.9.1
-    * [NLTK](http://www.nltk.org/nltk3-alpha/) 3.0 alpha 3 (very experimental)
-
-
-* Numeric and statistical computing:
-    * [NumPy](http://www.numpy.org/) 1.8.1
-    * [SciPy](http://www.scipy.org/) 0.13.3
-    * [Bottleneck](http://berkeleyanalytics.com/bottleneck/) 0.8.0
-    * [Statsmodels](http://statsmodels.sourceforge.net/) 0.6.0 dev
-    * [lifelines](https://github.com/CamDavidsonPilon/lifelines/) 0.4.0.0
-    * [Patsy](http://patsy.readthedocs.org/en/latest/) 0.2.1
-    * [Theano](http://deeplearning.net/software/theano/) 0.6.0
-    * [numexpr](https://github.com/pydata/numexpr) 2.4
-    * [SymPy](http://sympy.org/) 0.7.5
-    * [R](http://www.r-project.org/) 2.14.1 &Dagger;
-        * [r-base-dev and r-recommended](http://cran.r-project.org/bin/linux/ubuntu/) packages
-        * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) 2.3.10
-    * [Octave](http://www.gnu.org/software/octave/) 3.2.4 &Dagger;
-        * [oct2py](https://pypi.python.org/pypi/oct2py) and [octavemagic](http://nbviewer.ipython.org/github/blink1073/oct2py/blob/master/example/octavemagic_extension.ipynb) 1.3.0
-
-
-* Performance optimization:
-    * [Cython](http://cython.org/) 0.21 dev
-    * [Numba](https://github.com/numba/numba/) 0.13.1
-
-
-* Connectivity and interoperability:
-    * [lxml](http://lxml.de/lxmlhtml.html) 3.3.5
-    * [Psycopg](http://initd.org/psycopg/) 2.5.2
-    * [pymssql](http://www.pymssql.org/) 2.1.0
-
+* [lxml](http://lxml.de/lxmlhtml.html) 3.3.5
+* [Psycopg](http://initd.org/psycopg/) 2.5.2
+* [pymssql](http://www.pymssql.org/) 2.1.0
 
 *&dagger; Non-Python tools*
 
