@@ -20,7 +20,7 @@ apt_pkgs:
     - liblcms1-dev: 1.19.dfsg-1ubuntu3
     - liblzo2-dev: 2.06-1ubuntu0.1
     - libpng12-dev: 1.2.46-3ubuntu4
-    - libpq-dev: 9.1.13-0ubuntu0.12.04
+    - libpq-dev: 9.1.14-0ubuntu0.12.04
     - libtiff4-dev: 3.9.5-2ubuntu1.6
     - libwebp-dev: 0.1.3-2.1ubuntu1
     - libxml2-dev: 2.7.8.dfsg-5.1ubuntu4.9
