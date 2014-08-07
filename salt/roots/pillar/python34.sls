@@ -13,7 +13,7 @@ apt_pkgs:
     - libhdf5-serial-dev: 1.8.4-patch1-3ubuntu2
     - libjpeg8-dev: 8c-2ubuntu7
     - liblcms1-dev: 1.19.dfsg-1ubuntu3
-    - liblzo2-dev: 2.06-1
+    - liblzo2-dev: 2.06-1ubuntu0.1
     - libpng12-dev: 1.2.46-3ubuntu4
     - libpq-dev: 9.1.13-0ubuntu0.12.04
     - libtiff4-dev: 3.9.5-2ubuntu1.6
@@ -191,6 +191,8 @@ pip_pkgs:
     - name:    wabbit_wappa
       git:     https://github.com/andrewclegg/wabbit_wappa.git
       rev:     a9f7a4d34d44ff6f6000850558d833efe07bbb95
+    - name:    requests
+      ver:     ==2.3.0
 
 # Misc stuff not installed through usual channels
 

@@ -89,6 +89,11 @@ usually a major factor. Make sure virtualization extensions are
 [enabled in your BIOS](http://www.sysprobs.com/disable-enable-virtualization-technology-bios)
 (most manufacturers do this by default these days).
 
+*Installation* of a new VM is currently a bit slow, due to the number of
+native packages that need to be compiled from source. This is an area where
+distros like Anaconda win out due to their binary packages. In the future we
+plan to supply pre-built VM images, to get you up and running instantly.
+
 ### Can Snake Charmer VMs access my GPU?
 
 **GPU computation using CUDA is not supported yet**. GPU virtualization is a
