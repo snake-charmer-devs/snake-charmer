@@ -117,7 +117,7 @@ appropriate for your environment, then `vagrant up` or `vagrant reload`.
 
 * `CHARMER_RAM` (integer; default 2048)
 
-Amount of memory to supply to each VM, in megabytes. 1000 is probably the
+Amount of memory to supply to each VM, in megabytes. 500 is probably the
 minimum you can get away with.
 
 *This will take effect on next boot, regardless of whether the `--provision`

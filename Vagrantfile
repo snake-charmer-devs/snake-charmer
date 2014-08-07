@@ -42,7 +42,7 @@ end
 begin
   Vagrant.require_version ">= 1.5.2"
 rescue NoMethodError
-  raise 'Snake Oil is only supported on Vagrant >= 1.5.2, please upgrade. Thanks.'
+  raise 'Snake Charmer is only supported on Vagrant >= 1.5.2, please upgrade. Thanks.'
 end
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
