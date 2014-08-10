@@ -168,11 +168,14 @@ Start the VM:
 will attempt to install the [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest/)
 plugin automatically.*
 
-This command currently takes around an hour to download and install all the
-necessary software. When this completes, it will run some tests and then
-display a message like this:
+This command will generally take **at least an hour** to download and install
+all the necessary software. When this completes, it will run some tests and
+then display a message like this:
 
     Your VM is up and running: http://localhost:8834/tree
+
+Later rebuilds will go slightly more quickly, as downloaded package files are
+cached where possible.
 
 ### Testing your installation
 
