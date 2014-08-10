@@ -135,6 +135,18 @@ that you might need to move `git` out of your path if Vagrant does not run corre
 
 Everything else is installed automatically.
 
+### Hardware and system resources
+
+By default, the VM allocates 1024MB of RAM, and a single CPU. If your computer
+only *has* 1024MB, you will need to reduce this as described in the
+[customization guide](CUSTOMIZING.md).
+
+It is very much recommended that you run Snake Charmer on a machine with
+[hardware virtualization](http://www.desktop-virtualization.com/2008/05/14/what-hardware-virtualization-really-means/)
+(i.e. Intel VT-x or AMD-V). It will run on systems without this, but slowly.
+You may need to enable it in your BIOS, but most modern systems come with it
+enabled by default.
+
 ## Installation
 
 Check out this git repository:

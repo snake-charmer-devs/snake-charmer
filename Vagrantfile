@@ -138,8 +138,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     charmed34.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.name = "charmed34"
-      v.memory = get_env("CHARMER_RAM", 2048)
-      v.cpus = get_env("CHARMER_CPUS", 2)
+      v.memory = get_env("CHARMER_RAM", 1024)
+      v.cpus = get_env("CHARMER_CPUS", 1)
     end
 
     charmed34.vm.hostname = "charmed34"
