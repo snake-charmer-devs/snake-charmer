@@ -96,6 +96,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 * [lxml](http://lxml.de/lxmlhtml.html) 3.3.5
 * [Psycopg](http://initd.org/psycopg/) 2.5.2
 * [pymssql](http://www.pymssql.org/) 2.1.0
+* [requests](http://docs.python-requests.org/en/latest/) 2.3.0
 
 *&dagger; Non-Python tools*
 
