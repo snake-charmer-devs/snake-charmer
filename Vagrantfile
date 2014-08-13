@@ -149,7 +149,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Write top of git log into data so we can show it in Hello World notebook
   msg = "commit not found"
   if git_exe
-    last_commit = `#{git_exe} log --no-merges -n 1`
+    last_commit = `"#{git_exe}" log --no-merges -n 1`
     if $?.success?
       msg = last_commit
     end
