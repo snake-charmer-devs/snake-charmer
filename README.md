@@ -53,7 +53,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 
 ### Machine learning and inference
 
-* [scikit-learn](http://scikit-learn.org/) 0.15 dev
+* [scikit-learn](http://scikit-learn.org/) 0.15.1
 * [PyMC](http://pymc-devs.github.io/pymc/) 3.0 alpha
 * [emcee](http://dan.iel.fm/emcee/current/) 2.1.0
 * [Stan/PyStan](http://mc-stan.org/) 2.2.0.2 &Dagger;
