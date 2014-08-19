@@ -77,7 +77,7 @@ pip_pkgs:
     - name:    openpyxl
       ver:     ==1.8.5
     - name:    numpy
-      ver:     ==1.8.1
+      ver:     ==1.8.2
     - name:    scipy
       ver:     ==0.14.0
     - name:    Theano
