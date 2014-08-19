@@ -73,11 +73,11 @@ pip_pkgs:
       ver:     ==1.8.5
     - name:    numpy
       git:     https://github.com/numpy/numpy.git
-      rev:     v1.8.1
+      rev:     v1.8.2
       setup:   (export BLAS=/usr/local/lib/libopenblas.a ; export LAPACK=/usr/local/lib/libopenblas.a ; export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/ ; python3.4 setup.py install)
     - name:    scipy
       git:     https://github.com/scipy/scipy.git
-      rev:     26ddaf0556266fb28901ddbfc3c817e75d0a9daa
+      rev:     v0.14.0
       setup:   (export BLAS=/usr/local/lib/libopenblas.a ; export LAPACK=/usr/local/lib/libopenblas.a ; export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/ ; python3.4 setup.py install)
     - name:    Theano
       git:     https://github.com/Theano/Theano.git
@@ -123,8 +123,8 @@ pip_pkgs:
       git:     https://github.com/statsmodels/statsmodels.git
       rev:     74b4dc920456a82e11d4ebd865bb698769b0b767
     - name:    pymc
-      git:     https://github.com/andrewclegg/pymc
-      rev:     66c3f3743de9c39643ba4fb3ef14f79e4845e8f3
+      git:     https://github.com/pymc-devs/pymc
+      rev:     950c18e0fc6ac5f7dd9c1a4c79100aa7b6d95014
     - name:    psycopg2
       ver:     ==2.5.2
     - name:    pymssql
@@ -140,8 +140,7 @@ pip_pkgs:
       import:  IPython
       ver:     ==2.0.0
     - name:    scikit-learn
-      git:     https://github.com/scikit-learn/scikit-learn.git
-      rev:     d0f6052a7c0eb8df48b0dd867c2799aa9bd729fa
+      ver:     ==0.15.1
       import:  sklearn
     - name:    runipy
       ver:     ==0.0.8
@@ -189,7 +188,7 @@ pip_pkgs:
     - name:    mpld3
       ver:     ==0.2
     - name:    wabbit_wappa
-      git:     https://github.com/andrewclegg/wabbit_wappa.git
+      git:     https://github.com/snake-charmer-devs/wabbit_wappa.git
       rev:     a9f7a4d34d44ff6f6000850558d833efe07bbb95
     - name:    requests
       ver:     ==2.3.0

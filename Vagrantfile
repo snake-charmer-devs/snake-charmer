@@ -143,8 +143,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     charmed34.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.name = "charmed34"
-      v.memory = get_env("CHARMER_RAM", 2048)
-      v.cpus = get_env("CHARMER_CPUS", 2)
+      v.memory = get_env("CHARMER_RAM", 1024)
+      v.cpus = get_env("CHARMER_CPUS", 1)
     end
 
     charmed34.vm.hostname = "charmed34"
@@ -154,7 +154,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Write top of git log into data so we can show it in Hello World notebook
   msg = "commit not found"
   if git_exe
-    last_commit = `#{git_exe} log --no-merges -n 1`
+    last_commit = `"#{git_exe}" log --no-merges -n 1`
     if $?.success?
       msg = last_commit
     end
