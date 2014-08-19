@@ -79,7 +79,7 @@ pip_pkgs:
     - name:    numpy
       ver:     ==1.8.1
     - name:    scipy
-      ver:     ==0.13.3
+      ver:     ==0.14.0
     - name:    Theano
       git:     https://github.com/Theano/Theano.git
       rev:     ba81e61d6545d5a82fbf9c85b9e6db2fd3c12ea3
