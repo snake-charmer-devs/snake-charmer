@@ -124,8 +124,8 @@ pip_pkgs:
       git:     https://github.com/statsmodels/statsmodels.git
       rev:     74b4dc920456a82e11d4ebd865bb698769b0b767
     - name:    pymc
-      git:     https://github.com/andrewclegg/pymc
-      rev:     66c3f3743de9c39643ba4fb3ef14f79e4845e8f3
+      git:     https://github.com/pymc-devs/pymc
+      rev:     950c18e0fc6ac5f7dd9c1a4c79100aa7b6d95014
     - name:    psycopg2
       ver:     ==2.5.2
     - name:    pymssql
