@@ -177,6 +177,12 @@ then display a message like this:
 Later rebuilds will go slightly more quickly, as downloaded package files are
 cached where possible.
 
+Note: you may get the following warning after the "up and running" message:
+
+    sys:1: ResourceWarning: unclosed file <_io.TextIOWrapper name='/dev/null' mode='w' encoding='ISO-8859-1'>
+
+This can safely be ignored.
+
 ### Testing your installation
 
 The link above will take you to a fully-kitted-out IPython Notebook server.
