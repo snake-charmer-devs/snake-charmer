@@ -178,7 +178,7 @@ flag is used.*
 
 * `CHARMER_LOG_DIR` (string; default "log")
 
-A custom location on the host for cached packages and source code, instead of
+A custom location on the host for logfiles generated during provisioning, instead of
 the `log` subdirectory of the `snake-charmer` directory. Within this directory,
 a subdirectory will be created which is named after the VM (e.g. `charmed34`).
 This is then mounted as `/srv/log` on the guest.
