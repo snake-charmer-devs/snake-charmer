@@ -35,7 +35,7 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 
 ### Data handling and processing tools
 
-* [IPython](http://ipython.org/) 2.0.0
+* [IPython](http://ipython.org/) 2.2.0
     * [runipy](https://pypi.python.org/pypi/runipy) 0.0.8
 * [Pandas](http://pandas.pydata.org/) 0.14.0
 * [PyTables](http://www.pytables.org/moin) 3.1.1

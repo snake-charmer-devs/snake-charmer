@@ -139,7 +139,7 @@ pip_pkgs:
       ver:     ==0.3.1
     - name:    ipython[all]
       import:  IPython
-      ver:     ==2.0.0
+      ver:     ==2.2.0
     - name:    scikit-learn
       ver:     ==0.15.1
       import:  sklearn
