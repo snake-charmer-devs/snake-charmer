@@ -19,6 +19,6 @@ limit nofile 100000 100000
 
 script
     cd /home/vagrant/notebooks
-    su -c "OPENBLAS_NUM_THREADS={{ blas_threads}} {{ affinity }} python{{ pyver }} -m IPython notebook --matplotlib inline --ip='*' --port 88{{ pyver_ints }}" vagrant
+    su -c "OMP_NUM_THREADS={{ blas_threads}} {{ affinity }} python{{ pyver }} -m IPython notebook --matplotlib inline --ip='*' --port 88{{ pyver_ints }}" vagrant
 end script
 

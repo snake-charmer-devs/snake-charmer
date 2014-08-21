@@ -54,7 +54,7 @@ https://github.com/xianyi/OpenBLAS.git:
 
 openblas:
     cmd.run:
-        - name: make NUM_THREADS={{ pillar['blas_max_threads'] }} NO_AFFINITY=0 GEMM_MULTITHREAD_THRESHOLD=8 FC=gfortran && make PREFIX=/usr/local install && ldconfig
+        - name: make NUM_THREADS={{ pillar['blas_max_threads'] }} NO_AFFINITY=0 GEMM_MULTITHREAD_THRESHOLD=8 USE_OPENMP=1 NO_WARMUP=1 FC=gfortran && make PREFIX=/usr/local install && ldconfig
         - cwd: {{ gitcache }}/OpenBLAS
 
 /root/.numpy-site.cfg:
