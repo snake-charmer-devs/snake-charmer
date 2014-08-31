@@ -278,6 +278,27 @@ datasets are stored on another disk, see the [customization guide](CUSTOMIZING.m
 
 ### Troubleshooting
 
+The [issues list](https://github.com/snake-charmer-devs/snake-charmer/issues)
+is generally up to date with any current known problems.
+
+#### Temporary files in snake-charmer directory
+
+If you are on Linux and see lots of temporary files and directories with
+random names like `d20140819-2623-folctt`, `vagrant20140813-28997-ya0isv2`
+or `vagrant20140813-28997-ya0isv2.lock` appearing, this may be because Ruby
+doesn't like the permissions on your `/tmp` directory.
+
+Try this:
+
+    vagrant halt
+    chmod 1777 /tmp
+
+Then delete all the offending files, and restart the VM.
+
+This is a [known Vagrant issue](https://github.com/mitchellh/vagrant/issues/3493).
+
+#### Unexpected behaviour from a VM
+
 If a VM starts behaving strangely, the golden rule is:
 **Don't waste time fixing it.**
 
