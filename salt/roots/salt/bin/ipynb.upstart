@@ -8,13 +8,7 @@ respawn
 
 limit nofile 100000 100000
 
-{% set pyver = pillar['pyver'] %}
-{% set pyver_ints = pyver|replace('.', '') %}
-{% set blas_threads = pillar['blas_threads'] %}
-{% set affinity = pillar['blas_affinity'] %}
-
 script
-    cd /home/vagrant/notebooks
-    su -c "OMP_NUM_THREADS={{ blas_threads }} OPENBLAS_MAIN_FREE={{ 0 if affinity else 1 }} python{{ pyver }} -m IPython notebook --matplotlib inline --ip='*' --port 88{{ pyver_ints }}" vagrant
+    su -c /home/vagrant/ipynb.sh vagrant
 end script
 
