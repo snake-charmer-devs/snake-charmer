@@ -113,7 +113,7 @@ pip_pkgs:
       git:     https://github.com/sympy/sympy.git
       rev:     254d99c1c2bfbd4f634f61cd5a444c8a3e79450b
     - name:    pandas
-      ver:     ==0.14
+      ver:     ==0.14.1
     - name:    lifelines
       ver:     ==0.4.0.0
     - name:    nose
