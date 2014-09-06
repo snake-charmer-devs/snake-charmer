@@ -85,7 +85,6 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 * [Octave](http://www.gnu.org/software/octave/) 3.2.4 &Dagger;
     * [oct2py](https://pypi.python.org/pypi/oct2py) and [octavemagic](http://nbviewer.ipython.org/github/blink1073/oct2py/blob/master/example/octavemagic_extension.ipynb) 1.3.0
 
-
 ### Performance optimization
 
 * [Cython](http://cython.org/) 0.21 dev

@@ -8,15 +8,10 @@ apt_pkgs:
     - gfortran: 4:4.6.3-1ubuntu5
     - git: 1:1.7.9.5-1
     - htop: 1.0.1-1
-    - libatlas-base-dev: 3.8.4-3build1
-    - libatlas-dev: 3.8.4-3build1
-    - libatlas3gf-base: 3.8.4-3build1
     - libboost-program-options-dev: 1.48.0.2
     - libfreetype6-dev: 2.4.8-1ubuntu2.1
     - libhdf5-serial-dev: 1.8.4-patch1-3ubuntu2
     - libjpeg8-dev: 8c-2ubuntu7
-    - liblapack-dev: 3.3.1-1
-    - liblapack3gf: 3.3.1-1
     - liblcms1-dev: 1.19.dfsg-1ubuntu3
     - liblzo2-dev: 2.06-1ubuntu0.1
     - libpng12-dev: 1.2.46-3ubuntu4
@@ -77,9 +72,13 @@ pip_pkgs:
     - name:    openpyxl
       ver:     ==1.8.5
     - name:    numpy
-      ver:     ==1.8.2
+      git:     https://github.com/numpy/numpy.git
+      rev:     v1.8.2
+      setup:   (export BLAS=/usr/local/lib/libopenblas.a ; export LAPACK=/usr/local/lib/libopenblas.a ; export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/ ; python3.4 setup.py install)
     - name:    scipy
-      ver:     ==0.14.0
+      git:     https://github.com/scipy/scipy.git
+      rev:     26ddaf0556266fb28901ddbfc3c817e75d0a9daa
+      setup:   (export BLAS=/usr/local/lib/libopenblas.a ; export LAPACK=/usr/local/lib/libopenblas.a ; export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/ ; python3.4 setup.py install)
     - name:    Theano
       git:     https://github.com/Theano/Theano.git
       rev:     ba81e61d6545d5a82fbf9c85b9e6db2fd3c12ea3
@@ -197,4 +196,5 @@ pip_pkgs:
 # Misc stuff not installed through usual channels
 
 vw_rev: 0c8da21c979951a36373ca0cb601d4c5bd056038
+openblas_rev: v0.2.9
 
