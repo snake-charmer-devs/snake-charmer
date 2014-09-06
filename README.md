@@ -177,15 +177,8 @@ then display a message like this:
 Later rebuilds will go slightly more quickly, as downloaded package files are
 cached where possible.
 
-Note: you may get the following warnings after the "up and running" message:
-
-    sys:1: ResourceWarning: unclosed file <_io.TextIOWrapper name='/dev/null' mode='w' encoding='ISO-8859-1'>
-
-    /usr/local/lib/python3.4/dist-packages/numpy/lib/utils.py:134: DeprecationWarning: `scipy.sparse.sparsetools` is deprecated!
-    scipy.sparse.sparsetools is a private module for scipy.sparse, and should not be used.
-      warnings.warn(depdoc, DeprecationWarning)
-
-These can safely be ignored.
+Note: you may get some Python warnings after the "up and running" message, e.g.
+`DeprecationWarning` or `ResourceWarning`. These can safely be ignored.
 
 ### Testing your installation
 
