@@ -130,7 +130,7 @@ echo "export OPENBLAS_MAIN_FREE=#{blas_free}">>/home/vagrant/ipynb.sh
 echo "python3.4 -m IPython notebook --matplotlib inline --ip='*' --port 8834">>/home/vagrant/ipynb.sh
 chmod +x /home/vagrant/ipynb.sh
 chown vagrant:vagrant /home/vagrant/ipynb.sh
-service ipynb restart
+service ipynb restart || true
 SCRIPT
     charmed34.vm.provision "shell", inline: ipynb_script, run: "always"
 
