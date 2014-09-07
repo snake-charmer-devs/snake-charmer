@@ -40,9 +40,9 @@ def install_plugins(vagrant_exe, *plugins)
 end
 
 begin
-  Vagrant.require_version ">= 1.5.2"
+  Vagrant.require_version ">= 1.6.0"
 rescue NoMethodError
-  raise 'Snake Charmer is only supported on Vagrant >= 1.5.2, please upgrade. Thanks.'
+  raise 'Snake Charmer is only supported on Vagrant >= 1.6.0, please upgrade. Thanks.'
 end
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
@@ -118,6 +118,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       charmed34.vm.network "forwarded_port", guest: port, host: port
     end
 
+    # Write startup script for ipynb service
+    # (set to "always" so we can change options without reprovisioning)
+    blas_threads = get_env("CHARMER_BLAS_THREADS", 1)
+    blas_affinity = get_env("CHARMER_BLAS_AFFINITY", false)
+    blas_free = blas_affinity ? 0 : 1
+    ipynb_script = <<SCRIPT
+echo "cd /home/vagrant/notebooks">/home/vagrant/ipynb.sh
+echo "export OMP_NUM_THREADS=#{blas_threads}">>/home/vagrant/ipynb.sh
+echo "export OPENBLAS_MAIN_FREE=#{blas_free}">>/home/vagrant/ipynb.sh
+echo "python3.4 -m IPython notebook --matplotlib inline --ip='*' --port 8834">>/home/vagrant/ipynb.sh
+chmod +x /home/vagrant/ipynb.sh
+chown vagrant:vagrant /home/vagrant/ipynb.sh
+service ipynb restart
+SCRIPT
+    charmed34.vm.provision "shell", inline: ipynb_script, run: "always"
+
     # Wipe salt minion log ready for fresh run
     charmed34.vm.provision "shell",
       inline: "truncate -s 0 /srv/log/minion"
@@ -127,7 +143,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
       salt.pillar({
-        "blas_threads" => get_env("CHARMER_BLAS_THREADS", 1),
+        "blas_max_threads" => 255,
         "run_tests" => get_env("CHARMER_TEST", false), # not currently used
         "slimline" => get_env("CHARMER_SLIM", false)
       })

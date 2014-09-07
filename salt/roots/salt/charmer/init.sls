@@ -54,8 +54,13 @@ https://github.com/xianyi/OpenBLAS.git:
 
 openblas:
     cmd.run:
-        - name: make FC=gfortran && make PREFIX=/usr/local/ install
+        - name: make NUM_THREADS={{ pillar['blas_max_threads'] }} NO_AFFINITY=0 GEMM_MULTITHREAD_THRESHOLD=8 USE_OPENMP=1 NO_WARMUP=1 FC=gfortran && make PREFIX=/usr/local install && ldconfig
         - cwd: {{ gitcache }}/OpenBLAS
+
+/root/.numpy-site.cfg:
+    file.managed:
+        - source: salt://etc/numpy-site.cfg
+        - mode: 655
 
 /home/vagrant/.numpy-site.cfg:
     file.managed:
