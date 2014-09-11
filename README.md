@@ -280,7 +280,19 @@ datasets are stored on another disk, see the [customization guide](CUSTOMIZING.m
 ### Troubleshooting
 
 The [issues list](https://github.com/snake-charmer-devs/snake-charmer/issues)
-is generally up to date with any current known problems.
+is generally up to date with any current unresolved problems.
+
+#### Installation problems on Linux
+
+If you get an error during installation along the lines of:
+
+    Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
+
+then you may be missing a C/C++ compiler, and/or `libxml2` and `libxslt`.
+
+On `.deb`-based Linuxes like Debian, Ubuntu and Mint, try this:
+
+    sudo apt-get install libxml2-dev libxslt-dev build-essentials
 
 #### Temporary files in snake-charmer directory
 
@@ -352,7 +364,12 @@ attach via the console, etc.
 
 Only use the **host** filesystem to store data, notebooks etc. -- that is, the
 `data` and `notebooks` folders which are synced to the VM. If you store files
-in other places on a VM, they **will** be lost forever when you destroy it. 
+in other places on a VM, they **will** be lost forever when you destroy it.
+
+*The exception is if you want to package up a new Vagrant box with the data
+and notebooks from your existing environment, e.g. to redistribute. In this
+case, all the files **must** be stored within the VM. This is an option for
+Vagrant power users, primarily.*
 
 ## Sharing your VMs
 
