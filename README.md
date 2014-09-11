@@ -138,9 +138,10 @@ Everything else is installed automatically.
 
 ### Hardware and system resources
 
-By default, the VM allocates 1024MB of RAM, and a single CPU. If your computer
-only *has* 1024MB, you will need to reduce this as described in the
-[customization guide](CUSTOMIZING.md).
+By default, the VM allocates 2048MB of RAM, and a single CPU. If your computer
+only *has* 2048MB, you will need to reduce this as described in the
+[customization guide](CUSTOMIZING.md). (If you reduce it too much, however, the
+VM may not build correctly. Some experimentation may be required.)
 
 It is very much recommended that you run Snake Charmer on a machine with
 [hardware virtualization](http://www.desktop-virtualization.com/2008/05/14/what-hardware-virtualization-really-means/)

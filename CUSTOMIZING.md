@@ -115,10 +115,10 @@ Snake Charmer recognizes a number of environment variables that can be used to
 modify the behaviour of VMs without editing config files. Set these as
 appropriate for your environment, then `vagrant up` or `vagrant reload`.
 
-* `CHARMER_RAM` (integer; default 1024)
+* `CHARMER_RAM` (integer; default 2048)
 
-Amount of memory to supply to each VM, in megabytes. 500 is probably the
-absolute minimum you can get away with; 1000 or more is recommended.
+Amount of memory to supply to each VM, in megabytes. 1500 is probably the
+absolute minimum you can get away with; 2000 or more is recommended.
 
 *This will take effect on next boot, regardless of whether the `--provision`
 flag is used.*
