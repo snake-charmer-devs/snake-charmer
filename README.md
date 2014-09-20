@@ -188,9 +188,19 @@ Note: you may get the following warnings after the "up and running" message:
 
 These can safely be ignored.
 
-### Testing your installation
+### Accessing IPython notebooks
 
-The link above will take you to a fully-kitted-out IPython Notebook server.
+The [link](http://localhost:8834/tree) shown at the end of the installation
+procedure will take you to a fully-kitted-out IPython Notebook server. This can
+be used in exactly the same way as if it was running on your 'real' hardware
+(i.e. not in a VM). It runs as a Linux service which starts automatically when
+the VM is booted up, and will be restarted automatically if it ever crashes.
+
+The notebook server acts as if it is running in the 'notebooks' subdirectory
+(see **Folder structure** below).
+
+### Testing it out
+
 Open the "Hello World" notebook to see a full list of installed packages and
 other system information. **N.B.** The notebook server is started with inline
 graphics enabled for matplotlib, but _not_ the `--pylab` option, as this is
