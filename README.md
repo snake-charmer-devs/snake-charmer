@@ -385,7 +385,7 @@ Vagrant power users, primarily.*
 
 Snake Charmer VMs are Vagrant VMs, and Vagrant VMs can be published, shared
 and remotely accessed via various mechanisms. This is discussed in the
-[Snake Charmer F.A.Q.](FAQ.md).
+[Snake Charmer FAQ](FAQ.md).
 
 ## Customizing your VMs
 
@@ -396,7 +396,7 @@ separate [customization guide](CUSTOMIZING.md).
 
 ## F.A.Q.
 
-See the separate [Snake Charmer F.A.Q.](FAQ.md).
+See the separate [Snake Charmer FAQ](FAQ.md).
 
 ## Credits
 
