@@ -378,7 +378,7 @@ in other places on a VM, they **will** be lost forever when you destroy it.
 
 *The exception is if you want to package up a new Vagrant box with the data
 and notebooks from your existing environment, e.g. to redistribute. In this
-case, all the files **must** be stored within the VM. This is an option for
+case, all the files __must__ be stored within the VM. This is an option for
 Vagrant power users, primarily.*
 
 ## Sharing your VMs
