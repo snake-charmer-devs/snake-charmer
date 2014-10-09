@@ -378,14 +378,14 @@ in other places on a VM, they **will** be lost forever when you destroy it.
 
 *The exception is if you want to package up a new Vagrant box with the data
 and notebooks from your existing environment, e.g. to redistribute. In this
-case, all the files **must** be stored within the VM. This is an option for
+case, all the files __must__ be stored within the VM. This is an option for
 Vagrant power users, primarily.*
 
 ## Sharing your VMs
 
 Snake Charmer VMs are Vagrant VMs, and Vagrant VMs can be published, shared
 and remotely accessed via various mechanisms. This is discussed in the
-[Snake Charmer F.A.Q.](FAQ.md).
+[Snake Charmer FAQ](FAQ.md).
 
 ## Customizing your VMs
 
@@ -396,7 +396,7 @@ separate [customization guide](CUSTOMIZING.md).
 
 ## F.A.Q.
 
-See the separate [Snake Charmer F.A.Q.](FAQ.md).
+See the separate [Snake Charmer FAQ](FAQ.md).
 
 ## Credits
 
