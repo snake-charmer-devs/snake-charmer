@@ -40,7 +40,6 @@ document any known issues [here](https://github.com/andrewclegg/snake-charmer/is
 * [Pandas](http://pandas.pydata.org/) 0.14.0
 * [PyTables](http://www.pytables.org/moin) 3.1.1
 * [joblib](https://pythonhosted.org/joblib/) 0.8.0 alpha 3
-* [GNU Parallel](http://www.gnu.org/software/parallel/) 20121122 &dagger;
 
 ### Graphics and visualization
 
