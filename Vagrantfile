@@ -121,9 +121,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Install and configure packages via salt
     charmed34.vm.provision :salt do |salt|
-      # Temp workaround for https://github.com/saltstack/salt/issues/16210
-      salt.install_type = "git"
-      salt.install_args = "v2014.1.10"
+      salt.install_type = "stable"
 
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
