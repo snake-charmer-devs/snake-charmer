@@ -40,15 +40,18 @@ def install_plugins(vagrant_exe, *plugins)
 end
 
 begin
-  Vagrant.require_version ">= 1.5.2"
+  Vagrant.require_version ">= 1.6.0"
 rescue NoMethodError
-  raise 'Snake Oil is only supported on Vagrant >= 1.5.2, please upgrade. Thanks.'
+  raise 'Snake Charmer is only supported on Vagrant >= 1.6.0, please upgrade. Thanks.'
 end
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  
+  # Workaround for update check when offline
+  config.vm.box_check_update = false
 
   vagrant_exe = Vagrant::Util::Which.which("vagrant")
   unless vagrant_exe
@@ -115,6 +118,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       charmed34.vm.network "forwarded_port", guest: port, host: port
     end
 
+    # Write startup script for ipynb service
+    # (set to "always" so we can change options without reprovisioning)
+    blas_threads = get_env("CHARMER_BLAS_THREADS", 1)
+    blas_affinity = get_env("CHARMER_BLAS_AFFINITY", false)
+    blas_free = blas_affinity ? 0 : 1
+    ipynb_script = <<SCRIPT
+echo "cd /home/vagrant/notebooks">/home/vagrant/ipynb.sh
+echo "export OMP_NUM_THREADS=#{blas_threads}">>/home/vagrant/ipynb.sh
+echo "export OPENBLAS_MAIN_FREE=#{blas_free}">>/home/vagrant/ipynb.sh
+echo "python3.4 -m IPython notebook --matplotlib inline --ip='*' --port 8834">>/home/vagrant/ipynb.sh
+chmod +x /home/vagrant/ipynb.sh
+chown vagrant:vagrant /home/vagrant/ipynb.sh
+service ipynb restart || true
+SCRIPT
+    charmed34.vm.provision "shell", inline: ipynb_script, run: "always"
+
     # Wipe salt minion log ready for fresh run
     charmed34.vm.provision "shell",
       inline: "truncate -s 0 /srv/log/minion"
@@ -124,6 +143,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.minion_config = "salt/minion"
       salt.run_highstate = true
       salt.pillar({
+        "blas_max_threads" => 255,
         "run_tests" => get_env("CHARMER_TEST", false), # not currently used
         "slimline" => get_env("CHARMER_SLIM", false)
       })
@@ -138,8 +158,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     charmed34.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.name = "charmed34"
-      v.memory = get_env("CHARMER_RAM", 2048)
-      v.cpus = get_env("CHARMER_CPUS", 2)
+      v.memory = get_env("CHARMER_RAM", 1024)
+      v.cpus = get_env("CHARMER_CPUS", 1)
     end
 
     charmed34.vm.hostname = "charmed34"
@@ -149,7 +169,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Write top of git log into data so we can show it in Hello World notebook
   msg = "commit not found"
   if git_exe
-    last_commit = `#{git_exe} log --no-merges -n 1`
+    last_commit = `"#{git_exe}" log --no-merges -n 1`
     if $?.success?
       msg = last_commit
     end

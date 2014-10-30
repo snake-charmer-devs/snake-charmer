@@ -8,19 +8,14 @@ apt_pkgs:
     - gfortran: 4:4.6.3-1ubuntu5
     - git: 1:1.7.9.5-1
     - htop: 1.0.1-1
-    - libatlas-base-dev: 3.8.4-3build1
-    - libatlas-dev: 3.8.4-3build1
-    - libatlas3gf-base: 3.8.4-3build1
     - libboost-program-options-dev: 1.48.0.2
     - libfreetype6-dev: 2.4.8-1ubuntu2.1
     - libhdf5-serial-dev: 1.8.4-patch1-3ubuntu2
     - libjpeg8-dev: 8c-2ubuntu7
-    - liblapack-dev: 3.3.1-1
-    - liblapack3gf: 3.3.1-1
     - liblcms1-dev: 1.19.dfsg-1ubuntu3
-    - liblzo2-dev: 2.06-1
+    - liblzo2-dev: 2.06-1ubuntu0.1
     - libpng12-dev: 1.2.46-3ubuntu4
-    - libpq-dev: 9.1.13-0ubuntu0.12.04
+    - libpq-dev: 9.1.14-0ubuntu0.12.04
     - libtiff4-dev: 3.9.5-2ubuntu1.6
     - libwebp-dev: 0.1.3-2.1ubuntu1
     - libxml2-dev: 2.7.8.dfsg-5.1ubuntu4.9
@@ -77,9 +72,13 @@ pip_pkgs:
     - name:    openpyxl
       ver:     ==1.8.5
     - name:    numpy
-      ver:     ==1.8.1
+      git:     https://github.com/numpy/numpy.git
+      rev:     v1.8.2
+      setup:   (export BLAS=/usr/local/lib/libopenblas.a ; export LAPACK=/usr/local/lib/libopenblas.a ; export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/ ; python3.4 setup.py install)
     - name:    scipy
-      ver:     ==0.13.3
+      git:     https://github.com/scipy/scipy.git
+      rev:     v0.14.0
+      setup:   (export BLAS=/usr/local/lib/libopenblas.a ; export LAPACK=/usr/local/lib/libopenblas.a ; export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/ ; python3.4 setup.py install)
     - name:    Theano
       git:     https://github.com/Theano/Theano.git
       rev:     ba81e61d6545d5a82fbf9c85b9e6db2fd3c12ea3
@@ -113,7 +112,7 @@ pip_pkgs:
       git:     https://github.com/sympy/sympy.git
       rev:     254d99c1c2bfbd4f634f61cd5a444c8a3e79450b
     - name:    pandas
-      ver:     ==0.14
+      ver:     ==0.14.1
     - name:    lifelines
       ver:     ==0.4.0.0
     - name:    nose
@@ -122,10 +121,10 @@ pip_pkgs:
       ver:     ==1.0.1
     - name:    statsmodels
       git:     https://github.com/statsmodels/statsmodels.git
-      rev:     3adaa1a0738131bd2441eb45b1c090a4777d7068
+      rev:     74b4dc920456a82e11d4ebd865bb698769b0b767
     - name:    pymc
-      git:     https://github.com/andrewclegg/pymc
-      rev:     66c3f3743de9c39643ba4fb3ef14f79e4845e8f3
+      git:     https://github.com/pymc-devs/pymc
+      rev:     950c18e0fc6ac5f7dd9c1a4c79100aa7b6d95014
     - name:    psycopg2
       ver:     ==2.5.2
     - name:    pymssql
@@ -139,10 +138,9 @@ pip_pkgs:
       ver:     ==0.3.1
     - name:    ipython[all]
       import:  IPython
-      ver:     ==2.0.0
+      ver:     ==2.2.0
     - name:    scikit-learn
-      git:     https://github.com/scikit-learn/scikit-learn.git
-      rev:     d0f6052a7c0eb8df48b0dd867c2799aa9bd729fa
+      ver:     ==0.15.1
       import:  sklearn
     - name:    runipy
       ver:     ==0.0.8
@@ -190,10 +188,13 @@ pip_pkgs:
     - name:    mpld3
       ver:     ==0.2
     - name:    wabbit_wappa
-      git:     https://github.com/andrewclegg/wabbit_wappa.git
+      git:     https://github.com/snake-charmer-devs/wabbit_wappa.git
       rev:     a9f7a4d34d44ff6f6000850558d833efe07bbb95
+    - name:    requests
+      ver:     ==2.3.0
 
 # Misc stuff not installed through usual channels
 
 vw_rev: 0c8da21c979951a36373ca0cb601d4c5bd056038
+openblas_rev: v0.2.11
 

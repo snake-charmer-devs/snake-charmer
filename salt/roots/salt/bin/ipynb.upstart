@@ -8,11 +8,7 @@ respawn
 
 limit nofile 100000 100000
 
-{% set pyver = pillar['pyver'] %}
-{% set pyver_ints = pyver|replace('.', '') %}
-
 script
-    cd /home/vagrant/notebooks
-    su -c "python{{ pyver }} -m IPython notebook --matplotlib inline --ip='*' --port 88{{ pyver_ints }}" vagrant
+    su -c /home/vagrant/ipynb.sh vagrant
 end script
 

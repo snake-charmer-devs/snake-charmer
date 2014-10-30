@@ -115,20 +115,28 @@ Snake Charmer recognizes a number of environment variables that can be used to
 modify the behaviour of VMs without editing config files. Set these as
 appropriate for your environment, then `vagrant up` or `vagrant reload`.
 
-* `CHARMER_RAM` (integer; default 2048)
+* `CHARMER_RAM` (integer; default 1024)
 
-Amount of memory to supply to each VM, in megabytes. 1000 is probably the
-minimum you can get away with.
+Amount of memory to supply to each VM, in megabytes. 500 is probably the
+absolute minimum you can get away with; 1000 or more is recommended.
 
 *This will take effect on next boot, regardless of whether the `--provision`
 flag is used.*
 
-* `CHARMER_CPUS` (integer; default 2)
+* `CHARMER_CPUS` (integer; default 1)
 
 Number of virtual CPUs to give each VM. Most Python programs will run happily
 on one CPU. If you're using multiprocessing, IPython clustering, or running the
 test suite (see below), raise this as high as you can -- but bear in mind
 you'll probably need to raise `CHARMER_RAM` somewhat too.
+
+If your CPU has [hyperthreading](http://en.wikipedia.org/wiki/Hyper-threading)
+(many end-user processors do these days) then don't set `CHARMER_CPUS` to more
+than the number of **physical cores** in your machine. This is half the number
+of *logical* cores that your machine reports having, if hyperthreading is
+enabled -- e.g. a hyperthreaded CPU that shows 8 cores really has 4 physical
+cores. If you try to give the VM more than the number of physical cores, it'll
+run **really slowly**.
 
 *This will take effect on next boot, regardless of whether the `--provision`
 flag is used.*

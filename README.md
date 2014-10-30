@@ -12,9 +12,8 @@ Python, just by typing one line?
 
     vagrant up charmed34
 
-And wouldn't it be great if you could do that from pretty much any Windows, Mac
-or Linux machine, and know that you'd get the exact same environment every
-time?
+And wouldn't it be great if you could do that from pretty any machine, and
+know that you'd get the exact same environment every time?
 
 Well, read on.
 
@@ -34,61 +33,69 @@ Packages marked 'alpha' or 'dev' should be considered experimental, although
 in many cases they are largely problem-free. We will endeavour to discover and
 document any known issues [here](https://github.com/andrewclegg/snake-charmer/issues).
 
-* Data handling and processing tools:
-    * [IPython](http://ipython.org/) 2.0.0
-        * [runipy](https://pypi.python.org/pypi/runipy) 0.0.8
-    * [Pandas](http://pandas.pydata.org/) 0.14.0
-    * [PyTables](http://www.pytables.org/moin) 3.1.1
-    * [joblib](https://pythonhosted.org/joblib/) 0.8.0 alpha 3
-    * [GNU Parallel](http://www.gnu.org/software/parallel/) 20121122 &dagger;
+### Data handling and processing tools
 
-* Graphics and visualization:
-    * [Matplotlib](http://matplotlib.org/) 1.3.1
-    * [MPLD3](http://mpld3.github.io/) 0.2
-    * [prettyplotlib](http://olgabot.github.io/prettyplotlib/) 0.1.7
-    * [brewer2mpl](https://github.com/jiffyclub/brewer2mpl) 1.4
-    * [Seaborn](http://www.stanford.edu/~mwaskom/software/seaborn/) 0.3.1
-    * [Pillow](http://python-imaging.github.io/) 2.4.0
+* [IPython](http://ipython.org/) 2.2.0
+    * [runipy](https://pypi.python.org/pypi/runipy) 0.0.8
+* [Pandas](http://pandas.pydata.org/) 0.14.0
+* [PyTables](http://www.pytables.org/moin) 3.1.1
+* [joblib](https://pythonhosted.org/joblib/) 0.8.0 alpha 3
+* [GNU Parallel](http://www.gnu.org/software/parallel/) 20121122 &dagger;
 
-* Machine learning and inference:
-    * [scikit-learn](http://scikit-learn.org/) 0.15 dev
-    * [PyMC](http://pymc-devs.github.io/pymc/) 3.0 alpha
-    * [emcee](http://dan.iel.fm/emcee/current/) 2.1.0
-    * [Stan/PyStan](http://mc-stan.org/) 2.2.0.2 &Dagger;
-    * [Theano](http://deeplearning.net/software/theano/) 0.6.0
-    * [DEAP](https://code.google.com/p/deap/) 1.0.1
-    * [fastcluster](http://danifold.net/fastcluster.html) 1.1.13
-    * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki) 7.6.1 &Dagger;
-        * [Wabbit Wappa](https://github.com/andrewclegg/wabbit_wappa) 0.2.0-p3 dev
+### Graphics and visualization
 
-* Natural language processing and text mining:
-    * [gensim](http://radimrehurek.com/gensim) 0.9.1
-    * [NLTK](http://www.nltk.org/nltk3-alpha/) 3.0 alpha 3 (very experimental)
+* [Matplotlib](http://matplotlib.org/) 1.3.1
+* [MPLD3](http://mpld3.github.io/) 0.2
+* [prettyplotlib](http://olgabot.github.io/prettyplotlib/) 0.1.7
+* [brewer2mpl](https://github.com/jiffyclub/brewer2mpl) 1.4
+* [Seaborn](http://www.stanford.edu/~mwaskom/software/seaborn/) 0.3.1
+* [Pillow](http://python-imaging.github.io/) 2.4.0
 
-* Numeric and statistical computing:
-    * [NumPy](http://www.numpy.org/) 1.8.1
-    * [SciPy](http://www.scipy.org/) 0.13.3
-    * [Bottleneck](http://berkeleyanalytics.com/bottleneck/) 0.8.0
-    * [Statsmodels](http://statsmodels.sourceforge.net/) 0.6.0 dev
-    * [lifelines](https://github.com/CamDavidsonPilon/lifelines/) 0.4.0.0
-    * [Patsy](http://patsy.readthedocs.org/en/latest/) 0.2.1
-    * [Theano](http://deeplearning.net/software/theano/) 0.6.0
-    * [numexpr](https://github.com/pydata/numexpr) 2.4
-    * [SymPy](http://sympy.org/) 0.7.5
-    * [R](http://www.r-project.org/) 2.14.1 &Dagger;
-        * [r-base-dev and r-recommended](http://cran.r-project.org/bin/linux/ubuntu/) packages
-        * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) 2.3.10
-    * [Octave](http://www.gnu.org/software/octave/) 3.2.4 &Dagger;
-        * [oct2py](https://pypi.python.org/pypi/oct2py) and [octavemagic](http://nbviewer.ipython.org/github/blink1073/oct2py/blob/master/example/octavemagic_extension.ipynb) 1.3.0
+### Machine learning and inference
 
-* Performance optimization:
-    * [Cython](http://cython.org/) 0.21 dev
-    * [Numba](https://github.com/numba/numba/) 0.13.1
+* [scikit-learn](http://scikit-learn.org/) 0.15.1
+* [PyMC](http://pymc-devs.github.io/pymc/) 3.0 alpha
+* [emcee](http://dan.iel.fm/emcee/current/) 2.1.0
+* [Stan/PyStan](http://mc-stan.org/) 2.2.0.2 &Dagger;
+* [Theano](http://deeplearning.net/software/theano/) 0.6.0
+* [DEAP](https://code.google.com/p/deap/) 1.0.1
+* [fastcluster](http://danifold.net/fastcluster.html) 1.1.13
+* [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki) 7.6.1 &Dagger;
+    * [Wabbit Wappa](https://github.com/andrewclegg/wabbit_wappa) 0.2.0-p3 dev
 
-* Connectivity and interoperability:
-    * [lxml](http://lxml.de/lxmlhtml.html) 3.3.5
-    * [Psycopg](http://initd.org/psycopg/) 2.5.2
-    * [pymssql](http://www.pymssql.org/) 2.1.0
+### Natural language processing and text mining
+
+* [gensim](http://radimrehurek.com/gensim) 0.9.1
+* [NLTK](http://www.nltk.org/nltk3-alpha/) 3.0 alpha 3 (very experimental)
+
+### Numeric and statistical computing
+
+* [NumPy](http://www.numpy.org/) 1.8.2
+* [SciPy](http://www.scipy.org/) 0.14.0
+* [Bottleneck](http://berkeleyanalytics.com/bottleneck/) 0.8.0
+* [Statsmodels](http://statsmodels.sourceforge.net/) 0.6.0 dev
+* [lifelines](https://github.com/CamDavidsonPilon/lifelines/) 0.4.0.0
+* [Patsy](http://patsy.readthedocs.org/en/latest/) 0.2.1
+* [Theano](http://deeplearning.net/software/theano/) 0.6.0
+* [numexpr](https://github.com/pydata/numexpr) 2.4
+* [SymPy](http://sympy.org/) 0.7.5
+* [R](http://www.r-project.org/) 2.14.1 &Dagger;
+    * [r-base-dev and r-recommended](http://cran.r-project.org/bin/linux/ubuntu/) packages
+    * [rpy2](http://rpy.sourceforge.net/rpy2.html) and [rmagic](http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html) 2.3.10
+* [Octave](http://www.gnu.org/software/octave/) 3.2.4 &Dagger;
+    * [oct2py](https://pypi.python.org/pypi/oct2py) and [octavemagic](http://nbviewer.ipython.org/github/blink1073/oct2py/blob/master/example/octavemagic_extension.ipynb) 1.3.0
+
+### Performance optimization
+
+* [Cython](http://cython.org/) 0.21 dev
+* [Numba](https://github.com/numba/numba/) 0.13.1
+
+### Connectivity and interoperability
+
+* [lxml](http://lxml.de/lxmlhtml.html) 3.3.5
+* [Psycopg](http://initd.org/psycopg/) 2.5.2
+* [pymssql](http://www.pymssql.org/) 2.1.0
+* [requests](http://docs.python-requests.org/en/latest/) 2.3.0
 
 *&dagger; Non-Python tools*
 
@@ -104,7 +111,7 @@ Potential future additions include: Parakeet, pattern, CrossCat, BayesDB,
 ggplot, Bokeh, Blaze, numdifftools, PuLP, CVXPY, SysCorr, bayesian, PEBL,
 libpgm, BayesPy, BayesOpt, mpld3, Pylearn2, nimfa, py-earth, Orange, NeuroLab,
 PyBrain, annoy, Zipline, Quandl, BNFinder, Alchemy API, xlrd/xlwt, NetworkX,
-OpenCV, boto, gbq, SQLite, PyMongo, mpi4py, Jubatus, and one or
+PyMVPA, OpenCV, boto, gbq, SQLite, PyMongo, mpi4py, Jubatus, and one or
 more Hadoop clients.
 
 If you have suggestions for any other packages to add, please submit them by
@@ -120,13 +127,36 @@ managing these, and [VirtualBox](https://www.virtualbox.org/) for running them
 *Experienced users of other virtualization platforms can edit the Vagrantfile
 to use one of these instead, if they prefer.*
 
+**Windows users:** you  may also need to install an
+[ssh client](https://www.google.co.uk/search?q=ssh+windows+command+line+client)
+if you don't already have one on your system. Also, one Windows user
+[reports](https://github.com/snake-charmer-devs/snake-charmer/issues/24#issuecomment-48858182)
+that you might need to move `git` out of your path if Vagrant does not run correctly.
+
 Everything else is installed automatically.
+
+### Hardware and system resources
+
+By default, the VM allocates 1024MB of RAM, and a single CPU. If your computer
+only *has* 1024MB, you will need to reduce this as described in the
+[customization guide](CUSTOMIZING.md).
+
+It is very much recommended that you run Snake Charmer on a machine with
+[hardware virtualization](http://www.desktop-virtualization.com/2008/05/14/what-hardware-virtualization-really-means/)
+(i.e. Intel VT-x or AMD-V). It will run on systems without this, but slowly.
+You may need to enable it in your BIOS, but most modern systems come with it
+enabled by default.
 
 ## Installation
 
 Check out this git repository:
 
+    # Either via ssh...
     git clone git@github.com:andrewclegg/snake-charmer.git
+    # Or via https...
+    git clone https://github.com/andrewclegg/snake-charmer.git
+    
+    # Then change into your new Snake Charmer directory...
     cd snake-charmer
 
 Start the VM:
@@ -137,11 +167,17 @@ Start the VM:
 will attempt to install the [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest/)
 plugin automatically.*
 
-This command currently takes around an hour to download and install all the
-necessary software. When this completes, it will run some tests and then
-display a message like this:
+This command will generally take **at least an hour** to download and install
+all the necessary software. When this completes, it will run some tests and
+then display a message like this:
 
     Your VM is up and running: http://localhost:8834/tree
+
+Later rebuilds will go slightly more quickly, as downloaded package files are
+cached where possible.
+
+Note: you may get some Python warnings after the "up and running" message, e.g.
+`DeprecationWarning` or `ResourceWarning`. These can safely be ignored.
 
 ### Testing your installation
 
@@ -263,6 +299,14 @@ Then reboot and reprovision:
 If this doesn't fix the problem, then delete it completely, and recreate it:
 
     vagrant destroy charmed34
+    vagrant up charmed34
+
+Finally, you could try deleting your VirtualBox machines and Vagrant configuration
+files:
+
+    VBoxManage controlvm charmed34 poweroff
+    VBoxManage unregistervm charmed34 --delete
+    vagrant box remove charmed34
     vagrant up charmed34
 
 If this still doesn't fix it, you may have found a bug. Please open a
